@@ -42,7 +42,7 @@ class ReaderConfig:
     enabled: bool = True
     socket: str = "/run/kahvi-sampler/ipc.sock"
     poll_interval: float = 15.0
-    timeout: float = 3.0
+    timeout: float = 8.0  # reader answers between ticks; its own wait is 5 s
     # The reader marks a frame "lit" when the room light is on. No lit frame for this
     # long => lights off. Frames are requested with max_age = dark_after, so a frame is
     # only fetched while a recent lit one exists and the reader never captures for us.

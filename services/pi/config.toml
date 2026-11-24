@@ -21,14 +21,15 @@ base_topic = "zigbee2mqtt"
 socket = "/run/kahvi-sampler/ipc.sock"
 poll_interval = 15
 dark_after = 90
+timeout = 8         # the reader answers pings between ticks; a tick can take > 3 s
 
-# --- coffee machines: smart plugs (names from kahvibot's power_devices) -----------------
+# --- coffee machines: smart plugs (kahviraspi config.py: power_devices = {"left": "east", "right": "west"})
 [[devices]]
 id = "coffee_machine_left"
 name = "Vasen kahvinkeitin"
 kind = "coffee_machine"
 source = "mqtt"
-topic = "vasen"
+topic = "east"
 interpreter = "power_levels"
 # kahvibot counts >= 300 W as brewing; the warming plate sits well below that.
 params = { levels = { off = 0, on = 10, brewing = 300 } }
@@ -38,7 +39,7 @@ id = "coffee_machine_right"
 name = "Oikea kahvinkeitin"
 kind = "coffee_machine"
 source = "mqtt"
-topic = "oikea"
+topic = "west"
 interpreter = "power_levels"
 params = { levels = { off = 0, on = 10, brewing = 300 } }
 
