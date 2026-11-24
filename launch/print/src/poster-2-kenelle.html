@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – Kenelle ja miksi (A2)</title>
+<link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="poster-base.css">
+<style>
+  .hero { display: grid; grid-template-columns: 1fr auto; gap: 14mm; align-items: end; margin-top: 10mm; }
+  h1 { font-size: 40mm; line-height: 0.98; }
+  .hero .lights { font-size: 17mm; gap: 8mm; }
+  .gridcap { display: flex; align-items: center; gap: 3mm; font-size: 6mm; margin-top: 6mm; font-weight: 600; }
+  .gridcap .chip { font-size: 5mm; }
+  .hero .lights .dot.lit { box-shadow: 0 0 0 3.5mm var(--merkkivalo-soft); }
+  .lede { font-size: 10mm; line-height: 1.3; margin-top: 9mm; max-width: 300mm; color: var(--ink); }
+  .sec { display: flex; align-items: center; gap: 5mm; margin: 13mm 0 7mm; font-size: 7.5mm; }
+  .sec .knob { font-size: 10mm; --turn: 45deg; }
+  .sec .rule { flex: 1; }
+  .who { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1fr; gap: 5mm; }
+  .card { background: var(--surface); border-radius: 8mm; padding: 8mm 7mm 8mm; }
+  .card.main { background: var(--vesi-soft); }
+  .card .tag { font-size: 4.8mm; color: var(--muted); }
+  .card.main .tag { color: var(--vesi); }
+  .card h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.015em; font-size: 11mm; line-height: 1.02; margin: 3mm 0 4mm; }
+  .card p { font-size: 7.1mm; line-height: 1.32; }
+  .why li { display: grid; grid-template-columns: 16mm 1fr 92mm; gap: 6mm; align-items: baseline; padding: 5.2mm 0; border-top: 0.3mm solid var(--line-strong); }
+  .why li:first-child { border-top: 0; padding-top: 0; }
+  .why .n { font-family: var(--font-mono); font-weight: 500; font-size: 7mm; color: var(--vesi); }
+  .why b { font-family: var(--font-display); font-weight: 700; font-size: 13.2mm; letter-spacing: -0.02em; line-height: 1; }
+  .why span.p { font-size: 6mm; line-height: 1.32; color: var(--muted); }
+  .why span.p .mono { color: var(--ink); font-size: 5.4mm; }
+  .price { margin-top: 7mm; display: flex; align-items: baseline; gap: 6mm; font-size: 7mm; }
+  .price .mono { font-size: 10mm; color: var(--ink); }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="topbar">
+    <div class="kicker label"><span data-lights="5"></span>Kenelle ja miksi</div>
+    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+  </div>
+
+  <section class="hero">
+    <h1 class="display">Iso talo.<br>Kiireinen arki.<br>Yksi vilkaisu.</h1>
+    <div class="gridwrap"><div data-lights="6"></div><div class="gridcap"><span data-chip="on"></span>Liesi</div></div>
+  </section>
+  <p class="lede">Hana, liesi, uuni, kahvinkeitin, valot. Kun jokin jää päälle, Hanax näyttää sen ennen kuin lähdet.</p>
+
+  <div class="sec label"><span class="knob dark"></span>Kenelle<span class="rule thin"></span></div>
+  <div class="who">
+    <div class="card main">
+      <div class="tag label">Ensisijainen</div>
+      <h3>Omakotitalon kiireinen arki</h3>
+      <p>Keski-ikäiset, joilla on monta kerrosta, monta laitetta ja aina kiire ovesta ulos.</p>
+    </div>
+    <div class="card">
+      <div class="tag label">Myös</div>
+      <h3>Mökin omistaja</h3>
+      <p>Mökille ei palata heti. Lähtiessä on hyvä tietää, että kaikki on kiinni.</p>
+    </div>
+    <div class="card">
+      <div class="tag label">Myös</div>
+      <h3>Lyhyt&shy;vuokraaja</h3>
+      <p>Kohde on välillä pitkään tyhjillään. Tarkistat sen puhelimesta.</p>
+    </div>
+    <div class="card">
+      <div class="tag label">Ostajana</div>
+      <h3>Aikuinen lapsi</h3>
+      <p>Hankkii Hanaxin vanhemmilleen, jotta kummankin mieli lepää.</p>
+    </div>
+  </div>
+
+  <div class="sec label"><span class="knob dark"></span>Miksi Hanax<span class="rule thin"></span></div>
+  <ol class="why">
+    <li><span class="n">01</span><b>Näet kaiken yhdellä vilkaisulla.</b><span class="p">Testihenkilöt ymmärsivät paneelin heti ilman ohjeita. <span class="mono">RT7</span></span></li>
+    <li><span class="n">02</span><b>Toimii laitteiden kanssa, jotka sinulla jo on.</b><span class="p">Sensori tavalliseen hanaan, lieteen tai pistorasiaan. <span class="mono">RT8</span></span></li>
+    <li><span class="n">03</span><b>Asennat itse, ilman putkimiestä.</b><span class="p">Hankala asennus oli suurin käyttöönoton este. <span class="mono">RT8</span></span></li>
+    <li><span class="n">04</span><b>Kotisi tiedot pysyvät kotona.</b><span class="p">Toimii paikallisesti ilman pilveä. Tiedot säilytetään Suomessa. <span class="mono">RT8</span></span></li>
+    <li><span class="n">05</span><b>Yksi painike: kaikki pois.</b><span class="p">Testeissä toivottiin yhtä katkaisijaa kaikelle. <span class="mono">RT7</span></span></li>
+  </ol>
+
+  <div class="footer">
+    <div>
+      <div class="url">kayttis.kiirikki.fi</div>
+      <div class="credit">Hintatavoite 50–150 € sensoreineen · Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
+    </div>
+    <div class="qrbox">
+      <div class="qrtext"><b>Lue lisää</b>Skannaa puhelimella</div>
+      <div class="qr"><img src="img/qr-site.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
+    </div>
+  </div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

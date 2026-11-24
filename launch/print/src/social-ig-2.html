@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – Instagram 2/3 ratkaisu</title>
+<link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="social.css">
+<style>
+  :root { --w: 1080px; --h: 1080px; }
+  .grid { display: grid; grid-template-columns: 1fr 460px; gap: 44px; margin-top: 64px; }
+  h1 { font-size: 96px; line-height: 0.98; }
+  .p { font-size: 32px; line-height: 1.35; margin-top: 30px; }
+  .p b { font-weight: 600; }
+  [data-panel] { font-size: 24px; align-self: start; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="s-top"><img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax"><div class="count"><span data-lights="5"></span>2 / 3</div></div>
+  <div class="grid">
+    <div>
+      <h1 class="display">Näet kaiken yhdellä vilkaisulla.</h1>
+      <p class="p"><b>Paneeli eteisessä</b> ja <b>sovellus puhelimessa</b> näyttävät, mikä jäi päälle.</p>
+      <p class="p"><b>Yksi painike</b> sammuttaa kaiken.</p>
+    </div>
+    <div data-panel="on" data-compact></div>
+  </div>
+  <div class="s-foot"><span class="mono">kayttis.kiirikki.fi</span><span>Aalto-yliopisto · Käytettävyys 2026</span></div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

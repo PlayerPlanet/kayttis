@@ -1,0 +1,147 @@
+/* Hanax — generated from tokens.json by build_tokens.py; do not edit */
+
+@font-face {
+  font-family: "Familjen Grotesk";
+  src: url("fonts/FamiljenGrotesk-VF.woff2") format("woff2");
+  font-weight: 400 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Figtree";
+  src: url("fonts/Figtree-VF.woff2") format("woff2");
+  font-weight: 300 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  src: url("fonts/JetBrainsMono-VF.woff2") format("woff2");
+  font-weight: 100 800;
+  font-display: swap;
+}
+
+:root {
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --surface-2: #e6edec;
+  --ink: #0f1c24;
+  --muted: #4e5d66;
+  --line: #c9d4d3;
+  --line-strong: #7d8f91;
+  --vesi: #136a87;
+  --vesi-soft: #d7eaf0;
+  --merkkivalo: #f08a16;
+  --merkkivalo-ink: #9a4d00;
+  --merkkivalo-soft: #fde6cc;
+  --kiinni: #2c8564;
+  --kiinni-ink: #1f6b4f;
+  --kiinni-soft: #ddf0e8;
+  --vaara: #c23b22;
+  --shadow-panel: 0 1px 2px rgba(15,28,36,0.06), 0 8px 24px rgba(15,28,36,0.08);
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-20: 80px;
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 20px;
+  --radius-pill: 999px;
+  --font-display: "Familjen Grotesk", "Figtree", system-ui, sans-serif;
+  --font-sans: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", monospace;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e1a21;
+    --surface: #15242d;
+    --surface-2: #1d313c;
+    --ink: #e9f0ef;
+    --muted: #a3b2b8;
+    --line: #2c414c;
+    --line-strong: #6b8492;
+    --vesi: #5bb4d2;
+    --vesi-soft: #183844;
+    --merkkivalo: #ff9b33;
+    --merkkivalo-ink: #ffb866;
+    --merkkivalo-soft: #3a2712;
+    --kiinni: #4fc096;
+    --kiinni-ink: #6fd3ac;
+    --kiinni-soft: #173a2f;
+    --vaara: #ff7a5c;
+    --shadow-panel: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0e1a21;
+  --surface: #15242d;
+  --surface-2: #1d313c;
+  --ink: #e9f0ef;
+  --muted: #a3b2b8;
+  --line: #2c414c;
+  --line-strong: #6b8492;
+  --vesi: #5bb4d2;
+  --vesi-soft: #183844;
+  --merkkivalo: #ff9b33;
+  --merkkivalo-ink: #ffb866;
+  --merkkivalo-soft: #3a2712;
+  --kiinni: #4fc096;
+  --kiinni-ink: #6fd3ac;
+  --kiinni-soft: #173a2f;
+  --vaara: #ff7a5c;
+  --shadow-panel: 0 1px 2px rgba(0,0,0,0.4), 0 8px 24px rgba(0,0,0,0.35);
+  color-scheme: dark;
+}
+
+.t-display-xl {
+  font-family: var(--font-display);
+  font-size: 72px;
+  line-height: 0.95;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.t-display-l {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 1.0;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+.t-heading {
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 600;
+}
+.t-lead {
+  font-family: var(--font-sans);
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+.t-body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.55;
+  font-weight: 400;
+}
+.t-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.3;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+.t-readout {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}

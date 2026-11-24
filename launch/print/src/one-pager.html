@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – yhden sivun esittely (A4)</title>
+<link rel="stylesheet" href="hanax-print.css">
+<style>
+  @page { size: 210mm 297mm; margin: 0; }
+  html, body { width: 210mm; height: 297mm; overflow: hidden; }
+  .page { width: 210mm; height: 297mm; padding: 14mm 15mm 12mm; display: flex; flex-direction: column; }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .top .lockup { width: 38mm; }
+  .top .kicker { font-size: 2.6mm; color: var(--muted); display: flex; align-items: center; gap: 2.5mm; }
+  .top .kicker .lights { font-size: 1.5mm; gap: 0.9mm; }
+  .hero { display: grid; grid-template-columns: 1fr 66mm; gap: 9mm; margin-top: 7mm; }
+  h1 { font-size: 17.5mm; line-height: 0.95; }
+  h1 .q { color: var(--merkkivalo-ink); }
+  .tag { font-family: var(--font-display); font-weight: 600; font-size: 6.4mm; margin-top: 4mm; letter-spacing: -0.01em; }
+  .p { font-size: 3.5mm; line-height: 1.5; }
+  .hero .p { margin-top: 4mm; }
+  .hero [data-panel] { font-size: 3.15mm; margin-top: 2mm; }
+  .side .qrbox { justify-content: flex-end; margin-top: 5mm; }
+  h2 { font-family: var(--font-sans); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 2.7mm; color: var(--vesi); display: flex; align-items: center; gap: 2mm; margin-bottom: 2.6mm; }
+  h2 .knob { font-size: 3.6mm; --turn: 60deg; }
+  .band { margin-top: 6mm; padding-top: 4.5mm; border-top: 0.35mm solid var(--ink); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  .step { background: var(--surface); border-radius: 3.5mm; padding: 4mm 4mm 4.5mm; }
+  .step .n { font-family: var(--font-mono); font-weight: 500; font-size: 3.2mm; color: var(--vesi); }
+  .step b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 4.6mm; line-height: 1.1; margin: 1.5mm 0 1.5mm; letter-spacing: -0.01em; }
+  .step span { font-size: 3.2mm; line-height: 1.45; display: block; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 9mm; }
+  .list li { font-size: 3.35mm; line-height: 1.42; padding: 1.6mm 0; border-top: 0.2mm solid var(--line); }
+  .list li:first-child { border-top: 0; padding-top: 0; }
+  .list b { font-weight: 600; }
+  .list .rt { font-family: var(--font-mono); font-weight: 500; font-size: 2.8mm; color: var(--vesi); }
+  .bottom { margin-top: auto; display: flex; justify-content: space-between; padding-top: 3mm; border-top: 0.35mm solid var(--ink); }
+  .price { margin-top: 5mm; background: var(--surface); border-radius: 3.5mm; padding: 4mm; }
+  .price .lbl { font-size: 2.7mm; color: var(--vesi); }
+  .price .mono { font-size: 7.5mm; white-space: nowrap; display: block; margin: 1mm 0 1mm; }
+  .price .p { color: var(--muted); }
+  .credit { font-size: 2.8mm; color: var(--muted); margin-top: 3mm; }
+  .qrbox { display: flex; align-items: flex-end; gap: 3.5mm; }
+  .qrbox .qr { width: 21mm; }
+  .qrbox .t { font-size: 3.1mm; text-align: right; line-height: 1.35; }
+  .qrbox .t b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 4.2mm; }
+  .qrbox .t .mono { font-size: 2.9mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+    <div class="kicker label"><span data-lights="5"></span>Tuotekonsepti · 2026</div>
+  </div>
+
+  <section class="hero">
+    <div>
+      <h1 class="display">Jäikö hana auki<span class="q">?</span></h1>
+      <p class="tag">Lähde kotoa huoletta.</p>
+      <p class="p">Bussi lähtee neljän minuutin päästä. Takki päälle, ovi kiinni, ja ajatus jää eteiseen: sammutinko lieden? Astianpesukoneen hana jää helposti auki, ja vesivahinko on kallis. Kotivakuutus ei aina korvaa sitä. Sama huoli koskee liettä, uunia, kahvinkeitintä ja valoja.</p>
+      <p class="p"><b>Hanax näyttää yhdellä vilkaisulla, jäikö jokin päälle</b>: eteisen paneelista ja puhelimesta. Yksi painike sammuttaa kaiken.</p>
+    </div>
+    <div class="side">
+      <div data-panel="on" data-compact></div>
+      <div class="qrbox">
+        <div class="t"><b>Katso, miten<br>Hanax toimii</b><span class="mono">kayttis.kiirikki.fi</span></div>
+        <div class="qr"><img src="img/qr-site.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <h2><span class="knob dark"></span>Näin se toimii</h2>
+    <div class="steps">
+      <div class="step"><span class="n">1</span><b>Kiinnitä sensorit</b><span>Tavalliseen hanaan, lieteen tai pistorasiaan. Asennat itse, ilman putkimiestä.</span></div>
+      <div class="step"><span class="n">2</span><b>Vilkaise lähtiessä</b><span>Eteisen paneeli kertoo, mikä on päällä ja milloin se on tarkistettu.</span></div>
+      <div class="step"><span class="n">3</span><b>Sammuta kaikki</b><span>Yhdellä painikkeella paneelista tai puhelimesta, vaikka jo bussista.</span></div>
+    </div>
+  </section>
+
+  <section class="band two">
+    <div>
+      <h2><span class="knob dark"></span>Kenelle</h2>
+      <ul class="list">
+        <li><b>Omakotitalon kiireinen arki.</b> Monta kerrosta, monta laitetta, aina kiire ovesta ulos.</li>
+        <li><b>Mökin omistajat</b> ja <b>lyhytvuokraajat</b>, joiden kohde on pitkään tyhjillään.</li>
+        <li><b>Aikuiset lapset</b>, jotka hankkivat Hanaxin vanhemmilleen.</li>
+      </ul>
+      <h2 style="margin-top:5mm"><span class="knob dark"></span>Miksi Hanax</h2>
+      <ul class="list">
+        <li><b>Näet kaiken yhdellä vilkaisulla.</b></li>
+        <li><b>Toimii laitteiden kanssa, jotka sinulla jo on.</b></li>
+        <li><b>Asennat itse, ilman putkimiestä.</b></li>
+        <li><b>Kotisi tiedot pysyvät kotona</b>: paikallisesti, Suomessa.</li>
+        <li><b>Yksi painike: kaikki pois.</b></li>
+      </ul>
+    </div>
+    <div>
+      <h2><span class="knob dark"></span>Tehty käyttäjien kanssa</h2>
+      <ul class="list">
+        <li><span class="rt">RT7</span> Testissä kysyttiin, kumpi väri tarkoittaa ”pois”. <b>Nyt tila kerrotaan aina värillä, tekstillä ja ikonilla.</b></li>
+        <li><span class="rt">RT7</span> Kotoa lähdön jälkeen ei voinut tarkistaa mitään. <b>Nyt mukana on sovellus.</b></li>
+        <li><span class="rt">RT8</span> Asennus mietitytti. <b>Nyt sensorit asennetaan itse.</b></li>
+        <li><span class="rt">RT8</span> Pilvi ja yksityisyys huolettivat. <b>Nyt Hanax toimii paikallisesti.</b></li>
+        <li><span class="rt">RT7</span> Toivottiin yhtä katkaisijaa. <b>Nyt on Sammuta kaikki.</b></li>
+      </ul>
+      <div class="price"><div class="label lbl">Hintatavoite</div><span class="mono">50–150 €</span><span class="p">sensoreineen. Testihenkilöt pitivät tätä haarukkaa sopivana. Hintaa ei ole vielä päätetty.</span></div>
+    </div>
+  </section>
+
+  <div class="bottom">
+    <div>
+      <div class="credit" style="margin-top:0">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
+    </div>
+    <div class="credit" style="margin-top:0">kayttis.kiirikki.fi</div>
+  </div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

@@ -1,13 +1,14 @@
 # frontend — Cloudflare Pages
 
-Served at **https://kayttis.kiirikki.fi**, everything behind a demo-user login.
+Served at **https://kayttis.kiirikki.fi**: a public landing page at `/`, the demo app and API behind a demo-user login.
 
 | path | served by |
 |---|---|
-| `/` | redirect to `/app/` (`public/_redirects`) |
+| `/` | public Finnish landing page: `public/index.html`, `public/site/` (CSS/JS), `public/brand/` (tokens, fonts, logos copied from `brand/`), `public/media/` |
 | `/app/*` | static UI in `public/app/` (dependency-free ES modules, no build step): `index.html`, `app.js`, `icons.js`, `app.css` |
 | `/api/*` | `functions/api/[[path]].js` proxies to `https://kayttis-api.kiirikki.fi/api/*`, the Pi service through Cloudflare Tunnel |
-| all | `functions/_middleware.js`: HTTP Basic login with `DEMO_USER` / `DEMO_PASSWORD` |
+| `/app*`, `/api*` | `functions/_middleware.js`: HTTP Basic login with `DEMO_USER` / `DEMO_PASSWORD`; every other path is public |
+| missing paths | `public/404.html` (real 404 status, so a missing video degrades cleanly) |
 
 The proxy keeps the `/api` prefix, so the Pi service serves its routes under `/api/...`.
 

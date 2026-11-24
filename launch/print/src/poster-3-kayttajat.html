@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – Käyttäjät muuttivat Hanaxia (A2)</title>
+<link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="poster-base.css">
+<style>
+  h1 { font-size: 46mm; line-height: 0.97; margin-top: 10mm; }
+  .lede { font-size: 8.6mm; line-height: 1.32; margin-top: 8mm; max-width: 330mm; }
+  .lede .mono { font-size: 7.4mm; color: var(--vesi); }
+  .feature { margin-top: 12mm; display: grid; grid-template-columns: 1fr 18mm 1fr; gap: 6mm; align-items: stretch; }
+  .box { border-radius: 8mm; padding: 9mm 9mm 10mm; }
+  .box.before { background: var(--surface-2); }
+  .box.after { background: var(--surface); box-shadow: inset 0 0 0 0.5mm var(--line); }
+  .box .tag { font-size: 5.2mm; color: var(--muted); display: flex; justify-content: space-between; }
+  .box .tag .mono { letter-spacing: 0; }
+  .box h3 { font-family: var(--font-display); font-weight: 700; font-size: 11mm; line-height: 1.05; letter-spacing: -0.015em; margin: 4mm 0 7mm; }
+  .olddots { display: flex; gap: 7mm; align-items: center; font-size: 26mm; margin-top: 10mm; }
+  .olddots .d { width: 1em; height: 1em; border-radius: 50%; }
+  .olddots .q { font-family: var(--font-display); font-weight: 700; font-size: 0.9em; color: var(--muted); line-height: 1; }
+  .chips { display: grid; gap: 4mm; justify-items: start; font-size: 12mm; }
+  .chips .row { display: flex; align-items: center; gap: 5mm; font-size: 6.2mm; color: var(--muted); }
+  .chips .chip { font-size: 7.6mm; }
+  .arrow { display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 18mm; color: var(--vesi); }
+  .sec { display: flex; align-items: center; gap: 5mm; margin: 12mm 0 4mm; font-size: 7.5mm; }
+  .sec .knob { font-size: 10mm; --turn: 120deg; }
+  .sec .rule { flex: 1; }
+  .colhead { display: grid; grid-template-columns: 20mm 1fr 14mm 1.1fr; gap: 5mm; font-size: 5mm; color: var(--muted); padding: 0 0 2mm; }
+  .log li { display: grid; grid-template-columns: 20mm 1fr 14mm 1.1fr; gap: 5mm; align-items: baseline; padding: 5mm 0; border-top: 0.3mm solid var(--line-strong); }
+  .log .rt { font-family: var(--font-mono); font-weight: 500; font-size: 6.4mm; color: var(--vesi); }
+  .log .obs { font-size: 7.2mm; line-height: 1.3; color: var(--muted); }
+  .log .to { font-family: var(--font-display); font-weight: 700; font-size: 9mm; color: var(--vesi); }
+  .log .chg { font-size: 7.2mm; line-height: 1.3; }
+  .log .chg b { font-family: var(--font-display); font-weight: 700; font-size: 10mm; letter-spacing: -0.01em; display: block; line-height: 1.05; margin-bottom: 1.5mm; }
+  .note { font-size: 5.2mm; color: var(--muted); margin-top: 5mm; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="topbar">
+    <div class="kicker label"><span data-lights="5"></span>Rakennettu käyttäjien kanssa</div>
+    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+  </div>
+
+  <h1 class="display">Käyttäjät<br>muuttivat Hanaxia.</h1>
+  <p class="lede">Kaksi testikierrosta. <span class="mono">RT7</span> pilotti pahvisella paneelilla. <span class="mono">RT8</span> kahdeksan testihenkilöä, <span style="white-space:nowrap">30–80-vuotiaita</span>, Helsingissä ja Oulussa.</p>
+
+  <section class="feature">
+    <div class="box before">
+      <div class="tag label"><span>Ennen</span><span class="mono">RT7</span></div>
+      <h3>Testissä kysyttiin, kumpi väri tarkoittaa ”pois päältä”.</h3>
+      <div class="olddots"><span class="d" style="background: var(--kiinni)"></span><span class="d" style="background: var(--vaara)"></span><span class="q">?</span></div>
+    </div>
+    <div class="arrow">→</div>
+    <div class="box after">
+      <div class="tag label"><span>Nyt</span><span>Tilasääntö</span></div>
+      <h3>Tila kerrotaan aina värillä, tekstillä ja ikonilla.</h3>
+      <div class="chips">
+        <div class="row"><span data-chip="on"></span>oranssi, ei vihreä</div>
+        <div class="row"><span data-chip="off"></span>neutraali</div>
+        <div class="row"><span data-chip="safe"></span>vihreä = turvassa</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="sec label"><span class="knob dark"></span>Mitä muuttui<span class="rule thin"></span></div>
+  <div class="colhead label"><span></span><span>Havainto testeissä</span><span></span><span>Muutos Hanaxissa</span></div>
+  <ol class="log">
+    <li><span class="rt">RT7</span><span class="obs">Kotoa lähdön jälkeen tilaa ei voinut enää tarkistaa.</span><span class="to">→</span><span class="chg"><b>Sovellus puhelimeen.</b>Tarkistat kodin vaikka bussista.</span></li>
+    <li><span class="rt">RT8</span><span class="obs">Asennus mietitytti: tarvitaanko putkimies, ja mitä se maksaa?</span><span class="to">→</span><span class="chg"><b>Asennat itse.</b>Sensori kiinnittyy tavalliseen hanaan, lieteen tai pistorasiaan.</span></li>
+    <li><span class="rt">RT8</span><span class="obs">Kysyttiin pilvestä, tietoturvasta ja yksityisyydestä.</span><span class="to">→</span><span class="chg"><b>Tiedot pysyvät kotona.</b>Toimii paikallisesti, tiedot säilytetään Suomessa.</span></li>
+    <li><span class="rt">RT7</span><span class="obs">Toivottiin yhtä katkaisijaa, josta saa kaiken pois.</span><span class="to">→</span><span class="chg"><b>Yksi painike: Sammuta kaikki.</b>Paneelista ja sovelluksesta.</span></li>
+    <li><span class="rt">RT7</span><span class="obs">Yksiössä tarve oli pieni. Isossa talossa ja mökillä se oli selvä.</span><span class="to">→</span><span class="chg"><b>Omakotitalot keskiöön.</b>Myös mökit ja lyhytvuokraajat.</span></li>
+  </ol>
+  <p class="note">Havainnot ovat tiivistelmiä testimuistiinpanoista, eivät suoria lainauksia.</p>
+
+  <div class="footer">
+    <div>
+      <div class="url">kayttis.kiirikki.fi</div>
+      <div class="credit">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
+    </div>
+    <div class="qrbox">
+      <div class="qrtext"><b>Katso lisää</b>Skannaa puhelimella</div>
+      <div class="qr"><img src="img/qr-site.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
+    </div>
+  </div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

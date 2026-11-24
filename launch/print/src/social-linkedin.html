@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – LinkedIn</title>
+<link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="social.css">
+<style>
+  :root { --w: 1200px; --h: 627px; }
+  .canvas { padding: 60px 64px 52px; display: grid; grid-template-columns: 1fr 380px; gap: 56px; }
+  .left { display: flex; flex-direction: column; }
+  .lockup { width: 190px; }
+  .kicker { font-size: 18px; color: var(--vesi); margin-top: 48px; }
+  h1 { font-size: 64px; line-height: 1; margin-top: 16px; }
+  .p { font-size: 24px; line-height: 1.4; color: var(--muted); margin-top: 22px; }
+  .foot { margin-top: auto; display: flex; gap: 24px; font-size: 18px; white-space: nowrap; color: var(--muted); align-items: center; }
+  .foot .mono { color: var(--ink); font-size: 21px; }
+  .right { display: flex; flex-direction: column; justify-content: center; gap: 18px; }
+  .log { background: var(--surface); border-radius: 22px; padding: 22px 24px; }
+  .log .row { display: grid; grid-template-columns: 74px 1fr; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 19px; line-height: 1.3; }
+  .log .row:first-child { border-top: 0; padding-top: 0; }
+  .log .row:last-child { padding-bottom: 0; }
+  .log .rt { font-family: var(--font-mono); font-weight: 500; color: var(--vesi); font-size: 17px; padding-top: 1px; }
+  .log b { font-weight: 600; }
+  .log .chip { font-size: 15px; vertical-align: 1px; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="left">
+    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+    <div class="kicker label">Rakennettu käyttäjien kanssa</div>
+    <h1 class="display">Jäikö hana auki? Hanax näyttää sen yhdellä vilkaisulla.</h1>
+    <p class="p">Eteisen paneeli ja sovellus kertovat, jäikö hana, liesi tai valot päälle. Yksi painike sammuttaa kaiken.</p>
+    <div class="foot"><span class="mono">kayttis.kiirikki.fi</span><span>Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</span></div>
+  </div>
+  <div class="right">
+    <div class="log">
+      <div class="row"><span class="rt">Testi 1</span><span>Värit sekoittuivat. <b>Nyt tila on aina väri, teksti ja ikoni:</b> <span data-chip="on"></span></span></div>
+      <div class="row"><span class="rt">Testi 1</span><span>Kotoa ei voinut tarkistaa. <b>Nyt mukana on sovellus.</b></span></div>
+      <div class="row"><span class="rt">Testi 2</span><span>Asennus mietitytti. <b>Nyt asennat itse.</b></span></div>
+      <div class="row"><span class="rt">Testi 2</span><span>Yksityisyys huoletti. <b>Nyt tiedot pysyvät kotona, Suomessa.</b></span></div>
+    </div>
+  </div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

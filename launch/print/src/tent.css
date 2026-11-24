@@ -1,0 +1,15 @@
+/* Stand table sign face: A5 landscape 210 x 148 mm */
+.face { position: relative; width: 210mm; height: 148mm; padding: 14mm 15mm 12mm; display: grid; grid-template-columns: 1fr 62mm; gap: 12mm; background: var(--bg); overflow: hidden; }
+.face .lockup { width: 44mm; }
+.face h1 { font-size: 21mm; line-height: 0.95; margin-top: 11mm; }
+.face h1 .k { color: var(--vesi); }
+.face .p { font-size: 4.6mm; line-height: 1.4; margin-top: 5mm; max-width: 110mm; }
+.face .login { display: inline-flex; align-items: center; gap: 3mm; margin-top: 6mm; background: var(--surface); border-radius: var(--radius-pill); padding: 2.6mm 5mm 2.6mm 3mm; font-size: 4.2mm; font-weight: 600; }
+.face .login .knob { font-size: 6mm; --turn: 90deg; }
+.face .right { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4mm; }
+.face .qrcard { background: var(--surface); border-radius: 6mm; padding: 6mm; width: 62mm; }
+.face .qr img { width: 100%; }
+.face .url { font-family: var(--font-mono); font-weight: 500; font-size: 3.6mm; text-align: center; }
+.face .scan { font-size: 3.4mm; color: var(--muted); text-align: center; }
+.face .lights { position: absolute; right: 15mm; top: 12mm; font-size: 2.6mm; gap: 1.5mm; }
+.face .credit { position: absolute; left: 15mm; bottom: 10mm; font-size: 2.8mm; color: var(--muted); }

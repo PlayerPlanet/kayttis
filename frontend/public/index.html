@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hanax – Lähde kotoa huoletta.</title>
+  <meta name="description" content="Hanax näyttää yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta. Yhdellä painikkeella kaikki pois. Käyttäjätesteissä kehitetty tuotekonsepti.">
+  <meta name="theme-color" content="#f4f7f6" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1a21" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <link rel="canonical" href="https://kayttis.kiirikki.fi/">
+  <link rel="icon" href="/brand/logo/hanax-mark.svg" type="image/svg+xml">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="fi_FI">
+  <meta property="og:site_name" content="Hanax">
+  <meta property="og:url" content="https://kayttis.kiirikki.fi/">
+  <meta property="og:title" content="Hanax – Lähde kotoa huoletta.">
+  <meta property="og:description" content="Näet yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta. Yksi painike: kaikki pois.">
+  <meta property="og:image" content="https://kayttis.kiirikki.fi/media/og-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Hanax-paneeli eteisen seinällä: keittiön hana päällä, muut pois.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hanax – Lähde kotoa huoletta.">
+  <meta name="twitter:description" content="Näet yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta.">
+  <meta name="twitter:image" content="https://kayttis.kiirikki.fi/media/og-1200x630.png">
+
+  <link rel="preload" href="/brand/fonts/FamiljenGrotesk-VF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/brand/fonts/Figtree-VF.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/brand/tokens.css">
+  <link rel="stylesheet" href="/site/site.css">
+  <script>try{var t=(location.search.match(/[?&]tema=(light|dark)/)||[])[1]||localStorage.getItem("hanax.theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <script src="/site/site.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#sisalto">Siirry sisältöön</a>
+
+  <header class="top">
+    <div class="wrap top-in">
+      <a class="logo" href="/" aria-label="Hanax, etusivu">
+        <svg viewBox="0 0 364 88" width="112" height="27" aria-hidden="true" focusable="false"><g transform="scale(1.375)"><rect width="64" height="64" rx="16" class="m-shell"/><circle cx="30" cy="35" r="17" class="m-knob"/><rect x="27" y="19" width="6" height="17" rx="3" class="m-shell"/><circle cx="51" cy="13" r="6" fill="#f08a16"/></g><path class="m-word" d="M115.7 73V11.7H128.1V32.5H129.9Q131.5 29.6 134.2 27.7Q136.9 25.9 141.7 25.9Q149.4 25.9 153.2 30.7Q157.1 35.5 157.1 43.8V73H144.7V45.9Q144.7 41.1 143 38.5Q141.3 36 137.4 36Q133 36 130.5 39.5Q128.1 42.9 128.1 48.2V73ZM181.6 73.9Q175.2 73.9 171 70.8Q166.9 67.7 164.9 62.3Q162.9 56.8 162.9 49.9Q162.9 42.8 164.9 37.4Q167 32.1 171.1 29.1Q175.2 26.1 181.5 26.1Q186.4 26.1 189.5 28Q192.6 29.8 194.2 33H196V27H207.5V73H196V67H194.2Q192.6 69.9 189.5 71.9Q186.4 73.9 181.6 73.9ZM184.8 65.2Q189.5 65.2 192.3 61.1Q195.1 57 195.1 50Q195.1 42.9 192.3 38.9Q189.5 34.8 184.8 34.8Q180.6 34.8 178.2 38.6Q175.8 42.4 175.8 50Q175.8 57.6 178.2 61.4Q180.6 65.2 184.8 65.2ZM217 73V27H228.5V33.9H230.4Q231.7 30.5 234.6 28.2Q237.5 25.9 243.1 25.9Q250.8 25.9 254.6 30.7Q258.4 35.5 258.4 43.8V73H246V45.9Q246 41.1 244.3 38.5Q242.6 36 238.8 36Q234.4 36 231.9 39.5Q229.4 42.9 229.4 48.2V73ZM283 73.9Q276.5 73.9 272.4 70.8Q268.2 67.7 266.2 62.3Q264.3 56.8 264.3 49.9Q264.3 42.8 266.3 37.4Q268.3 32.1 272.5 29.1Q276.6 26.1 282.9 26.1Q287.7 26.1 290.8 28Q293.9 29.8 295.5 33H297.4V27H308.9V73H297.4V67H295.5Q293.9 69.9 290.9 71.9Q287.8 73.9 283 73.9ZM286.2 65.2Q290.9 65.2 293.7 61.1Q296.5 57 296.5 50Q296.5 42.9 293.7 38.9Q290.9 34.8 286.2 34.8Q282 34.8 279.5 38.6Q277.1 42.4 277.1 50Q277.1 57.6 279.5 61.4Q282 65.2 286.2 65.2ZM313.6 73V72.5L327.6 49.1L315.1 27.5V27H328.7L336 40.8H337.9L344.9 27H357.4V27.5L345.7 48.8L359.3 72.5V73H345.5L336.8 56.9H334.9L326.5 73Z"/></svg>
+      </a>
+      <nav class="nav" aria-label="Päävalikko">
+        <ul>
+          <li><a href="#ongelma">Ongelma</a></li>
+          <li><a href="#miten">Miten toimii</a></li>
+          <li><a href="#kayttajat">Käyttäjätestit</a></li>
+          <li><a href="#ukk">Kysymykset</a></li>
+        </ul>
+      </nav>
+      <div class="top-actions">
+        <button type="button" class="theme" id="theme" aria-label="Vaihda teema" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>
+        </button>
+        <a class="btn btn-ghost btn-s" href="/app/">Demo<span class="sr"> (vaatii demotunnukset)</span></a>
+      </div>
+    </div>
+  </header>
+
+  <main id="sisalto">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot dot-on" aria-hidden="true"></span>Tuotekonsepti · 2026</p>
+          <h1 id="hero-title" class="hero-title">Lähde kotoa huoletta<span class="period">.</span></h1>
+          <p class="t-lead hero-lead">Näet yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta. Yhdellä painikkeella kaikki pois.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#video">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>
+              Katso video <span class="mono-s">60 s</span>
+            </a>
+            <a class="btn btn-ghost" href="#miten">Miten se toimii</a>
+          </div>
+          <dl class="hero-facts">
+            <div><dt>Asennus</dt><dd>itse, ilman putkimiestä</dd></div>
+            <div><dt>Tiedot</dt><dd>kotona, Suomessa</dd></div>
+            <div><dt>Hintatavoite</dt><dd><span class="mono">50–150 €</span></dd></div>
+          </dl>
+        </div>
+
+        <figure class="device" id="video">
+          <div class="device-shell">
+            <span class="device-led" aria-hidden="true"></span>
+            <div class="device-screen">
+              <button type="button" class="video-fallback" aria-label="Toista video" hidden>
+                <span class="vf-row" aria-hidden="true"><span class="state state-on"><span class="dot"></span>PÄÄLLÄ</span><span class="vf-name">Keittiön hana</span></span>
+                <span class="vf-row" aria-hidden="true"><span class="state state-off">POIS</span><span class="vf-name">Liesi</span></span>
+                <span class="vf-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg></span>
+                <span class="vf-note mono" aria-hidden="true">Video · 60 s</span>
+              </button>
+              <video class="video" controls playsinline preload="none"
+                     poster="/media/hanax-60s-poster.jpg"
+                     aria-label="Hanaxin esittelyvideo, 60 sekuntia">
+                <source src="/media/hanax-60s.mp4" type="video/mp4">
+                <p>Selaimesi ei näytä videota. <a href="/media/hanax-60s.mp4">Lataa video (MP4)</a>.</p>
+              </video>
+              <p class="video-missing" role="status" hidden>Video ei ole vielä saatavilla. Kokeile hetken päästä uudelleen.</p>
+            </div>
+          </div>
+          <figcaption class="device-cap"><span class="mono">60 s</span> Bussi lähtee neljän minuutin päästä. Jäikö hana auki?</figcaption>
+        </figure>
+      </div>
+    </section>
+    <section class="sec" id="ongelma" aria-labelledby="ongelma-title">
+      <div class="wrap sec-grid">
+        <p class="eyebrow sec-label"><span class="dot dot-on" aria-hidden="true"></span><span class="mono">01</span> Ongelma</p>
+        <div class="sec-body">
+          <h2 id="ongelma-title" class="sec-title">Kaikki alkoi hanasta, joka jäi auki.</h2>
+          <div class="prose two-col">
+            <p>Astianpesukoneen tai pyykinpesukoneen hana jää helposti auki. Kun letku pettää, vettä tulee niin kauan kuin kukaan ei ole kotona. Vesivahinko on kallis, eikä kotivakuutus aina korvaa sitä, jos syynä oli auki jäänyt hana.</p>
+            <p>Ongelmaa tutkiessamme huomasimme, että sama huoli koskee liettä, uunia, kahvinkeitintä ja valoja. Kotona on yhä enemmän laitteita, jotka voivat jäädä päälle. Ja kun on kiire bussiin, kukaan ei ehdi kiertää koko taloa tarkistamassa.</p>
+          </div>
+
+          <div class="stills">
+            <figure class="still">
+              <picture>
+                <source srcset="/media/stills/hana.webp" type="image/webp">
+                <img src="/media/stills/hana.jpg" width="600" height="450" loading="lazy" decoding="async" alt="Keittiön hanasta valuu vettä altaaseen, kukaan ei ole paikalla.">
+              </picture>
+              <figcaption><span class="state state-on"><span class="dot"></span>PÄÄLLÄ</span> Keittiön hana <span class="mono muted">· tarkistettu 12 s sitten</span></figcaption>
+            </figure>
+            <figure class="still">
+              <picture>
+                <source srcset="/media/stills/liesi.webp" type="image/webp">
+                <img src="/media/stills/liesi.jpg" width="600" height="450" loading="lazy" decoding="async" alt="Lieden säätönupit ja palava punainen merkkivalo.">
+              </picture>
+              <figcaption><span class="state state-on"><span class="dot"></span>PÄÄLLÄ</span> Liesi <span class="mono muted">· tarkistettu 4 s sitten</span></figcaption>
+            </figure>
+          </div>
+
+          <ul class="pains">
+            <li>
+              <h3>Vesi</h3>
+              <p>Auki jäänyt pesukoneen hana on vesivahingon riski, jota vakuutus ei välttämättä korvaa.</p>
+            </li>
+            <li>
+              <h3>Lämpö</h3>
+              <p>Liesi ja uuni ovat harvoin päällä, mutta unohtuessaan ne ovat kodin kriittisimmät laitteet.</p>
+            </li>
+            <li>
+              <h3>Iso talo</h3>
+              <p>Mitä isompi koti ja mitä enemmän kerroksia, sitä kauemmin tarkistuskierros kestää.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-alt" id="miten" aria-labelledby="miten-title">
+      <div class="wrap sec-grid">
+        <p class="eyebrow sec-label"><span class="dot dot-on" aria-hidden="true"></span><span class="mono">02</span> Miten toimii</p>
+        <div class="sec-body">
+          <h2 id="miten-title" class="sec-title">Yksi vilkaisu ovella. Yksi painike.</h2>
+          <div class="how">
+            <ol class="steps">
+              <li>
+                <span class="step-n mono" aria-hidden="true">1</span>
+                <div>
+                  <h3>Sensorit laitteisiin, jotka sinulla jo on</h3>
+                  <p>Pienet sensorit kiinnittyvät tavalliseen hanaan, lieteen tai pistorasiaan. Uusia älylaitteita ei tarvita, eikä asentajaa.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-n mono" aria-hidden="true">2</span>
+                <div>
+                  <h3>Paneeli ja sovellus kertovat tilan ja tuoreuden</h3>
+                  <p>Eteisen paneeli ja puhelin näyttävät saman näkymän: mikä on päällä ja milloin se viimeksi tarkistettiin. <span class="mono nowrap">Kiinni · tarkistettu 12 s sitten</span>.</p>
+                </div>
+              </li>
+              <li>
+                <span class="step-n mono" aria-hidden="true">3</span>
+                <div>
+                  <h3>Yksi painike sammuttaa kaiken</h3>
+                  <p>Lähtiessä painat <strong>Sammuta kaikki</strong>. Painike vain sammuttaa, se ei koskaan kytke mitään päälle.</p>
+                </div>
+              </li>
+            </ol>
+
+            <div class="panel-wrap">
+              <div class="panel" id="panel" data-state="on" aria-labelledby="panel-title">
+                <div class="panel-head">
+                  <div>
+                    <p class="panel-place t-label">ETEINEN · KOTI</p>
+                    <p class="panel-title" id="panel-title">Esimerkkinäkymä</p>
+                  </div>
+                  <p class="panel-clock mono" aria-hidden="true">13.56</p>
+                </div>
+
+                <div class="summary" aria-live="polite">
+                  <p class="summary-on"><span class="state state-on state-l"><span class="dot"></span>PÄÄLLÄ</span> <span class="summary-text">2 laitetta päällä</span></p>
+                  <p class="summary-ok"><span class="state state-ok state-l"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>KAIKKI KIINNI</span> <span class="summary-text">Voit lähteä.</span></p>
+                </div>
+
+                <ul class="devices">
+                  <li class="dev" data-on="true">
+                    <span class="dev-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="ico-fill" d="M5 9h9a3 3 0 0 1 3 3v2h-3v-2H5z"/><path class="ico-line" d="M5 9h9a3 3 0 0 1 3 3v2h-3v-2H5zM9 9V6m-2 0h4"/><path class="ico-drop" d="M15.5 17c0 1 .7 1.8 1.5 1.8s1.5-.8 1.5-1.8-1.5-2.5-1.5-2.5-1.5 1.5-1.5 2.5z"/></svg></span>
+                    <span class="dev-name">Keittiön hana<span class="dev-fresh mono">tarkistettu <span data-age="12">12</span> s sitten</span></span>
+                    <span class="dev-state"><span class="state state-on"><span class="dot"></span>PÄÄLLÄ</span><span class="state state-off">POIS</span></span>
+                  </li>
+                  <li class="dev" data-on="true">
+                    <span class="dev-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect class="ico-fill" x="4" y="5" width="16" height="15" rx="2"/><path class="ico-line" d="M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zM4 10h16"/><circle class="ico-knob" cx="8" cy="7.5" r="1"/><circle class="ico-knob" cx="12" cy="7.5" r="1"/></svg></span>
+                    <span class="dev-name">Liesi<span class="dev-fresh mono">tarkistettu <span data-age="4">4</span> s sitten</span></span>
+                    <span class="dev-state"><span class="state state-on"><span class="dot"></span>PÄÄLLÄ</span><span class="state state-off">POIS</span></span>
+                  </li>
+                  <li class="dev" data-on="false">
+                    <span class="dev-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect class="ico-line" x="5" y="3.5" width="14" height="17" rx="2"/><circle class="ico-line" cx="12" cy="13" r="4"/></svg></span>
+                    <span class="dev-name">Pesukoneen hana<span class="dev-fresh mono">tarkistettu <span data-age="31">31</span> s sitten</span></span>
+                    <span class="dev-state"><span class="state state-off">POIS</span></span>
+                  </li>
+                  <li class="dev" data-on="false">
+                    <span class="dev-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path class="ico-line" d="M9 17h6M10 20h4M12 4a5.5 5.5 0 0 0-3 10.1V16h6v-1.9A5.5 5.5 0 0 0 12 4z"/></svg></span>
+                    <span class="dev-name">Eteisen valot<span class="dev-fresh mono">tarkistettu <span data-age="8">8</span> s sitten</span></span>
+                    <span class="dev-state"><span class="state state-off">POIS</span></span>
+                  </li>
+                </ul>
+
+                <div class="panel-foot">
+                  <button type="button" class="btn btn-knob" id="all-off" hidden>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3v8M7 6.3a7.5 7.5 0 1 0 10 0" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+                    Sammuta kaikki
+                  </button>
+                  <button type="button" class="link-btn" id="reset" hidden>Palauta esimerkki</button>
+                </div>
+              </div>
+              <p class="panel-note">Kokeile: paina <strong>Sammuta kaikki</strong>. Näkymä on esimerkki, se ei ohjaa oikeita laitteita.</p>
+            </div>
+          </div>
+
+          <div class="legend" aria-labelledby="legend-title">
+            <h3 id="legend-title" class="t-label legend-title">Tilasääntö</h3>
+            <ul class="legend-list">
+              <li><span class="state state-on"><span class="dot"></span>PÄÄLLÄ</span><span>Oranssi kuin lieden merkkivalo. Täytetty ikoni.</span></li>
+              <li><span class="state state-off">POIS</span><span>Neutraali harmaa. Ääriviivaikoni.</span></li>
+              <li><span class="state state-ok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>KAIKKI KIINNI</span><span>Vihreä tarkoittaa aina: turvassa.</span></li>
+              <li><span class="state state-unknown"><span aria-hidden="true">?</span>EI TIETOA · <span class="mono">5 min</span></span><span>Sensori ei vastaa. Hanax ei arvaa.</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="sec" id="miksi" aria-labelledby="miksi-title">
+      <div class="wrap sec-grid">
+        <p class="eyebrow sec-label"><span class="dot dot-off" aria-hidden="true"></span><span class="mono">03</span> Miksi Hanax</p>
+        <div class="sec-body">
+          <h2 id="miksi-title" class="sec-title">Mitä lupaamme, ja miksi.</h2>
+          <p class="t-lead sec-lead">Jokainen lupaus perustuu siihen, mitä testihenkilöt sanoivat ja tekivät. Lähde on merkitty perään.</p>
+          <table class="promises">
+            <caption class="sr">Hanaxin ydinviestit ja niiden perustelut käyttäjätesteistä</caption>
+            <thead>
+              <tr><th scope="col">Lupaus</th><th scope="col">Perustelu</th><th scope="col">Lähde</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Näet kaiken yhdellä vilkaisulla.</th><td>Testihenkilöt ymmärsivät paneelin heti, ilman ohjeita.</td><td class="mono">RT7</td></tr>
+              <tr><th scope="row">Toimii laitteiden kanssa, jotka sinulla jo on.</th><td>Sensorit kiinnittyvät tavalliseen hanaan, lieteen tai pistorasiaan. Uusia älylaitteita ei tarvita.</td><td class="mono">RT8</td></tr>
+              <tr><th scope="row">Asennat itse, ilman putkimiestä.</th><td>Hankala tai maksullinen asennus oli suurin käyttöönoton este.</td><td class="mono">RT8</td></tr>
+              <tr><th scope="row">Kotisi tiedot pysyvät kotona.</th><td>Toimii paikallisesti ilman pilveä. Etäkäytön tiedot säilytetään Suomessa.</td><td class="mono">RT8</td></tr>
+              <tr><th scope="row">Toimii, vaikka netti katkeaa.</th><td>Testeissä toivottiin tilaa, joka ei riipu ulkoverkosta eikä palveluntarjoajan jatkuvuudesta.</td><td class="mono">RT8</td></tr>
+              <tr><th scope="row">Yksi painike: kaikki pois.</th><td>Testeissä toivottiin yhtä katkaisijaa, josta kaiken saa pois.</td><td class="mono">RT7</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-alt" id="kayttajat" aria-labelledby="kayttajat-title">
+      <div class="wrap sec-grid">
+        <p class="eyebrow sec-label"><span class="dot dot-off" aria-hidden="true"></span><span class="mono">04</span> Käyttäjätestit</p>
+        <div class="sec-body">
+          <h2 id="kayttajat-title" class="sec-title">Tehty käyttäjien kanssa.</h2>
+          <div class="prose two-col">
+            <p><strong>RT7, pilottitesti.</strong> Rakensimme lasihuoneeseen ”omakotitalon”. Testaajat etsivät ja sammuttivat päälle jääneitä laitteita kiireessä, ja vasta sitten näkivät pahvisen ohjauspaneelin. Kukaan ei tarvinnut ohjeita.</p>
+            <p><strong>RT8, käyttäjätesti.</strong> Kahdeksan aikuista, jotka asuvat omassa kodissaan, kokeilivat puhelimella toimivaa prototyyppiä kasvokkain. Tilanteina esimerkiksi ”aamukiire” ja ”mökiltä lähtö”.</p>
+          </div>
+
+          <ul class="people" aria-label="RT8:n testihenkilöt">
+            <li><span class="mono">48 v</span> IT-ala, omistusasunto</li>
+            <li><span class="mono">76 v</span> eläkeläinen, lomakiinteistö</li>
+            <li><span class="mono">n. 30 v</span> juuri ostettu omakotitalo, Espoo</li>
+            <li><span class="mono">57 v</span> omakotitalo, Oulu</li>
+            <li><span class="mono">55 v</span> kerrostalo, Helsinki</li>
+            <li><span class="mono">80 v</span> rivitalo ja mökki</li>
+            <li><span class="mono">35 v</span> kaksi lasta, omakotitalo, Vantaa</li>
+            <li><span class="mono">47 v</span> omakotitalo, Itä-Helsinki</li>
+          </ul>
+
+          <h3 class="sub-title">Mitä kuulimme ja mitä muutimme</h3>
+          <ol class="changes">
+            <li>
+              <blockquote><p>Kumpi napin väreistä, vihreä vai punainen, tarkoittaa että laite on pois päältä?</p></blockquote>
+              <p class="src mono">Testihenkilön kysymys · RT7</p>
+              <p class="did"><span class="arrow" aria-hidden="true">→</span> <strong>Tilasääntö.</strong> Tilaa ei kerrota koskaan pelkällä värillä. Päällä on oranssi ja sanoo PÄÄLLÄ. Vihreä tarkoittaa vain: kaikki kiinni.</p>
+            </li>
+            <li>
+              <blockquote><p>Kun on lähtenyt kotoa, ei voi enää tarkistaa, onko kaikki pois päältä.</p></blockquote>
+              <p class="src mono">Kehityskohde · RT7</p>
+              <p class="did"><span class="arrow" aria-hidden="true">→</span> <strong>Sovellus puhelimeen.</strong> Sama näkymä kuin eteisessä, myös bussista.</p>
+            </li>
+            <li>
+              <blockquote><p>Onko sensoreiden asennus työläs? Tarvitaanko putkimies?</p></blockquote>
+              <p class="src mono">Yleisin huoli · RT8</p>
+              <p class="did"><span class="arrow" aria-hidden="true">→</span> <strong>Itse asennettavat sensorit.</strong> Kiinnitys olemassa oleviin laitteisiin ilman sähkö- tai putkitöitä.</p>
+            </li>
+            <li>
+              <blockquote><p>Onko laite yhteydessä pilveen? Miten se vaikuttaa yksityisyyteen?</p></blockquote>
+              <p class="src mono">Testihenkilön kysymys · RT8</p>
+              <p class="did"><span class="arrow" aria-hidden="true">→</span> <strong>Paikallinen tila.</strong> Kodin tila pysyy kotona, ja Hanax toimii ilman verkkoa.</p>
+            </li>
+            <li>
+              <blockquote><p>Miten varmistetaan, ettei rikkinäinen sensori väitä laitetta pois päältä?</p></blockquote>
+              <p class="src mono">Testihenkilön kysymys · RT7</p>
+              <p class="did"><span class="arrow" aria-hidden="true">→</span> <strong>Tuoreus jokaisessa tilassa.</strong> ”Tarkistettu 12 s sitten”, ja jos sensori vaikenee: EI TIETOA.</p>
+            </li>
+            <li>
+              <blockquote><p>Paneeliin yksi katkaisija, josta saa kaiken pois. Mutta päälle kytkeminen tuntui oudolta.</p></blockquote>
+              <p class="src mono">Testihenkilöiden idea · RT7</p>
+              <p class="did"><span class="arrow" aria-hidden="true">→</span> <strong>Sammuta kaikki.</strong> Yksi painike, joka vain sammuttaa.</p>
+            </li>
+          </ol>
+          <p class="fineprint">Lainaukset ovat tiivistelmiä testiraporteista, ei suoria sitaatteja. Testihenkilöt eivät täysin edustaneet kohderyhmää: mukana oli myös kerrostalo- ja rivitaloasujia.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="kenelle" aria-labelledby="kenelle-title">
+      <div class="wrap sec-grid">
+        <p class="eyebrow sec-label"><span class="dot dot-off" aria-hidden="true"></span><span class="mono">05</span> Kenelle</p>
+        <div class="sec-body">
+          <h2 id="kenelle-title" class="sec-title">Kenelle Hanax on.</h2>
+          <ul class="who">
+            <li><h3>Omakotitalo ja kiireinen arki</h3><p>Monta kerrosta, monta laitetta, ja kotoa lähtiessä on muistettava paljon.</p></li>
+            <li><h3>Mökin omistajat</h3><p>Mökille ei palata heti. Päälle unohtunut laite ehtii siellä tehdä enemmän vahinkoa.</p></li>
+            <li><h3>Lyhytvuokraajat</h3><p>Kohde on välillä pitkään tyhjillään, ja vieraat vaihtuvat. Paneeli palvelee vierasta, sovellus isäntää.</p></li>
+            <li><h3>Aikuiset lapset</h3><p>Useampi testaaja kertoi, että voisi hankkia Hanaxin vanhemmilleen.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec-alt" id="ukk" aria-labelledby="ukk-title">
+      <div class="wrap sec-grid">
+        <p class="eyebrow sec-label"><span class="dot dot-off" aria-hidden="true"></span><span class="mono">06</span> Kysymykset</p>
+        <div class="sec-body">
+          <h2 id="ukk-title" class="sec-title">Testeissä kysyttiin.</h2>
+          <div class="faq">
+            <details>
+              <summary>Paljonko Hanax maksaa?</summary>
+              <p>Hintaa ei ole päätetty. Tavoitteena on <span class="mono">50–150 €</span> sensoreineen: tätä haarukkaa testihenkilöt pitivät sopivana. Muutaman kympin hinta olisi heidän mukaansa herättänyt epäilyksiä laadusta.</p>
+            </details>
+            <details>
+              <summary>Miten asennus toimii?</summary>
+              <p>Tavoitteena on, että asennat sensorit itse. Ne kiinnittyvät olemassa olevaan hanaan, lieteen tai pistorasiaan ilman putki- tai sähkötöitä. Asentajan tilaaminen oli testeissä suurin syy jättää tuote ottamatta käyttöön.</p>
+            </details>
+            <details>
+              <summary>Lähtevätkö kotini tiedot pilveen?</summary>
+              <p>Hanax on suunniteltu toimimaan paikallisesti: eteisen paneeli näyttää tilan ilman pilvipalvelua. Puhelimen etäkäyttöön tarvittavat tiedot on tarkoitus säilyttää Suomessa.</p>
+            </details>
+            <details>
+              <summary>Onko kuukausimaksua?</summary>
+              <p>Ei ole päätetty. Testeissä vaihtoehtona mainittiin myös muutaman euron kuukausimaksu edullisempien sensorien rinnalla. Perusasia on tarkoitus pitää toiminnassa ilman tilausta: näet kotisi tilan, vaikka netti katkeaisi.</p>
+            </details>
+            <details>
+              <summary>Toimiiko se nykyisten älylaitteideni kanssa?</summary>
+              <p>Hanax ei tarvitse älylaitteita, koska sensorit kiinnitetään tavallisiin laitteisiin. Moni testihenkilö ei halunnut seurata useita sovelluksia, joten liittymistä yleisiin älykotijärjestelmiin selvitetään. Sitä ei vielä luvata.</p>
+            </details>
+            <details>
+              <summary>Entä jos sensori näyttää väärin?</summary>
+              <p>Jokaisen tilan vieressä lukee, milloin se viimeksi tarkistettiin. Jos sensori ei vastaa, Hanax ei arvaa: tila on <span class="state state-unknown state-inline"><span aria-hidden="true">?</span>EI TIETOA</span> ja näet, kuinka kauan yhteys on ollut poikki.</p>
+            </details>
+            <details>
+              <summary>Voinko kokeilla?</summary>
+              <p>Ryhmän demosovellus on osoitteessa <a href="/app/">/app/</a>. Se vaatii demotunnukset, ja laitteiden ohjaus on siinä simuloitu.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing" aria-labelledby="closing-title">
+      <div class="wrap closing-in">
+        <p class="state state-ok state-xl"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>KAIKKI KIINNI</p>
+        <h2 id="closing-title" class="closing-title">Lähde kotoa huoletta<span class="period period-ok">.</span></h2>
+        <p class="closing-meta mono">tarkistettu juuri nyt</p>
+      </div>
+    </section>
+  </main>
+  <footer class="foot">
+    <div class="wrap foot-in">
+      <div class="foot-brand">
+        <img class="foot-logo logo-light" src="/brand/logo/hanax-lockup.svg" width="112" height="27" alt="Hanax">
+        <img class="foot-logo logo-dark" src="/brand/logo/hanax-lockup-on-dark.svg" width="112" height="27" alt="Hanax">
+        <p>Hanax on Aalto-yliopiston Käytettävyys-kurssin ryhmän 1 tuotekonsepti (2026). Se ei ole myynnissä.</p>
+      </div>
+      <ul class="foot-links">
+        <li><a href="/app/">Kokeile demoa</a> <span class="muted">(vaatii demotunnukset)</span></li>
+        <li><a href="#video">Katso video</a></li>
+        <li><a href="/brand/fonts/OFL-Figtree.txt">Fontit: SIL Open Font License</a></li>
+      </ul>
+      <p class="foot-small">Ei evästeitä, ei seurantaa. Kaikki tiedostot tältä palvelimelta.</p>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – taitettava pöytäkyltti (A4 → A5)</title>
+<link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="tent.css">
+<style>
+  /* Print on A4 portrait, fold along the dashed line: both sides show an A5 landscape face. */
+  @page { size: 210mm 297mm; margin: 0; }
+  html, body { width: 210mm; height: 297mm; overflow: hidden; }
+  .sheet { position: relative; width: 210mm; height: 297mm; }
+  .face { height: 148.5mm; }
+  .flip { transform: rotate(180deg); }
+  .fold { position: absolute; left: 0; right: 0; top: 148.5mm; border-top: 0.25mm dashed var(--line-strong); }
+  .fold span { position: absolute; right: 4mm; top: -3.2mm; background: var(--bg); padding: 0 2mm; font-size: 2.4mm; color: var(--muted); font-family: var(--font-mono); }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="face flip">
+    <div>
+      <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+      <h1 class="display">Kokeile<br><span class="k">demoa.</span></h1>
+      <p class="p">Avaa Hanax puhelimessa. Katso, mikä jäi päälle, ja sammuta kaikki yhdellä painikkeella.</p>
+      <div class="login"><span class="knob dark"></span>Demotunnukset saat meiltä ständiltä</div>
+      <div class="credit">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
+    </div>
+    <div class="right">
+      <div class="qrcard"><div class="qr"><img src="img/qr-app.svg" alt="QR-koodi: kayttis.kiirikki.fi/app/"></div></div>
+      <div class="url">kayttis.kiirikki.fi/app/</div>
+      <div class="scan">Skannaa puhelimen kameralla</div>
+    </div>
+  </div>
+  <div class="face">
+    <div>
+      <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+      <h1 class="display">Kokeile<br><span class="k">demoa.</span></h1>
+      <p class="p">Avaa Hanax puhelimessa. Katso, mikä jäi päälle, ja sammuta kaikki yhdellä painikkeella.</p>
+      <div class="login"><span class="knob dark"></span>Demotunnukset saat meiltä ständiltä</div>
+      <div class="credit">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
+    </div>
+    <div class="right">
+      <div class="qrcard"><div class="qr"><img src="img/qr-app.svg" alt="QR-koodi: kayttis.kiirikki.fi/app/"></div></div>
+      <div class="url">kayttis.kiirikki.fi/app/</div>
+      <div class="scan">Skannaa puhelimen kameralla</div>
+    </div>
+  </div>
+  <div class="fold"><span>taita tästä</span></div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – Open Graph</title>
+<link rel="stylesheet" href="hanax-print.css">
+<style>
+  html, body { width: 1200px; height: 630px; overflow: hidden; }
+  .wrap { position: relative; width: 1200px; height: 630px; display: grid; grid-template-columns: 640px 1fr; }
+  .left { padding: 64px 0 56px 72px; display: flex; flex-direction: column; }
+  .lockup { width: 220px; }
+  h1 { font-size: 104px; margin-top: auto; }
+  h1 .q { color: var(--merkkivalo-ink); }
+  .tag { font-family: var(--font-display); font-weight: 600; font-size: 40px; margin-top: 28px; letter-spacing: -0.01em; }
+  .sub { font-size: 24px; color: var(--muted); margin-top: 14px; line-height: 1.4; max-width: 520px; }
+  .right { position: relative; overflow: hidden; }
+  .right [data-panel] { position: absolute; left: 30px; top: 56px; width: 480px; font-size: 25px; }
+  .lights-corner { position: absolute; right: 36px; top: 40px; font-size: 14px; display: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="left">
+    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+    <h1 class="display">Jäikö hana auki<span class="q">?</span></h1>
+    <p class="tag">Lähde kotoa huoletta.</p>
+    <p class="sub">Näet yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta.</p>
+  </div>
+  <div class="right"><div data-panel="on"></div></div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

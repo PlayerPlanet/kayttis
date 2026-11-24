@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="fi" data-theme="light">
+<head>
+<meta charset="utf-8">
+<title>Hanax – Ongelma ja ratkaisu (A2)</title>
+<link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="poster-base.css">
+<style>
+  h1 { font-size: 55mm; margin-top: 6mm; }
+  h1 .q { color: var(--merkkivalo-ink); }
+  .problem { display: grid; grid-template-columns: 1fr 132mm; gap: 14mm; margin-top: 9mm; }
+  .points li { display: grid; grid-template-columns: 22mm 1fr; gap: 4mm; padding: 5mm 0; border-top: 0.3mm solid var(--line-strong); }
+  .points li:first-child { border-top: 0; padding-top: 1mm; }
+  .points .n { font-family: var(--font-mono); font-weight: 500; font-size: 7mm; color: var(--muted); padding-top: 1.6mm; }
+  .points p { font-size: 9.6mm; line-height: 1.28; }
+  .points p b { font-family: var(--font-display); font-weight: 600; display: block; font-size: 11.5mm; letter-spacing: -0.01em; margin-bottom: 1.5mm; }
+  .photos { display: grid; gap: 5mm; }
+  .photos figure .photo { height: 57mm; }
+  .photos figcaption { display: flex; align-items: center; gap: 3mm; margin-top: 2.5mm; font-size: 5.6mm; }
+  .photos figcaption .chip { font-size: 4.8mm; }
+  .turn { display: flex; align-items: center; gap: 6mm; margin: 9mm 0 8mm; }
+  .turn .knob { font-size: 15mm; --turn: 90deg; }
+  .turn .label { font-size: 8mm; color: var(--vesi); }
+  .turn .rule { flex: 1; border-top-width: 0.6mm; border-color: var(--vesi); }
+  .solution { margin-bottom: 8mm; display: grid; grid-template-columns: 172mm 1fr; gap: 16mm; align-items: start; }
+  .solution [data-panel] { font-size: 8mm; }
+  .sol h2 { font-size: 21mm; line-height: 1; }
+  .sol ol { margin-top: 9mm; }
+  .sol li { display: grid; grid-template-columns: 13mm 1fr; gap: 3mm; font-size: 9.4mm; line-height: 1.28; margin-bottom: 6.5mm; }
+  .sol li .n { font-family: var(--font-mono); font-weight: 500; font-size: 7mm; color: var(--vesi); padding-top: 1.4mm; }
+  .sol li b { font-weight: 600; }
+  .tagline { font-size: 21mm; margin-top: 4mm; line-height: 1; color: var(--ink); }
+  .sol .tagwrap { margin-top: 2mm; padding-top: 7mm; border-top: 0.6mm solid var(--ink); }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="topbar">
+    <div class="kicker label"><span data-lights="5"></span>Ongelma → ratkaisu</div>
+    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+  </div>
+
+  <h1 class="display">Jäikö hana<br>auki<span class="q">?</span></h1>
+
+  <section class="problem">
+    <ol class="points">
+      <li><span class="n">01</span><p><b>Kiire bussiin.</b>Takki päälle, ovi kiinni. Ajatus jää eteiseen: sammutinko lieden?</p></li>
+      <li><span class="n">02</span><p><b>Vesivahinko on kallis.</b>Astianpesukoneen hana jää auki. Kotivakuutus ei aina korvaa vahinkoa.</p></li>
+      <li><span class="n">03</span><p><b>Muistettavaa on paljon.</b>Hana, liesi, uuni, kahvinkeitin, valot. Isossa talossa kierros vie aikaa.</p></li>
+    </ol>
+    <div class="photos">
+      <figure><div class="photo"><img src="img/hana.jpg" alt="Keittiön hana auki"></div>
+        <figcaption><span data-chip="on"></span>Keittiön hana</figcaption></figure>
+      <figure><div class="photo"><img src="img/merkkivalo.jpg" alt="Lieden merkkivalo palaa"></div>
+        <figcaption><span data-chip="on"></span>Liesi</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="turn"><span class="knob dark"></span><span class="label">Ratkaisu</span><span class="rule"></span></div>
+
+  <section class="solution">
+    <div data-panel="on" data-compact></div>
+    <div class="sol">
+      <h2 class="display">Näet kaiken yhdellä vilkaisulla.</h2>
+      <ol>
+        <li><span class="n">1</span><span><b>Paneeli eteisessä</b> näyttää, mikä jäi päälle.</span></li>
+        <li><span class="n">2</span><span><b>Sovellus puhelimessa</b>, kun olet jo matkalla.</span></li>
+        <li><span class="n">3</span><span><b>Yksi painike</b> sammuttaa kaiken.</span></li>
+      </ol>
+      <div class="tagwrap"><p class="display tagline">Lähde kotoa huoletta.</p></div>
+    </div>
+  </section>
+
+  <div class="footer">
+    <div>
+      <div class="url">kayttis.kiirikki.fi</div>
+      <div class="credit">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
+    </div>
+    <div class="qrbox">
+      <div class="qrtext"><b>Katso, miten Hanax toimii</b>Skannaa puhelimella</div>
+      <div class="qr"><img src="img/qr-site.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
+    </div>
+  </div>
+</div>
+<script src="components.js"></script>
+</body>
+</html>

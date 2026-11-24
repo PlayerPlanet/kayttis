@@ -1,8 +1,8 @@
 # Cloudflare Pages project. Served at https://kayttis.kiirikki.fi
-#   /        -> redirect to /app/
+#   /        -> public landing page (public/index.html)
 #   /app/*   -> static UI (public/app, or the build output once a framework is chosen)
 #   /api/*   -> proxied to the Pi through the tunnel (functions/api/[[path]].js)
-# Everything is behind the demo-user login (functions/_middleware.js).
+# /app and /api are behind the demo-user login (functions/_middleware.js); the rest is public.
 name = "kayttis"
 pages_build_output_dir = "public"
 compatibility_date = "2026-11-01"
@@ -12,5 +12,5 @@ compatibility_date = "2026-11-01"
 API_ORIGIN = "https://kayttis-api.kiirikki.fi"
 
 # Secrets (set with `npx wrangler pages secret put <NAME>`, never committed):
-#   DEMO_USER, DEMO_PASSWORD             demo login for the whole site
+#   DEMO_USER, DEMO_PASSWORD             demo login for /app and /api
 #   ACCESS_CLIENT_ID, ACCESS_CLIENT_SECRET  Access service token for API_ORIGIN

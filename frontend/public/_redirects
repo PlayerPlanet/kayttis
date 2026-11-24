@@ -1,1 +1,1 @@
-/ /app/ 302
+# "/" serves the public landing page (index.html); the demo app lives at /app/.
