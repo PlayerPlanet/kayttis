@@ -37,7 +37,7 @@ copy `.env.example` to `.env`, install `deploy/pi/kayttis-pi.service` into syste
 Then from your machine:
 
 ```sh
-PI_HOST=konsta@kahvibot.local ./deploy/pi/deploy.sh
+PI_HOST=kahvibot ./deploy/pi/deploy.sh   # kahviraspi, 192.168.50.169 on the guild LAN
 ```
 
 The Pi supports Python >= 3.11 (Raspberry Pi OS Bookworm default); uv will fetch
