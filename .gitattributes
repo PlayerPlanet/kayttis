@@ -1,0 +1,4 @@
+# Code is deployed to a Raspberry Pi (Linux): keep LF line endings everywhere.
+* text=auto eol=lf
+*.png binary
+*.jpg binary

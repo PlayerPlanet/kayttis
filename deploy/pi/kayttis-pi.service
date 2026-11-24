@@ -1,0 +1,18 @@
+# systemd unit for the Pi service.
+# Install: sudo cp deploy/pi/kayttis-pi.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now kayttis-pi
+[Unit]
+Description=kayttis smart-home Pi service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/kayttis
+EnvironmentFile=-/home/pi/kayttis/.env
+ExecStart=/home/pi/.local/bin/uv run --frozen --no-dev --package kayttis-pi kayttis-pi
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

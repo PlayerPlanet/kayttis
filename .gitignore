@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Frontend (if a JS toolchain is added later)
+node_modules/
+.vercel/
+
+# OS / editors
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
