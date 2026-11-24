@@ -19,6 +19,8 @@ class Snd:
     fin: float = 0.05
     fout: float = 0.05
     offset: float = 0.0     # seconds into the wav
+    bus: str = "bed"        # bed | vo  (the bed is ducked under the VO)
+    af: str = ""            # extra per-sound filter chain (the VO processing)
 
 
 def timeline(shots) -> list[float]:
@@ -65,29 +67,76 @@ def write_srt(path: Path, entries):
     path.write_text("\n".join(out), encoding="utf-8")
 
 
-def mix_audio(shots, shot_wavs, extra: list[Snd], out: Path, total: float):
+DUCK_DB = -9.0              # bed + SFX under the VO
+DUCK_ATTACK, DUCK_RELEASE = 0.20, 0.50
+
+
+def duck_expr(windows) -> str:
+    """Gain envelope keyed from the VO: ramps down DUCK_ATTACK s before each line,
+    holds while it speaks, recovers over DUCK_RELEASE s (linear-gain ramps)."""
+    if not windows:
+        return "1"
+    d = 1 - 10 ** (DUCK_DB / 20)
+    a, r = DUCK_ATTACK, DUCK_RELEASE
+    ws = "+".join(f"max(0,min(1,(t-{s0:.3f}+{a})/{a}))*max(0,min(1,({s1:.3f}+{r}-t)/{r}))"
+                  for s0, s1 in windows)
+    return f"1-{d:.4f}*min(1,{ws})"
+
+
+def write_vtt(path: Path, entries):
+    def vt(sec):
+        return ts(sec).replace(",", ".")
+    out = ["WEBVTT", ""]
+    for i, (a, b, txt) in enumerate(sorted(entries), 1):
+        out += [str(i), f"{vt(a)} --> {vt(b)}", txt, ""]
+    path.write_text(chr(10).join(out), encoding="utf-8")
+
+
+def mix_audio(shots, shot_wavs, extra: list[Snd], out: Path, total: float, stems: Path | None = None):
     starts = timeline(shots)
     snds = []
     for i, (s, w) in enumerate(zip(shots, shot_wavs)):
         nxt = shots[i + 1].xfade if i + 1 < len(shots) else 0.0
         snds.append(Snd(w, starts[i], s.dur, 0.0, max(0.02, s.xfade), max(0.03, nxt)))
     snds += extra
-    args, fc, labels = ["ffmpeg"], [], []
+    args, fc, bed, vo = ["ffmpeg"], [], [], []
     for i, sd in enumerate(snds):
         args += ["-i", sd.wav]
         d_ms = int(round(sd.start * 1000))
-        fc.append(f"[{i}:a]atrim=start={sd.offset:.3f}:duration={sd.dur:.3f},asetpts=PTS-STARTPTS,"
+        fx = (sd.af + ",") if sd.af else ""
+        fc.append(f"[{i}:a]aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,"
+                  f"atrim=start={sd.offset:.3f}:duration={sd.dur:.3f},asetpts=PTS-STARTPTS,{fx}"
                   f"afade=in:d={sd.fin:.3f},afade=out:st={max(0, sd.dur - sd.fout):.3f}:d={sd.fout:.3f},"
                   f"volume={sd.gain_db}dB,adelay={d_ms}|{d_ms}[a{i}]")
-        labels.append(f"[a{i}]")
-    fc.append("".join(labels) + f"amix=inputs={len(labels)}:normalize=0:dropout_transition=0,"
-              f"apad,atrim=duration={total:.3f}[mix]")
-    args += ["-filter_complex", ";".join(fc), "-map", "[mix]", "-c:a", "pcm_s24le", "-ar", "48000", out]
+        (vo if sd.bus == "vo" else bed).append(f"[a{i}]")
+    win = [(sd.start, sd.start + sd.dur) for sd in snds if sd.bus == "vo"]
+    env = duck_expr(win)
+    fc.append("".join(bed) + f"amix=inputs={len(bed)}:normalize=0:dropout_transition=0,"
+              f"apad=whole_dur={total:.3f}[bed]")
+    fc.append(f"aevalsrc='{env}|{env}':s=48000:d={total:.3f},aformat=sample_fmts=fltp:channel_layouts=stereo[env]")
+    fc.append("[bed]asplit=2[bedA][bedS];[bedA][env]amultiply[bedd]")
+    if vo:
+        fc.append("".join(vo) + f"amix=inputs={len(vo)}:normalize=0:dropout_transition=0,"
+                  f"apad=whole_dur={total:.3f}[vo]")
+        fc.append("[bedd]asplit=2[beddA][beddS];[vo]asplit=2[voA][voS];"
+                  "[beddA][voA]amix=inputs=2:normalize=0:dropout_transition=0[mix]")
+    else:
+        fc.append("[bedd]asplit=2[mix][beddS];anullsrc=r=48000:cl=stereo,"
+                  f"atrim=duration={total:.3f}[voS]")
+    cap = ["-t", f"{total:.3f}"]
+    args += ["-filter_complex", ";".join(fc), "-map", "[mix]", *cap, "-c:a", "pcm_s24le", "-ar", "48000", out]
+    if stems:   # for the ducking / overlap measurements
+        args += ["-map", "[bedS]", *cap, "-c:a", "pcm_s16le", stems / f"{out.stem}-bed.wav",
+                 "-map", "[beddS]", *cap, "-c:a", "pcm_s16le", stems / f"{out.stem}-bed-ducked.wav",
+                 "-map", "[voS]", *cap, "-c:a", "pcm_s16le", stems / f"{out.stem}-vo.wav"]
+    else:
+        args += ["-map", "[bedS]", *cap, "-f", "null", "-", "-map", "[beddS]", *cap, "-f", "null", "-",
+                 "-map", "[voS]", *cap, "-f", "null", "-"]
     run(args)
     return out
 
 
-# brick-wall limiter ahead of the (linear) loudnorm, so the transients (door slam, click)
+# brick-wall limiter ahead of the (linear) loudnorm, so the transients (door slam, impact)
 # don't cap the gain and the film actually lands at -16 LUFS
 PRE_LIMIT = "alimiter=limit=0.4:attack=1:release=60:level=disabled,"
 

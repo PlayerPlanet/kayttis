@@ -1,0 +1,47 @@
+1
+00:00:02,850 --> 00:00:07,692
+Kello on viisi vaille kaksi. Bussi lähtee neljän minuutin päästä.
+
+2
+00:00:18,300 --> 00:00:20,481
+Ja kotiin jäi hana auki.
+
+3
+00:00:24,250 --> 00:00:25,553
+Tavallinen hana.
+
+4
+00:00:25,750 --> 00:00:28,353
+Siinä ei ole sähköä eikä sirua.
+
+5
+00:00:28,650 --> 00:00:30,985
+Mutta Hanax tietää, onko se auki.
+
+6
+00:00:34,750 --> 00:00:37,924
+Pieni kamera-anturi lukee venttiilin asennon.
+
+7
+00:00:40,350 --> 00:00:44,416
+Eteisen paneeli näyttää yhdellä vilkaisulla, mikä jäi päälle.
+
+8
+00:00:46,200 --> 00:00:47,365
+Sama hetki.
+
+9
+00:00:48,200 --> 00:00:50,559
+Nyt Hanax kertoo ennen kuin lähdet.
+
+10
+00:00:50,750 --> 00:00:53,117
+Paina nuppia, niin kaikki on pois.
+
+11
+00:00:58,850 --> 00:01:01,821
+Prototyyppi toimii jo killan keittiössä.
+
+12
+00:01:02,000 --> 00:01:05,194
+Hanax. Lähde kotoa huoletta.

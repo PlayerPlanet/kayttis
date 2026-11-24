@@ -10,7 +10,8 @@ from __future__ import annotations
 import sys
 from concurrent.futures import ThreadPoolExecutor
 
-from assemble import assemble, mix_audio, timeline, total_len, write_ass, write_srt
+from assemble import assemble, mix_audio, timeline, total_len, write_ass, write_srt, write_vtt
+from vo import transcript
 from audio import build_audio_assets
 from cards import build_cards
 from common import LB_BAR, OUT, WEB, WORK, ensure_dirs, probe_duration, run
@@ -34,15 +35,19 @@ def render_all(shots, outdir, size):
     return [r[0] for r in res], [r[1] for r in res]
 
 
-def build(edit, name, size, ass_kw, assets, letterbox=0):
+def build(edit, name, size, ass_kw, assets, letterbox=0, vtt=None):
     shots = edit.SHOTS
     vids, wavs = render_all(shots, WORK / ("shots" if size[0] > size[1] else "shots9"), size)
     total = total_len(shots)
-    mix = mix_audio(shots, wavs, edit.sounds(assets), WORK / "audio" / f"{name}-mix.wav", total)
-    caps = edit.captions()
+    mix = mix_audio(shots, wavs, edit.sounds(assets), WORK / "audio" / f"{name}-mix.wav", total,
+                    stems=WORK / "audio")
+    caps = edit.captions()                 # burned in (teaser only; the 16:9 film has none)
+    vo_lines = transcript(edit.vo_cues())  # VO transcript with real timings
     ass = WORK / f"{name}.ass"
     write_ass(ass, caps, playres=size, **ass_kw)
-    write_srt(OUT / f"{name}.fi.srt", caps + edit.card_texts())
+    write_srt(OUT / f"{name}.fi.srt", caps + vo_lines)
+    if vtt:
+        write_vtt(vtt, vo_lines)
     out = assemble(shots, vids, mix, ass, OUT / f"{name}.mp4", letterbox=letterbox, grain=5)
     print(f"{out.name}: {probe_duration(out):.2f} s, {out.stat().st_size/1e6:.1f} MB "
           f"(timeline {total:.2f} s)")
@@ -62,8 +67,8 @@ def web_copies():
          WEB / "hanax-teaser.mp4"])
     # thumbnail: the claim on black; web poster: the product reveal (no phone footage)
     import edit_main as em
-    t_claim = em.at("CL", 3.6)   # before the dissolve into P1
-    t_reveal = em.at("P1", 3.9)   # amber ring lit
+    t_claim = em.at("CL", 6.5)   # both claim lines, before the dissolve into P1
+    t_reveal = em.at("P1", 3.3)   # amber ring lit
     run(["ffmpeg", "-ss", f"{t_claim:.2f}", "-i", main, "-frames:v", "1",
          "-vf", "scale=1280:720:flags=lanczos", "-q:v", "2", OUT / "hanax-thumbnail-1280x720.jpg"])
     run(["ffmpeg", "-ss", f"{t_reveal:.2f}", "-i", main, "-frames:v", "1",
@@ -81,7 +86,8 @@ def main(what="all"):
         import edit_main
         # captions sit inside the 2.39:1 picture, just above the bottom bar
         build(edit_main, "hanax-launch-60s-16x9", (1920, 1080),
-              dict(size=40, marginv=LB_BAR + 44, pad=13), assets, letterbox=LB_BAR)
+              dict(size=40, marginv=LB_BAR + 44, pad=13), assets, letterbox=LB_BAR,
+              vtt=WEB / "hanax-60s.fi.vtt")
     if what in ("teaser", "all"):
         import edit_teaser
         build(edit_teaser, "hanax-teaser-20s-9x16", (1080, 1920),
