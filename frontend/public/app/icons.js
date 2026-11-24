@@ -40,9 +40,9 @@ export const ICONS = {
 };
 
 export const TYPE_LABELS = {
-  lamp: "Lamp",
-  faucet: "Faucet",
-  electric: "Other electric device",
+  lamp: "Valaisin",
+  faucet: "Hana",
+  electric: "Muu sähkölaite",
 };
 
 export const CHEVRON = svg('<path d="M6 9l6 6 6-6" stroke-width="2.2"/>');

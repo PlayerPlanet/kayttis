@@ -1,4 +1,4 @@
-// käyttis smart-home prototype.
+// Hanax demo app (HX-P panel interface), v2.
 //
 // Switching is SIMULATED in the browser (kept in localStorage). The backend is read-only:
 // a device may be "connected" to a backend device id, and then its live state is shown
@@ -9,7 +9,7 @@ import { ICONS, TYPE_LABELS, CHEVRON, CAMERA } from "./icons.js";
 const STORAGE_KEY = "kayttis.home.v1";
 const API = "/api";
 const CAMERAS = {
-  main: { label: "Guild room camera", url: `${API}/camera/latest.jpg` },
+  main: { label: "Killan keittiön kamera", url: `${API}/camera/latest.jpg` },
 };
 const CAMERA_REFRESH_MS = 3000;
 const POLL_OFFLINE_MS = 15000; // API unreachable: retry now and then
@@ -44,7 +44,7 @@ function seed() {
     d("d-bath-tap", "bath", "Lavuaarin hana", "faucet", false),
     d("d-mirror-lamp", "bath", "Peilivalo", "lamp", false),
   ];
-  return { version: 1, house: "My home", rooms, devices, collapsed: {} };
+  return { version: 1, house: "Koti", rooms, devices, collapsed: {} };
 }
 
 function load() {
@@ -95,17 +95,23 @@ function fmtNumber(v) {
   return Math.abs(v) >= 10 ? String(Math.round(v)) : String(Math.round(v * 10) / 10);
 }
 
-/** "Live: brewing · 1400 W", or null if the device is not connected. */
+const LIVE_STATES = {
+  on: "päällä", off: "pois", brewing: "keittää", open: "auki", closed: "kiinni",
+  ok: "luettu", uncertain: "epävarma", no_pot: "ei pannua", unknown: "ei tietoa",
+};
+const liveState = (st) => LIVE_STATES[st] ?? st ?? "ei tietoa";
+
+/** "Livenä: keittää · 1400 W", or null if the device is not connected. */
 function liveLine(dev) {
   if (!dev.connection) return null;
-  if (live.status !== "online") return { text: "Live: offline", ok: false };
+  if (live.status !== "online") return { text: "Livenä: ei yhteyttä", ok: false };
   const s = live.devices.get(dev.connection);
-  if (!s) return { text: "Live: no data", ok: false };
-  const parts = [s.state ?? "unknown"];
+  if (!s) return { text: "Livenä: ei tietoa", ok: false };
+  const parts = [liveState(s.state)];
   const n = fmtNumber(s.value);
   if (n !== null) parts.push(s.unit ? `${n} ${s.unit}` : n);
-  let text = `Live: ${parts.join(" · ")}`;
-  if (s.stale) text += " (stale)";
+  let text = `Livenä: ${parts.join(" · ")}`;
+  if (s.stale) text += " (vanhentunut)";
   return { text, ok: !s.stale && s.state !== "unknown" };
 }
 
@@ -127,18 +133,18 @@ function announce(msg) {
 function deviceHTML(dev) {
   const icon = ICONS[dev.type]?.[dev.on ? "on" : "off"] ?? ICONS.electric[dev.on ? "on" : "off"];
   const ll = liveLine(dev);
-  const stateText = dev.on ? "On" : "Off";
+  const chip = dev.on ? '<span class="chip on">Päällä</span>' : '<span class="chip">Pois</span>';
   return `
     <li class="device ${dev.on ? "is-on" : "is-off"}" data-id="${esc(dev.id)}">
       <button type="button" class="toggle" data-action="toggle" data-focus="t:${esc(dev.id)}"
-        aria-pressed="${dev.on}" aria-label="Power: ${esc(dev.name)}"
-        title="${dev.on ? "Turn off" : "Turn on"}">${icon}</button>
+        aria-pressed="${dev.on}" aria-label="Virta: ${esc(dev.name)}"
+        title="${dev.on ? "Sammuta" : "Kytke päälle"}">${icon}</button>
       <button type="button" class="row-main" data-action="camera" data-focus="c:${esc(dev.id)}">
         <span class="row-text">
           <span class="dev-name">${esc(dev.name)}</span>
-          <span class="dev-meta"><span class="dev-state">${stateText}</span> · ${esc(TYPE_LABELS[dev.type] ?? "Device")}</span>
+          <span class="dev-meta">${chip}<span>${esc(TYPE_LABELS[dev.type] ?? "Laite")}</span></span>
           ${ll ? `<span class="dev-live ${ll.ok ? "is-live" : ""}">${esc(ll.text)}</span>` : ""}
-          <span class="sr-only">. Show camera</span>
+          <span class="sr-only">. Näytä kamera</span>
         </span>
         <span class="cam-hint" aria-hidden="true">${CAMERA}</span>
       </button>
@@ -156,12 +162,12 @@ function roomHTML(room) {
         <button type="button" class="room-head" data-action="collapse" data-room="${esc(room.id)}"
           data-focus="r:${esc(room.id)}" aria-expanded="${expanded}" aria-controls="${esc(listId)}">
           <span class="room-name">${esc(room.name)}</span>
-          <span class="room-count">${on} of ${devs.length} on</span>
+          <span class="room-count">${on} / ${devs.length} päällä</span>
           <span class="chev" aria-hidden="true">${CHEVRON}</span>
         </button>
       </h2>
       <ul class="devices" id="${esc(listId)}" ${expanded ? "" : "hidden"}>
-        ${devs.length ? devs.map(deviceHTML).join("") : '<li class="empty">No devices yet.</li>'}
+        ${devs.length ? devs.map(deviceHTML).join("") : '<li class="empty">Ei vielä laitteita.</li>'}
       </ul>
     </section>`;
 }
@@ -171,11 +177,14 @@ function render() {
   $("#rooms").innerHTML = state.rooms.map(roomHTML).join("");
   const total = state.devices.length;
   const on = state.devices.filter((d) => d.on).length;
-  $("#summary").textContent = total
+  const CHECK =
+    '<svg class="check" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  $("#summary").innerHTML = total
     ? on === 0
-      ? `All ${total} devices are off`
-      : `${on} of ${total} devices on`
-    : "No devices yet";
+      ? `${CHECK}<span>Kaikki kiinni<span class="sub">${total} laitetta pois päältä</span></span>`
+      : `<span class="sig" aria-hidden="true"></span><span>${on} päällä<span class="sub">${on} / ${total} laitetta päällä</span></span>`
+    : "Ei vielä laitteita";
+  document.body.classList.toggle("any-on", on > 0);
   if (focusKey) document.querySelector(`[data-focus="${CSS.escape(focusKey)}"]`)?.focus();
   if (camera.deviceId) renderCameraMeta();
 }
@@ -184,11 +193,11 @@ function renderLiveBadge() {
   const el = $("#live");
   el.dataset.state = live.status;
   $("#live-text").textContent =
-    live.status === "online" ? "Live data" : live.status === "offline" ? "Live data offline" : "Connecting…";
+    live.status === "online" ? "Livedata" : live.status === "offline" ? "Livedata ei yhteyttä" : "Yhdistetään…";
   el.title =
     live.status === "offline"
-      ? "Sensor data from the guild room is not reachable right now. Everything else works as usual."
-      : "Live data from the guild room sensors";
+      ? "Killan keittiön anturit eivät vastaa juuri nyt. Kaikki muu toimii normaalisti."
+      : "Livedata killan keittiön antureista";
 }
 
 // ---------------------------------------------------------------- actions
@@ -197,7 +206,7 @@ function setOn(dev, on) {
   dev.on = on;
   save();
   render();
-  announce(`${dev.name} turned ${on ? "on" : "off"}`);
+  announce(`${dev.name}: ${on ? "päällä" : "pois"}`);
 }
 
 let toastTimer = 0;
@@ -223,20 +232,20 @@ $("#toast-undo").addEventListener("click", () => {
 function goAway() {
   const wasOn = state.devices.filter((d) => d.on).map((d) => d.id);
   if (!wasOn.length) {
-    toast("Away mode: everything is already off.");
+    toast("Kaikki on jo pois päältä.");
     return;
   }
   for (const d of state.devices) d.on = false;
   save();
   render();
-  toast(`Away mode: turned off ${wasOn.length} device${wasOn.length === 1 ? "" : "s"}.`, () => {
+  toast(`Kaikki pois: sammutettiin ${wasOn.length} ${wasOn.length === 1 ? "laite" : "laitetta"}.`, () => {
     for (const id of wasOn) {
       const d = deviceById(id);
       if (d) d.on = true;
     }
     save();
     render();
-    toast("Restored the devices that were on.");
+    toast("Päällä olleet laitteet palautettiin.");
   });
 }
 
@@ -260,11 +269,11 @@ $("#rooms").addEventListener("click", (e) => {
 });
 
 $("#reset").addEventListener("click", () => {
-  if (!confirm("Reset the demo? Added devices are removed and every device returns to its starting state.")) return;
+  if (!confirm("Palautetaanko demon alkutila? Lisätyt laitteet poistetaan.")) return;
   state = seed();
   save();
   render();
-  toast("Demo data reset.");
+  toast("Demon alkutila palautettu.");
 });
 
 // ---------------------------------------------------------------- dialogs (shared)
@@ -293,15 +302,15 @@ function renderCameraMeta() {
   $("#cam-title").textContent = dev.name;
   const ll = liveLine(dev);
   const parts = [
-    `<strong>${dev.on ? "On" : "Off"}</strong> (simulated)`,
+    `<strong>${dev.on ? "Päällä" : "Pois"}</strong> (simuloitu)`,
     esc(roomName(dev.room)),
-    esc(TYPE_LABELS[dev.type] ?? "Device"),
+    esc(TYPE_LABELS[dev.type] ?? "Laite"),
   ];
   $("#cam-meta").innerHTML =
-    parts.join(" · ") + `<br>${ll ? esc(ll.text) : "Not connected to live data"}`;
+    parts.join(" · ") + `<br>${ll ? esc(ll.text) : "Ei yhdistetty livedataan"}`;
   const t = $("#cam-toggle");
-  t.textContent = dev.on ? `Turn off` : `Turn on`;
-  t.setAttribute("aria-label", `${dev.on ? "Turn off" : "Turn on"} ${dev.name}`);
+  t.textContent = dev.on ? `Sammuta` : `Kytke päälle`;
+  t.setAttribute("aria-label", `${dev.on ? "Sammuta" : "Kytke päälle"}: ${dev.name}`);
 }
 
 async function loadFrame() {
@@ -330,16 +339,18 @@ async function loadFrame() {
       camera.objectUrl = url;
     };
     img.src = url;
-    img.alt = `${cam.label}, latest frame`;
+    img.alt = `${cam.label}, viimeisin kuva`;
     img.hidden = false;
     $("#cam-empty").hidden = true;
-    const when = (capturedAt ?? new Date()).toLocaleTimeString("en-GB");
-    $("#cam-caption").textContent = `${cam.label} · frame from ${when}`;
+    const when = (capturedAt ?? new Date()).toLocaleTimeString("fi-FI");
+    $("#cam-caption").textContent = `${cam.label} · kuva ${when}`;
   } else {
     img.hidden = true;
     $("#cam-empty").hidden = false;
     $("#cam-empty-sub").textContent =
-      live.status === "offline" ? "Live data is offline. Trying again every few seconds." : "Trying again every few seconds.";
+      live.status === "offline"
+        ? "Livedataan ei saada yhteyttä. Yritetään uudelleen muutaman sekunnin välein."
+        : "Yritetään uudelleen muutaman sekunnin välein.";
     $("#cam-caption").textContent = cam.label;
   }
 }
@@ -349,7 +360,7 @@ function openCamera(devId) {
   $("#cam-img").hidden = true;
   $("#cam-img").removeAttribute("src");
   $("#cam-empty").hidden = false;
-  $("#cam-empty-sub").textContent = "Loading…";
+  $("#cam-empty-sub").textContent = "Ladataan…";
   $("#cam-caption").textContent = "";
   renderCameraMeta();
   camDlg.showModal();
@@ -380,7 +391,7 @@ $("#cam-remove").addEventListener("click", () => {
   save();
   camDlg.close();
   render();
-  toast(`Removed ${dev.name}.`, () => {
+  toast(`${dev.name} poistettiin.`, () => {
     state.devices.splice(Math.min(idx, state.devices.length), 0, dev);
     save();
     render();
@@ -409,28 +420,28 @@ function buildTypeOptions() {
 function buildConnectionOptions() {
   const sel = $("#f-conn");
   const keep = sel.value;
-  const opts = ['<option value="">Not connected</option>'];
+  const opts = ['<option value="">Ei yhdistetty</option>'];
   const backend = [...live.devices.values()].sort((a, b) => collator.compare(a.name ?? a.id, b.name ?? b.id));
   for (const s of backend) {
     const used = state.devices.filter((d) => d.connection === s.id).map((d) => d.name);
-    const note = used.length ? ` (used by ${used.join(", ")})` : "";
-    opts.push(`<option value="${esc(s.id)}">${esc(s.name ?? s.id)} · ${esc(s.state ?? "unknown")}${esc(note)}</option>`);
+    const note = used.length ? ` (käytössä: ${used.join(", ")})` : "";
+    opts.push(`<option value="${esc(s.id)}">${esc(s.name ?? s.id)} · ${esc(liveState(s.state))}${esc(note)}</option>`);
   }
   sel.innerHTML = opts.join("");
   if ([...sel.options].some((o) => o.value === keep)) sel.value = keep;
   $("#f-conn-hint").textContent =
     live.status === "online"
       ? backend.length
-        ? "Pick a sensor to show its live status under the device. Switching stays simulated."
-        : "No live devices found."
-      : "Live data is offline, so only “Not connected” is available right now.";
+        ? "Valitse anturi, niin sen livetila näkyy laitteen alla. Kytkentä pysyy simuloituna."
+        : "Liveantureita ei löytynyt."
+      : "Livedataan ei ole yhteyttä, joten vain “Ei yhdistetty” on nyt valittavissa.";
 }
 
 function buildRoomOptions(selected) {
   const sel = $("#f-room");
   sel.innerHTML =
     state.rooms.map((r) => `<option value="${esc(r.id)}">${esc(r.name)}</option>`).join("") +
-    `<option value="${NEW_ROOM}">+ New room…</option>`;
+    `<option value="${NEW_ROOM}">+ Uusi huone…</option>`;
   sel.value = selected && state.rooms.some((r) => r.id === selected) ? selected : (state.rooms[0]?.id ?? NEW_ROOM);
   syncNewRoom();
 }
@@ -526,7 +537,7 @@ form.addEventListener("submit", (e) => {
   const row = focusRow(dev.id);
   row?.closest(".device")?.classList.add("flash");
   row?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-  toast(`Added ${dev.name} to ${roomName(roomId)}.`);
+  toast(`${dev.name} lisättiin huoneeseen ${roomName(roomId)}.`);
 });
 
 // ---------------------------------------------------------------- live data (read-only)
@@ -610,6 +621,12 @@ document.addEventListener("visibilitychange", () => {
 });
 
 // ---------------------------------------------------------------- start
+
+function tick() {
+  $("#clock").textContent = new Date().toLocaleTimeString("fi-FI", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+}
+tick();
+setInterval(tick, 1000);
 
 renderLiveBadge();
 render();
