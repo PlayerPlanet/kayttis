@@ -1,0 +1,12 @@
+# Cloudflare Tunnel (locally managed) for the Pi service.
+# Install to /etc/cloudflared/kayttis.yml. The credentials JSON is handed to the
+# unit by systemd (LoadCredential in kayttis-tunnel.service), so it can stay root-only.
+tunnel: kayttis
+credentials-file: /run/credentials/kayttis-tunnel.service/tunnel.json
+no-autoupdate: true
+
+ingress:
+  - hostname: kayttis-api.kiirikki.fi
+    path: ^/api/
+    service: http://127.0.0.1:8000
+  - service: http_status:404

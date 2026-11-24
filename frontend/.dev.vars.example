@@ -1,0 +1,7 @@
+# Copy to .dev.vars for `npx wrangler pages dev` (never commit .dev.vars).
+DEMO_USER=demo
+DEMO_PASSWORD=change-me
+# Local dev talks straight to a locally running Pi service.
+API_ORIGIN=http://127.0.0.1:8000
+ACCESS_CLIENT_ID=
+ACCESS_CLIENT_SECRET=

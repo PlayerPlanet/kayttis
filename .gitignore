@@ -25,3 +25,7 @@ node_modules/
 Thumbs.db
 .idea/
 .vscode/
+
+# Cloudflare / wrangler
+.dev.vars
+.wrangler/

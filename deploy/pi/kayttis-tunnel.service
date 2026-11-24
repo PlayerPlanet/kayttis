@@ -1,0 +1,36 @@
+# Cloudflare Tunnel exposing the Pi service as kayttis-api.kiirikki.fi (outbound only,
+# no open ports). Access to that hostname is restricted to the Pages proxy's service token.
+#
+# One-time setup on the Pi:
+#   sudo apt install cloudflared        # from pkg.cloudflare.com
+#   cloudflared tunnel login
+#   cloudflared tunnel create kayttis   # writes ~/.cloudflared/<UUID>.json
+#   cloudflared tunnel route dns kayttis kayttis-api.kiirikki.fi
+#   sudo install -m 600 ~/.cloudflared/<UUID>.json /etc/cloudflared/kayttis.json
+#   sudo install -m 644 deploy/pi/cloudflared/config.yml /etc/cloudflared/kayttis.yml
+#   sudo cp deploy/pi/kayttis-tunnel.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now kayttis-tunnel
+[Unit]
+Description=Cloudflare Tunnel for the kayttis Pi service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=notify
+DynamicUser=yes
+LoadCredential=tunnel.json:/etc/cloudflared/kayttis.json
+ExecStart=/usr/bin/cloudflared --config /etc/cloudflared/kayttis.yml tunnel run
+Restart=on-failure
+RestartSec=10
+
+# Share the Pi politely with kahvi-reader, kahvibot and zigbee2mqtt (909 MB RAM total).
+Nice=10
+MemoryHigh=64M
+MemoryMax=96M
+NoNewPrivileges=yes
+ProtectSystem=strict
+ProtectHome=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=multi-user.target
