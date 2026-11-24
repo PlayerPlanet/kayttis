@@ -1,98 +1,93 @@
-"""All text cards for the 16:9 main video and the 9:16 teaser.
+"""v2 text cards and overlays for the 16:9 film and the 9:16 teaser.
 
-Title-safe: 16:9 keeps text >=150 px from the sides and >=100 px from top/bottom;
-9:16 keeps >=90 px from the sides, >=240 px from the top and >=400 px from the
-bottom (room for social-app UI)."""
+16:9 has a 2.39:1 letterbox (138 px bars), so all text sits inside y 138..942 and
+>=150 px from the sides. 9:16 keeps >=90 px from the sides, >=240 px from the top and
+>=400 px from the bottom (social-app UI)."""
 from __future__ import annotations
 
-from common import INK, PAPER, D_MUTED
-from gfx import all_clear_chip, end_card, panel_card, render
+from common import LB_BAR, LINE_STRONG, V2_MUTED
+from gfx import end_card, full, panel_screen, render
 
 W, H = 1920, 1080
 VW, VH = 1080, 1920
 
-ON_ROWS = [("Keittiön hana", "on"), ("Liesi", "on"), ("Valot", "off")]
+
+def _center(inner: str, top: str = "0", bottom: str = "0") -> str:
+    return (f"<div style='position:absolute;left:0;right:0;top:{top};bottom:{bottom};display:flex;"
+            f"flex-direction:column;align-items:center;justify-content:center;text-align:center'>{inner}</div>")
 
 
-def build_cards() -> dict[str, str]:
-    c = {}
-    # 1. small time readout on the calm opening
-    c["clock1352"] = render("clock1352", (
-        "<div class='mono shade' style='position:absolute;left:150px;top:100px;font-size:60px'>13<span class=c>:</span>52</div>"),
-        W, H)
-    # 2. clock beat over the defocused microwave
-    c["readout1356"] = render("readout1356", (
-        f"<div style='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;"
-        f"justify-content:center'>"
-        f"<div class='mono shade' style='font-size:250px;line-height:1'>13<span class=c>:</span>56</div>"
-        f"<div class='shade' style='font-weight:600;font-size:60px;margin-top:26px'>Bussi lähtee 14.00.</div>"
-        f"</div>"), W, H)
-    # 3. problem, stated once
-    c["problem"] = render("problem", (
-        f"<div style='position:absolute;inset:0;background:rgba(15,28,36,.86)'></div>"
-        f"<div style='position:absolute;left:150px;right:150px;top:0;bottom:0;display:flex;"
-        f"flex-direction:column;justify-content:center'>"
-        f"<div class='disp' style='font-size:120px'>Jäikö jotain päälle?</div>"
-        f"<div style='font-size:46px;line-height:1.35;margin-top:36px;color:{PAPER};max-width:1300px'>"
-        f"Ovelta sitä ei näe. Auki jäänyt hana tai päälle jäänyt liesi huomataan usein vasta myöhään.</div>"
-        f"</div>"), W, H)
-    # 4. rewind / second take
-    c["rewind"] = render("rewind", (
-        f"<div style='position:absolute;inset:0;background:rgba(15,28,36,.45)'></div>"
-        f"<div style='position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;"
-        f"justify-content:center'>"
-        f"<div class='mono shade' style='font-size:180px;line-height:1'>13<span class=c>:</span>56</div>"
-        f"<div class='disp shade' style='font-size:76px;margin-top:30px'>Sama hetki. Nyt kotona on Hanax.</div>"
-        f"</div>"), W, H)
-    # 5. the solution: title + state panel (state rule: amber = PÄÄLLÄ, with text)
-    c["hanax"] = render("hanax", (
-        f"<div style='position:absolute;inset:0;background:linear-gradient(to top,rgba(15,28,36,.78) 0%,"
-        f"rgba(15,28,36,.45) 28%,rgba(15,28,36,0) 50%)'></div>"
-        f"<div style='position:absolute;right:150px;top:120px'>"
-        f"{panel_card(ON_ROWS, '2 asiaa päällä', 'Tarkistettu 2 s sitten')}</div>"
-        f"<div class='disp shade' style='position:absolute;left:150px;bottom:110px;font-size:84px;"
-        f"max-width:1000px'>Hanax kertoo ennen kuin lähdet.</div>"), W, H)
-    # 6. resolved state
-    c["allclear"] = render("allclear", (
-        f"<div style='position:absolute;left:150px;top:110px'>{all_clear_chip(1.0)}</div>"), W, H)
-    # 7. value proposition over the calm exit
-    c["value"] = render("value", (
-        f"<div style='position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,28,36,.72) 0%,"
-        f"rgba(15,28,36,.5) 30%,rgba(15,28,36,0) 55%)'></div>"
-        f"<div style='position:absolute;left:150px;top:100px;max-width:1100px'>"
-        f"<div class='disp shade' style='font-size:92px'>Yksi vilkaisu riittää.</div>"
-        f"<div class='shade' style='font-weight:600;font-size:44px;line-height:1.3;margin-top:22px'>"
-        f"Näet eteisen paneelista ja puhelimesta, jäikö hana, liesi tai valot päälle.</div></div>"),
-        W, H)
-    c["end"] = render("end", end_card(W, H), W, H)
+def _label(text: str, w: int, h: int, left: int, bottom: int, size: int = 19) -> str:
+    """Lower-left spec label: hairline + Geist Mono caps (no colour)."""
+    return (f"<div style='position:absolute;left:{left}px;bottom:{bottom}px;display:flex;align-items:center;"
+            f"gap:16px'><i style='width:28px;height:1px;background:{LINE_STRONG}'></i>"
+            f"<span class='spec' style='font-size:{size}px;color:#c9ced3'>{text}</span></div>")
+
+
+def _claim(line: int, size: int, gap: int, vertical: bool) -> str:
+    l1 = (f"<div class='disp' style='font-size:{size}px;color:{V2_MUTED};"
+          f"opacity:{1 if line == 1 else 0}'>Tavallinen hana.</div>")
+    l2_txt = "Hanax tietää,<br>onko se auki." if vertical else "Hanax tietää, onko se auki."
+    l2 = (f"<div class='disp' style='font-size:{size}px;margin-top:{gap}px;"
+          f"opacity:{1 if line == 2 else 0}'>{l2_txt}</div>")
+    return _center(l1 + l2)
+
+
+LAB_HX01 = "HX-01 · ANTURI · KONSEPTIMALLI"
+LAB_HXP = "HX-P · PANEELI · PAINA: KAIKKI POIS"
+LAB_FAM = "HX-01 + HX-P · KONSEPTIMALLEJA"
+PROOF_1 = "LIVENÄ KILLAN KEITTIÖSSÄ"
+PROOF_2 = "RASPBERRY PI · 2 KAHVINKEITINTÄ · VALOT · HANAN VENTTIILI"
+
+
+def build_cards() -> None:
+    lb = LB_BAR
+    render("black", full(""), W, H)
+    render("v_black", full(""), VW, VH)
+    # ---- cold open: the indicator, then the readout ticking --------------------
+    render("dot", _center("<i class='dot' style='width:16px;height:16px;"
+                          "box-shadow:0 0 0 1px rgba(255,154,46,.4),0 0 40px 8px rgba(255,154,46,.35)'></i>",
+                          bottom="120px"), W, H)
+    for i, sec in enumerate(("04", "05", "06", "07")):
+        render(f"ro{i}", _center(f"<div class='mono' style='font-size:44px;letter-spacing:0.08em;"
+                                 f"color:#e8ecef'>13:56:{sec}</div>", top="120px"), W, H)
+    # ---- the claim -----------------------------------------------------------
+    render("claim1", _claim(1, 92, 26, False), W, H)
+    render("claim2", _claim(2, 92, 26, False), W, H)
+    # ---- product labels (lower-left, inside the letterbox) ---------------------
+    for k, t in (("lab_hx01", LAB_HX01), ("lab_hxp", LAB_HXP), ("lab_fam", LAB_FAM)):
+        render(k, _label(t, W, H, 150, lb + 50), W, H)
+    # ---- rewind: same moment ---------------------------------------------------
+    render("rewind", (
+        "<div style='position:absolute;inset:0;background:rgba(10,12,14,.55)'></div>"
+        + _center("<div class='mono' style='font-size:44px;letter-spacing:0.08em'>13:56:04</div>"
+                  "<div class='disp' style='font-size:64px;margin-top:26px'>"
+                  "Sama hetki. Nyt eteisessä on Hanax.</div>")), W, H)
+    # ---- HX-P UI: before / after ----------------------------------------------
+    render("panel_on", full(_center(panel_screen(False, 1.12)))
+           + _label("HX-P · ETEINEN · 13:56", W, H, 150, lb + 40), W, H)
+    render("panel_off", full(_center(panel_screen(True, 1.12, "13:57")))
+           + _label("HX-P · ETEINEN · 13:57", W, H, 150, lb + 40), W, H)
+    # ---- proof ---------------------------------------------------------------
+    render("proof", full(_center(
+        "<div style='display:flex;align-items:center;gap:18px'><i class='dot' style='width:12px;height:12px'></i>"
+        f"<span class='spec' style='font-size:22px;color:{V2_MUTED}'>Todiste</span></div>"
+        f"<div class='spec' style='font-size:46px;letter-spacing:0.08em;margin-top:34px'>{PROOF_1}</div>"
+        f"<div style='width:880px;height:1px;background:#2a3036;margin:34px 0'></div>"
+        f"<div class='spec' style='font-size:23px;color:#c9ced3'>{PROOF_2}</div>")), W, H)
+    render("proof_label", _label("LIVENÄ · KILLAN KEITTIÖ · LEIKKAAMATON", W, H, 150, lb + 40), W, H)
+    render("end", end_card(W, H), W, H)
 
     # ---------------- 9:16 teaser ----------------
-    c["v_hook"] = render("v_hook", (
-        f"<div class='disp shade' style='position:absolute;left:90px;right:90px;top:250px;"
-        f"font-size:118px;text-align:center'>Jäikö jotain päälle?</div>"), VW, VH)
-    c["v_bus"] = render("v_bus", (
-        f"<div style='position:absolute;inset:0;background:linear-gradient(to top,rgba(15,28,36,0) 20%,rgba(15,28,36,.6) 42%,rgba(15,28,36,0) 62%)'></div>"
-        f"<div style='position:absolute;left:0;right:0;top:1060px;text-align:center'>"
-        f"<div class='mono shade' style='font-size:150px;line-height:1'>13<span class=c>:</span>56</div>"
-        f"<div class='shade' style='font-weight:600;font-size:52px;margin-top:20px'>Bussi lähtee 14.00.</div>"
-        f"</div>"), VW, VH)
-    c["v_hanax"] = render("v_hanax", (
-        f"<div style='position:absolute;inset:0;background:linear-gradient(to bottom,rgba(15,28,36,.8) 0%,"
-        f"rgba(15,28,36,.55) 22%,rgba(15,28,36,0) 40%)'></div>"
-        f"<div class='disp shade' style='position:absolute;left:90px;right:90px;top:250px;"
-        f"font-size:96px;text-align:center'>Hanax kertoo ennen kuin lähdet.</div>"
-        f"<div style='position:absolute;left:50%;transform:translateX(-50%);top:820px;zoom:1.0'><div style='transform:scale(1.4);transform-origin:top center'>"
-        f"{panel_card(ON_ROWS, '2 asiaa päällä', 'Tarkistettu 2 s sitten', 600)}</div></div>"),
-        VW, VH, extra_css="")
-    c["v_allclear"] = render("v_allclear", (
-        f"<div style='position:absolute;left:0;right:0;top:270px;text-align:center'>"
-        f"{all_clear_chip(1.25)}</div>"), VW, VH)
-    c["v_end"] = render("v_end", end_card(VW, VH, vertical=True), VW, VH)
-    return c
+    render("v_claim1", _claim(1, 96, 30, True), VW, VH)
+    render("v_claim2", _claim(2, 96, 30, True), VW, VH)
+    render("v_lab_hxp", _label("HX-P · PANEELI · KONSEPTIMALLI", VW, VH, 90, 470, 22), VW, VH)
+    render("v_lab_knob", _label("PAINA: KAIKKI POIS", VW, VH, 90, 470, 22), VW, VH)
+    render("v_panel_off", full(_center(panel_screen(True, 0.98, "13:57"))), VW, VH)
+    render("v_end", end_card(VW, VH, vertical=True), VW, VH)
 
 
 if __name__ == "__main__":
     from common import ensure_dirs
     ensure_dirs()
-    for k, v in build_cards().items():
-        print(k, v.name)
+    build_cards()

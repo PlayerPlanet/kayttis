@@ -1,33 +1,28 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
 <title>Hanax – Open Graph</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
+<link rel="stylesheet" href="social.css">
 <style>
-  html, body { width: 1200px; height: 630px; overflow: hidden; }
-  .wrap { position: relative; width: 1200px; height: 630px; display: grid; grid-template-columns: 640px 1fr; }
-  .left { padding: 64px 0 56px 72px; display: flex; flex-direction: column; }
-  .lockup { width: 220px; }
-  h1 { font-size: 104px; margin-top: auto; }
-  h1 .q { color: var(--merkkivalo-ink); }
-  .tag { font-family: var(--font-display); font-weight: 600; font-size: 40px; margin-top: 28px; letter-spacing: -0.01em; }
-  .sub { font-size: 24px; color: var(--muted); margin-top: 14px; line-height: 1.4; max-width: 520px; }
-  .right { position: relative; overflow: hidden; }
-  .right [data-panel] { position: absolute; left: 30px; top: 56px; width: 480px; font-size: 25px; }
-  .lights-corner { position: absolute; right: 36px; top: 40px; font-size: 14px; display: none; }
+  html, body, .page { width: 1200px; height: 630px; }
+
+  .hero { left: 560px; top: 0; width: 640px; height: 630px; }
+  .hero > img { --iw: 1000px; --ix: -170px; --iy: -20px; --m: 40% 40% at 50% 52%; }
+  .claim { position: absolute; left: 64px; top: 200px; font-size: 64px; }
+
 </style>
 </head>
 <body>
-<div class="wrap">
-  <div class="left">
-    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
-    <h1 class="display">Jäikö hana auki<span class="q">?</span></h1>
-    <p class="tag">Lähde kotoa huoletta.</p>
-    <p class="sub">Näet yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta.</p>
-  </div>
-  <div class="right"><div data-panel="on"></div></div>
+<div class="page">
+  <div class="falloff" style="left:560px; top:60px; width:600px; height:500px"></div>
+  <div class="grid" style="--cell:48px; --gx:16px; --gy:16px; --gmask: 40% 50% at 70% 50%"></div>
+  <div class="plate hero"><img src="img/r/family.jpg" alt="HX-P-paneeli ja HX-01-anturi"></div>
+  <div class="logo" style="left:64px; top:60px; height:40px"><img src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"></div>
+  <h1 class="h claim"><span class="a">Tavallinen hana.</span><br>Hanax tietää,<br>onko se auki.</h1>
+  <div class="tl spec" style="left:64px; bottom:56px; font-size:14px">Lähde kotoa huoletta · kayttis.kiirikki.fi</div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

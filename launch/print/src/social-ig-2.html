@@ -1,32 +1,29 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
-<title>Hanax – Instagram 2/3 ratkaisu</title>
+<title>Hanax – IG 2: tuote</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
 <link rel="stylesheet" href="social.css">
 <style>
-  :root { --w: 1080px; --h: 1080px; }
-  .grid { display: grid; grid-template-columns: 1fr 460px; gap: 44px; margin-top: 64px; }
-  h1 { font-size: 96px; line-height: 0.98; }
-  .p { font-size: 32px; line-height: 1.35; margin-top: 30px; }
-  .p b { font-weight: 600; }
-  [data-panel] { font-size: 24px; align-self: start; }
+  html, body, .page { width: 1080px; height: 1080px; }
+
+  .hero { left: 0; top: 250px; width: 1080px; height: 720px; }
+  .hero > img { --iw: 1240px; --ix: -40px; --iy: -150px; --m: 48% 44% at 44% 46%; }
+  .claim { position: absolute; left: 72px; top: 150px; font-size: 104px; }
+
 </style>
 </head>
 <body>
-<div class="canvas">
-  <div class="s-top"><img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax"><div class="count"><span data-lights="5"></span>2 / 3</div></div>
-  <div class="grid">
-    <div>
-      <h1 class="display">Näet kaiken yhdellä vilkaisulla.</h1>
-      <p class="p"><b>Paneeli eteisessä</b> ja <b>sovellus puhelimessa</b> näyttävät, mikä jäi päälle.</p>
-      <p class="p"><b>Yksi painike</b> sammuttaa kaiken.</p>
-    </div>
-    <div data-panel="on" data-compact></div>
-  </div>
-  <div class="s-foot"><span class="mono">kayttis.kiirikki.fi</span><span>Aalto-yliopisto · Käytettävyys 2026</span></div>
+<div class="page">
+  <div class="falloff" style="left:100px; top:420px; width:880px; height:520px"></div>
+  <div class="grid" style="--cell:60px; --gx:12px; --gy:12px; --gmask: 60% 36% at 50% 62%"></div>
+  <div class="plate hero"><img src="img/r/hx01-exploded.jpg" alt="HX-01-anturin räjäytyskuva"></div>
+  <div class="logo" style="left:72px; top:64px; height:44px"><img src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"></div>
+  <div class="tl spec" style="right:72px; top:70px; text-align:right">HX-01 · Räjäytyskuva<br>Konseptimalli</div>
+  <h1 class="h claim">Kamera lukee hanan.</h1>
+  <div class="tl spec" style="left:72px; bottom:64px">Perustuu ESP32-CAM-moduuliin · Etulasi · Kamera Ø 9 mm · Akku · Magneetti</div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

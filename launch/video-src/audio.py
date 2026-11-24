@@ -53,6 +53,31 @@ def rewind(path: Path, dur: float) -> Path:
     return path
 
 
+def hum(path: Path, dur: float) -> Path:
+    """Subtle low 'machine room' hum under the product reveal: a 48 Hz fundamental with
+    soft harmonics, a breath of filtered noise and a very slow swell."""
+    expr = ("(0.42*sin(2*PI*48*t)+0.18*sin(2*PI*96*t+1)+0.07*sin(2*PI*144.3*t+2)"
+            "+0.05*sin(2*PI*192.6*t))*(0.8+0.2*sin(2*PI*0.11*t))")
+    run(["ffmpeg", "-f", "lavfi", "-i", f"aevalsrc='{expr}':s={SR}:d={dur:.3f}",
+         "-f", "lavfi", "-i", f"anoisesrc=c=brown:r={SR}:d={dur:.3f}:a=0.08",
+         "-filter_complex", "[1]lowpass=f=220[n];[0][n]amix=inputs=2:normalize=0,lowpass=f=600,"
+         f"afade=in:d=1.5,afade=out:st={dur-1.5:.2f}:d=1.5,aformat=channel_layouts=stereo",
+         "-c:a", "pcm_s16le", path])
+    return path
+
+
+def click(path: Path) -> Path:
+    """Soft mechanical knob press: a damped low thump + a short bright tick, and a
+    quieter release tick 90 ms later."""
+    expr = ("0.6*exp(-60*t)*sin(2*PI*110*t)"
+            "+0.45*exp(-700*t)*sin(2*PI*2900*t)+0.25*exp(-1400*t)*(random(0)*2-1)"
+            "+if(gte(t,0.09),0.22*exp(-900*(t-0.09))*sin(2*PI*3400*(t-0.09)),0)")
+    run(["ffmpeg", "-f", "lavfi", "-i", f"aevalsrc='{expr}':s={SR}:d=0.6",
+         "-af", "highpass=f=60,aecho=0.5:0.3:11:0.15,aformat=channel_layouts=stereo",
+         "-c:a", "pcm_s16le", path])
+    return path
+
+
 def build_audio_assets(total: float) -> dict[str, Path]:
     a = WORK / "audio"
     return {
@@ -60,4 +85,6 @@ def build_audio_assets(total: float) -> dict[str, Path]:
         "drone": drone(a / "drone.wav", 16.0),
         "pad": pad(a / "pad.wav", 26.0),
         "rewind": rewind(a / "rewind.wav", 2.4),
+        "hum": hum(a / "hum.wav", 30.0),
+        "click": click(a / "click.wav"),
     }

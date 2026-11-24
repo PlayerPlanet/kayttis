@@ -1,29 +1,39 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
-<title>Hanax – Instagram 3/3 iskulause</title>
+<title>Hanax – IG 3: todiste</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
 <link rel="stylesheet" href="social.css">
 <style>
-  :root { --w: 1080px; --h: 1080px; }
-  .center { flex: 1; display: flex; flex-direction: column; justify-content: center; }
-  .big .lights { font-size: 64px; gap: 30px; }
-  .state { display: flex; align-items: center; gap: 18px; margin-top: 44px; font-size: 26px; color: var(--muted); }
-  .state .chip { font-size: 30px; }
-  h1 { font-size: 128px; margin-top: 64px; }
+  html, body, .page { width: 1080px; height: 1080px; }
+
+  .hero { left: 0; top: 0; width: 1080px; height: 560px; }
+  .hero > img { --iw: 1200px; --ix: -60px; --iy: -100px; --m: 40% 38% at 50% 50%; }
+  .claim { position: absolute; left: 72px; top: 520px; font-size: 76px; }
+  .feed { position: absolute; left: 72px; right: 72px; top: 708px; border-top: 1px solid var(--rule); }
+  .feed div { display: grid; grid-template-columns: 380px 1fr; padding: 15px 0; border-bottom: 1px solid var(--rule); font-size: 22px; align-items: baseline; }
+  .feed .k { font-family: var(--mono); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; font-size: 18px; }
+  .feed .v { color: var(--muted); }
+
 </style>
 </head>
 <body>
-<div class="canvas">
-  <div class="s-top"><img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax"><div class="count"><span data-lights="5"></span>3 / 3</div></div>
-  <div class="center">
-    <div class="big"><div data-lights=""></div></div>
-    <div class="state"><span data-chip="safe"></span><span class="mono">tarkistettu 4 s sitten</span></div>
-    <h1 class="display">Lähde kotoa<br>huoletta.</h1>
+<div class="page">
+  <div class="grid" style="--cell:60px; --gx:12px; --gy:12px; --gmask: 50% 40% at 50% 26%"></div>
+  <div class="plate hero"><img src="img/r/hx01-front-callouts.jpg" alt="HX-01 edestä mittamerkinnöin"></div>
+  <div class="logo" style="left:72px; top:64px; height:44px"><img src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"></div>
+  <div class="tl spec" style="left:72px; top:486px">Todiste · prototyyppi toimii nyt</div>
+  <h1 class="h claim">Livenä killan<br>keittiöstä.</h1>
+  <div class="feed">
+    <div><span class="k">Raspberry Pi</span><span class="v">Lukee kaiken paikallisesti.</span></div>
+    <div><span class="k">2 × Kahvinkeitin</span><span class="v">Oikeat pistorasialukemat.</span></div>
+    <div><span class="k">Valot</span><span class="v">Päällä vai pois.</span></div>
+    <div><span class="k">Astianpesukoneen hana</span><span class="v">Kameramalli lukee venttiilin.</span></div>
   </div>
-  <div class="s-foot"><span class="mono">kayttis.kiirikki.fi</span><span>Aalto-yliopisto · Käytettävyys 2026</span></div>
+  <div class="tl spec" style="left:72px; bottom:60px">Katso livenä · kayttis.kiirikki.fi</div>
+  <div class="tl spec" style="right:72px; bottom:60px">Laite: konseptimalli</div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

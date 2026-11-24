@@ -1,29 +1,40 @@
-"""Write launch/video/EDIT_NOTES.md from the edit lists (cut list + text)."""
+"""Write launch/video/EDIT_NOTES.md from the v2 edit lists (cut list, text, slots)."""
 from __future__ import annotations
+
+from pathlib import Path
 
 from assemble import timeline, total_len
 from common import OUT
 
 
+def _src(s) -> str:
+    if s.kind == "CLIP":
+        return f"`video_2026-11-24_14-{s.src}.mp4`"
+    if s.kind == "MOV":
+        return f"`{Path(s.src[4:]).name}`"
+    return f"`{s.src}`"
+
+
 def _table(edit) -> str:
     st = timeline(edit.SHOTS)
-    rows = ["| # | out start | dur | source clip | in → out (s) | speed / fx | trans. in | what |",
+    rows = ["| # | out start | dur | source | in → out (s) | fx | trans. in | what |",
             "|---|---|---|---|---|---|---|---|"]
     for s, t in zip(edit.SHOTS, st):
-        src = s.src if s.src.startswith("CARD:") else f"`video_2026-11-24_14-{s.src}.mp4`"
-        io = "—" if s.src.startswith("CARD:") else f"{s.tin:.2f} → {s.tout:.2f}"
+        io = f"{s.tin:.2f} → {s.tout:.2f}" if s.kind in ("CLIP", "MOV") else "—"
         fx = []
         if s.speed != 1:
             fx.append(f"{s.speed:g}×")
         if s.reverse:
             fx.append("reversed")
-        if s.defocus_at is not None:
-            fx.append(f"defocus @{s.defocus_at:g}s")
+        if s.kb:
+            fx.append("eased push" if s.kb[1][2] < s.kb[0][2] else "eased pull-out")
+        if s.variant:
+            fx.append(f"{s.variant} crossfade")
         if s.mode != "wide":
             fx.append(s.mode + (f" cx={s.cx:g}" if s.mode == "v_crop" else ""))
-        fx += [f"card `{o.card}`" for o in s.overlays]
+        fx += [f"`{o.card}`" for o in s.overlays]
         tr = f"dissolve {s.xfade:g}s" if s.xfade else "cut"
-        rows.append(f"| {s.id} | {t:5.2f} | {s.dur:.2f} | {src} | {io} | {', '.join(fx) or '—'} | {tr} | {s.note} |")
+        rows.append(f"| {s.id} | {t:5.2f} | {s.dur:.2f} | {_src(s)} | {io} | {', '.join(fx) or '—'} | {tr} | {s.note} |")
     return "\n".join(rows)
 
 
@@ -34,30 +45,36 @@ def _text(edit) -> str:
     return "\n".join(lines)
 
 
+def _status(p) -> str:
+    return "**present, in use**" if p else "not present → fallback"
+
+
 def write_notes():
     import edit_main as em
     import edit_teaser as et
-    md = f"""# Hanax launch video: edit notes
+    ai = em.AI
+    md = f"""# Hanax launch video v2 ("SF deeptech"): edit notes
 
-Built by `launch/video-src/build_all.py` (ffmpeg 8 + headless Chrome for the cards).
-Re-render: `python launch/video-src/build_all.py all` (or `main`, `teaser`, `web`).
-Source: 15 Telegram-compressed phone clips, 848×464 @ 30 fps (one portrait 464×848).
+Built by `launch/video-src/build_all.py` (ffmpeg 8, OpenCV for the Ken Burns moves, headless
+Chrome for the cards). Re-render: `python launch/video-src/build_all.py all [--force]`
+(or `main`, `teaser`, `web`). Shots are cached in `_work/shots*`; pass `--force` after
+changing a shot.
 
-## Main video, 16:9, 1920×1080, {total_len(em.SHOTS):.1f} s
+Direction: Figure 02's cinematic industrial minimalism + Physical Intelligence's proof.
+Formula (brand/README.md): claim *Tavallinen hana. Hanax tietää, onko se auki.* → proof:
+the live prototype in the guild kitchen → action *Katso livenä*.
 
-Story: calm moment → the bus leaves at 14.00, it is 13:56 → rush out, door slams →
-silence, a ticking clock, water creeping in → tap running, stove on → the problem,
-stated once → rewind ("same moment, now with Hanax") → the app shows what was left on →
-back, tap and stove off, KAIKKI KIINNI → leave calmly → end card.
+## Main film, 16:9, 1920×1080, {total_len(em.SHOTS):.1f} s
 
-Note: the microwave in the source clip shows 14:31. The shot defocuses as the clock
-comes into view, and a JetBrains Mono "13:56" readout takes over, so the story time
-matches the route app (bus 25 at 14.00).
+Beats: cold open (amber dot, 13:56:04 readout) → the everyday story (couch, bus, rush,
+door slam, hard cut to the tap and the stove) → the claim on black → product reveal
+(HX-P reveal, macros, exploded view, turntable, family) → rewind → the same moment with
+Hanax (2 PÄÄLLÄ, knob press, tap and stove off, KAIKKI KIINNI ✓) → proof → end card.
 
 ### Cut list
 {_table(em)}
 
-### On-screen text (captions burned in, and the graphics cards)
+### On-screen text (captions burned in + graphics)
 {_text(em)}
 
 ## Teaser, 9:16, 1080×1920, {total_len(et.SHOTS):.1f} s
@@ -68,20 +85,51 @@ matches the route app (bus 25 at 14.00).
 ### On-screen text
 {_text(et)}
 
-## Look and sound
-- Upscale: lanczos to 1974×1080, then centre-cropped to 1920 (the source is 1.83:1).
-  Grade on every shot: contrast 1.05, saturation 0.94, a slight cool colour balance, light unsharp.
-  No stabilisation: most of the shake is in the whip pan and the running shots, where it reads as
-  the rush. The calm shots are steady enough, and deshake would add edge warping and a further crop.
-- Cards: brand fonts (Familjen Grotesk, Figtree, JetBrains Mono) and colours. The state rule is kept:
-  PÄÄLLÄ is amber #f08a16 with a text label; KAIKKI KIINNI is green #2c8564 with a check mark.
-- Captions: Figtree SemiBold, paper on a translucent ink box, inside title-safe margins. They are also
-  in `.fi.srt` (the SRT includes the card texts too).
-- Audio: natural sound (room, door slam, water, stove click). Synthesised in ffmpeg: a tick-tock clock
-  (a quiet one under the 13:56 beat, a louder one after the door slam), a low drone under the disaster,
-  a tape-rewind sweep, and a soft A-major pad from the Hanax reveal to the end. The water sound is
-  pre-lapped about 2 s before the tap shot (J-cut). Two-pass loudnorm to −16 LUFS, true peak −1.5 dBTP.
-  No music and nothing downloaded.
+## Slots for material that arrives later (picked up automatically)
+
+Drop the file in place and re-run `build_all.py all --force`. Missing files fall back silently.
+
+| File | Replaces | Main film | Teaser | Status |
+|---|---|---|---|---|
+| `launch/video/in/proof-kitchen.mp4` | the proof title card (`proof_clip` in `edit_main.py`) | PF: 0–4 s of the clip, soft grade, label "LIVENÄ · KILLAN KEITTIÖ · LEIKKAAMATON" | — | {_status(em.proof_clip)} |
+| `launch/ai-studio/v1-panel-reveal.mp4` | `hxp-reveal.mp4` render | P1: 0.5–4.1 s | — | {_status(ai['v1-panel-reveal'])} |
+| `launch/ai-studio/v1-panel-reveal-9x16.mp4` | `hxp-reveal.mp4` render | — | V05: 0.5–3.1 s | {_status(et.AI_V1)} |
+| `launch/ai-studio/v2-valve-rackfocus.mp4` | HX-01 LED macro push-in | P2: 1.0–3.2 s | — | {_status(ai['v2-valve-rackfocus'])} |
+| `launch/ai-studio/v3-water-tension.mp4` | second half of the real tap shot | S07 shortened to 2 s + S07b 1.0–2.8 s cutaway | — | {_status(ai['v3-water-tension'])} |
+| `launch/ai-studio/v4-knob-off.mp4` | knob-macro ring-off render (and the synthesised click; its own audio is used) | K1: 0.5–2.9 s | V06: 0.5–2.5 s, 9:16 centre crop | {_status(ai['v4-knob-off'])} |
+
+AI clips get the soft grade (contrast 1.04, saturation 0.7, slightly cool) and keep the
+lower-left labels. They are concept imagery, never proof: the proof slot only takes real footage.
+
+## Look
+- **Phone footage grade (v2):** contrast 1.10, brightness −0.05, saturation 0.5, gamma 0.93; a
+  curve that crushes the toe and rolls the highlights off to 0.88 (no white walls screaming next
+  to the dark renders); cool colour balance in shadows/mids; vignette; light unsharp after the
+  lanczos upscale (848×464 → 1974×1080, centre crop).
+- **Renders:** ungraded (already the palette). Stills move with a sub-pixel, smootherstep-eased
+  affine warp (OpenCV Lanczos), so slow pushes have no zoompan wobble. The same warp gives the
+  render movies (hxp-reveal, turntable) a slow push.
+- **Knob press:** `hxp-knob-macro.png` crossfades to a generated "ring off" version (saturated
+  amber pixels desaturated and darkened) in sync with the synthesised click.
+- **One film:** fine temporal luma grain over everything (noise 5), then a 2.39:1 letterbox
+  (138 px bars) on the 16:9 film. All text and captions sit inside the picture area.
+- **Cards:** Geist / Geist Mono, graphite #0a0c0e, amber #ff9a2e the only colour (the dot, the
+  PÄÄLLÄ pills, the knob ring). KAIKKI KIINNI is ink + check mark, no green (state rule).
+- **Captions:** Geist Medium 40 px (teaser 50 px), ink on a translucent graphite box, above the
+  bottom bar. Also in `.fi.srt` (with the card texts).
+
+## Sound
+All synthesised in ffmpeg, nothing downloaded, no music: tick-tock clock (on the cold-open readout,
+a whisper under the story, loud after the door slam), a low drone under the disaster, a hard cut
+to silence on the claim, a low 48 Hz hum under the product reveal, the tape-rewind sweep, a soft
+knob click, and a quiet A-major pad from the knob press to the end. Natural sound from the clips;
+the water is pre-lapped 1.8 s before the tap (J-cut). Two-pass loudnorm to −16 LUFS, TP −1.5 dBTP.
+
+## Would improve with the Friday footage / AI clips
+- `proof-kitchen.mp4`: the strongest beat. Shoot 6–10 s uncut, with the Pi dashboard's live
+  timestamps in frame and a real coffee maker / valve state change.
+- `v4-knob-off`: a real finger on the knob sells the one action better than the render crossfade.
+- `v3-water-tension`: a darker, on-palette tap for the disaster (the phone tap is a bright kitchen).
 """
     (OUT / "EDIT_NOTES.md").write_text(md, encoding="utf-8")
 

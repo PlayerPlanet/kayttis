@@ -1,0 +1,12 @@
+/* A2 poster frame: 420 x 594 mm, safe margin 10 mm (content kept at >= 16 mm) */
+@page { size: 420mm 594mm; margin: 0; }
+html, body { width: 420mm; height: 594mm; }
+.page { width: 420mm; height: 594mm; }
+.hdr { position: absolute; left: 16mm; right: 16mm; top: 16mm; display: flex; justify-content: space-between; align-items: flex-start; }
+.hdr img { height: 12mm; width: auto; }
+.hdr .spec { font-size: 3.4mm; text-align: right; }
+.credit { font-size: 3mm; color: var(--muted); }
+.qrblock { display: flex; gap: 6mm; align-items: flex-end; }
+.qrblock .qr { font-size: 44mm; flex: none; }
+.qrblock b { display: block; font-weight: 600; font-size: 9mm; letter-spacing: -0.03em; line-height: 1; }
+.qrblock .spec { font-size: 3.4mm; margin-top: 3mm; display: block; }

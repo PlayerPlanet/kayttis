@@ -1,30 +1,26 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
-<title>Hanax – pöytäkyltti (A5)</title>
+<title>Hanax – pöytäkyltti A5</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
 <link rel="stylesheet" href="tent.css">
-<style>
-  @page { size: 210mm 148mm; margin: 0; }
-  html, body { width: 210mm; height: 148mm; overflow: hidden; }
-</style>
+<style>@page { size: 210mm 148mm; margin: 0; } html, body { width: 210mm; height: 148mm; overflow: hidden; }</style>
 </head>
 <body>
 <div class="face">
-  <div>
-    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
-    <h1 class="display">Kokeile<br><span class="k">demoa.</span></h1>
-    <p class="p">Avaa Hanax puhelimessa. Katso, mikä jäi päälle, ja sammuta kaikki yhdellä painikkeella.</p>
-    <div class="login"><span class="knob dark"></span>Demotunnukset saat meiltä ständiltä</div>
-    <div class="credit">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
-  </div>
-  <div class="right">
-    <div class="qrcard"><div class="qr"><img src="img/qr-app.svg" alt="QR-koodi: kayttis.kiirikki.fi/app/"></div></div>
-    <div class="url">kayttis.kiirikki.fi/app/</div>
-    <div class="scan">Skannaa puhelimen kameralla</div>
-  </div>
+    <div class="grid" style="--cell:10mm; --gmask: 60% 60% at 40% 30%"></div>
+    <div class="plate lit"><img src="img/r/hx01-macro-led.jpg" alt="HX-01: merkkivalo palaa"></div>
+    <div class="logo"><img class="logo-d" src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax"></div>
+    <h1 class="h">Katso livenä.<br><span class="a">Kokeile demoa.</span></h1>
+    <div class="credit spec">HX-01 · merkkivalo · konseptimalli</div><div class="credit2 spec">Aalto-yliopisto · Ryhmä 1<br>Käyttäjälähtöinen<br>tuotekehitysprojekti 2026</div>
+    <div class="hairv"></div>
+    <div class="right">
+      <div class="qr"><img src="img/qr-app-ink.svg" alt="QR-koodi: kayttis.kiirikki.fi/app/"></div>
+      <span class="url spec">kayttis.kiirikki.fi/app</span>
+      <p class="login">Demotunnukset osastolta.<br><span>Avaa puhelimella ja kokeile itse.</span></p>
+    </div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

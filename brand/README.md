@@ -5,7 +5,7 @@ Lähde kotoa huoletta: Hanax näyttää eteisen paneelista ja puhelimesta, jäik
 
 Hanax syntyi yhdestä arkisesta pelosta: astianpesukoneen hana jäi auki. Vesivahinko on kallis, eikä kotivakuutus aina korvaa sitä. Sama huoli koskee liettä, uunia, kahvinkeitintä ja valoja. Nimi tulee hanasta, josta kaikki alkoi.
 
-Hanax on Aalto-yliopiston Käytettävyys-kurssin ryhmän 1 tuotekonsepti (2026). Brändikirja v2 (dark-first) on kaikkien materiaalien lähde.
+Hanax on Aalto-yliopiston Käyttäjälähtöinen tuotekehitysprojekti -kurssin ryhmän 1 tuotekonsepti (2026). Lyhyt muoto: *Aalto-yliopisto · Käyttäjälähtöinen tuotekehitysprojekti 2026 · Ryhmä 1*. Brändikirja v2 (dark-first) on kaikkien materiaalien lähde.
 
 ## Yksi väite, yksi todiste, yksi toiminto
 

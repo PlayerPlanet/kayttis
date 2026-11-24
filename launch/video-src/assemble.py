@@ -36,7 +36,8 @@ def total_len(shots) -> float:
     return st[-1] + shots[-1].dur
 
 
-def write_ass(path: Path, caps, playres=(1920, 1080), size=50, marginv=100, marginh=150):
+def write_ass(path: Path, caps, playres=(1920, 1080), size=40, marginv=100, marginh=150, pad=13):
+    """v2 captions: Geist Medium, ink on a translucent graphite box (#181c21 @ ~70 %)."""
     W, H = playres
     head = f"""[Script Info]
 ScriptType: v4.00+
@@ -47,7 +48,7 @@ ScaledBorderAndShadow: yes
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Cap,Figtree SemiBold,{size},&H00F6F7F4,&H00F6F7F4,&H38241C0F,&H00000000,0,0,0,0,100,100,0.3,0,3,16,0,2,{marginh},{marginh},{marginv},1
+Style: Cap,Geist Medium,{size},&H00EFECE8,&H00EFECE8,&H4A211C18,&H00000000,0,0,0,0,100,100,0,0,3,{pad},0,2,{marginh},{marginh},{marginv},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -86,16 +87,32 @@ def mix_audio(shots, shot_wavs, extra: list[Snd], out: Path, total: float):
     return out
 
 
+# brick-wall limiter ahead of the (linear) loudnorm, so the transients (door slam, click)
+# don't cap the gain and the film actually lands at -16 LUFS
+PRE_LIMIT = "alimiter=limit=0.4:attack=1:release=60:level=disabled,"
+
+
 def loudnorm_filter(wav: Path, target=-16.0) -> str:
-    err = run(["ffmpeg", "-i", wav, "-af", f"loudnorm=I={target}:TP=-1.5:LRA=11:print_format=json",
+    err = run(["ffmpeg", "-i", wav, "-af", f"{PRE_LIMIT}loudnorm=I={target}:TP=-2:LRA=11:print_format=json",
                "-f", "null", "-"], quiet=False)
     m = json.loads(re.findall(r"\{[^{}]*\}", err)[-1])
-    return (f"loudnorm=I={target}:TP=-1.5:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
+    return (f"{PRE_LIMIT}loudnorm=I={target}:TP=-2:LRA=11:measured_I={m['input_i']}:measured_TP={m['input_tp']}:"
             f"measured_LRA={m['input_lra']}:measured_thresh={m['input_thresh']}:"
             f"offset={m['target_offset']}:linear=true")
 
 
-def assemble(shots, shot_vids, mix_wav: Path, ass: Path, out: Path, crf=17):
+def finish_chain(letterbox: int = 0, grain: int = 5) -> str:
+    """Film-wide finishing: fine temporal luma grain (one texture over phone footage and
+    renders alike), then the letterbox bars (pure black, drawn after the grain)."""
+    ch = f"noise=c0s={grain}:c0f=t+u" if grain else "null"
+    if letterbox:
+        ch += (f",drawbox=x=0:y=0:w=iw:h={letterbox}:color=black:t=fill"
+               f",drawbox=x=0:y=ih-{letterbox}:w=iw:h={letterbox}:color=black:t=fill")
+    return ch
+
+
+def assemble(shots, shot_vids, mix_wav: Path, ass: Path, out: Path, crf=17,
+             letterbox: int = 0, grain: int = 5):
     starts = timeline(shots)
     args, fc = ["ffmpeg"], []
     for v in shot_vids:
@@ -114,7 +131,7 @@ def assemble(shots, shot_vids, mix_wav: Path, ass: Path, out: Path, crf=17):
         acc_len = starts[i] + s.dur
         acc = lab
     ass_rel = ass.relative_to(WORK).as_posix()
-    fc.append(f"{acc}ass={ass_rel}:fontsdir=fonts,format=yuv420p[vout]")
+    fc.append(f"{acc}{finish_chain(letterbox, grain)},ass={ass_rel}:fontsdir=fonts,format=yuv420p[vout]")
     ai = len(shot_vids)
     args += ["-i", mix_wav, "-filter_complex", ";".join(fc), "-map", "[vout]", "-map", f"{ai}:a",
              "-af", loudnorm_filter(mix_wav) + ",aresample=48000",

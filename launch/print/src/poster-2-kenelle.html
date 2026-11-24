@@ -1,95 +1,128 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
-<title>Hanax – Kenelle ja miksi (A2)</title>
+<title>Hanax – juliste 2: tuote</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
-<link rel="stylesheet" href="poster-base.css">
+<link rel="stylesheet" href="poster.css">
 <style>
-  .hero { display: grid; grid-template-columns: 1fr auto; gap: 14mm; align-items: end; margin-top: 10mm; }
-  h1 { font-size: 40mm; line-height: 0.98; }
-  .hero .lights { font-size: 17mm; gap: 8mm; }
-  .gridcap { display: flex; align-items: center; gap: 3mm; font-size: 6mm; margin-top: 6mm; font-weight: 600; }
-  .gridcap .chip { font-size: 5mm; }
-  .hero .lights .dot.lit { box-shadow: 0 0 0 3.5mm var(--merkkivalo-soft); }
-  .lede { font-size: 10mm; line-height: 1.3; margin-top: 9mm; max-width: 300mm; color: var(--ink); }
-  .sec { display: flex; align-items: center; gap: 5mm; margin: 13mm 0 7mm; font-size: 7.5mm; }
-  .sec .knob { font-size: 10mm; --turn: 45deg; }
-  .sec .rule { flex: 1; }
-  .who { display: grid; grid-template-columns: 1.25fr 1fr 1fr 1fr; gap: 5mm; }
-  .card { background: var(--surface); border-radius: 8mm; padding: 8mm 7mm 8mm; }
-  .card.main { background: var(--vesi-soft); }
-  .card .tag { font-size: 4.8mm; color: var(--muted); }
-  .card.main .tag { color: var(--vesi); }
-  .card h3 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.015em; font-size: 11mm; line-height: 1.02; margin: 3mm 0 4mm; }
-  .card p { font-size: 7.1mm; line-height: 1.32; }
-  .why li { display: grid; grid-template-columns: 16mm 1fr 92mm; gap: 6mm; align-items: baseline; padding: 5.2mm 0; border-top: 0.3mm solid var(--line-strong); }
-  .why li:first-child { border-top: 0; padding-top: 0; }
-  .why .n { font-family: var(--font-mono); font-weight: 500; font-size: 7mm; color: var(--vesi); }
-  .why b { font-family: var(--font-display); font-weight: 700; font-size: 13.2mm; letter-spacing: -0.02em; line-height: 1; }
-  .why span.p { font-size: 6mm; line-height: 1.32; color: var(--muted); }
-  .why span.p .mono { color: var(--ink); font-size: 5.4mm; }
-  .price { margin-top: 7mm; display: flex; align-items: baseline; gap: 6mm; font-size: 7mm; }
-  .price .mono { font-size: 10mm; color: var(--ink); }
+  .claim { left: 16mm; top: 40mm; font-size: 54mm; }
+  .sub { left: 236mm; top: 112mm; line-height: 1.6; font-size: 3.6mm; color: var(--muted); }
+  .hero { left: 0; top: 100mm; width: 420mm; height: 236mm; }
+  .hero > img { --iw: 420mm; --ix: 10mm; --iy: 10mm; --m: 46% 44% at 44% 46%; }
+  :root[data-theme="light"] .hero { left: 16mm; width: 388mm; top: 156mm; height: 180mm; }
+  :root[data-theme="light"] .hero > img { --ix: -6mm; --iy: -38mm; }
+  .parts { left: 16mm; right: 16mm; top: 344mm; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6mm; }
+  .parts .spec { font-size: 3.2mm; display: block; color: var(--muted); }
+  .parts p { font-size: 4.6mm; line-height: 1.28; margin-top: 1.6mm; letter-spacing: -0.01em; }
+  .blk { top: 382mm; }
+  .blk h3 { font-size: 3.6mm; font-weight: 500; }
+  .blk svg { display: block; margin-top: 3mm; color: var(--line-strong); }
+  .blk svg text { font-family: var(--mono); font-size: 2.9px; letter-spacing: 0.08em; fill: var(--muted); }
+  .rows { display: grid; grid-template-columns: 30mm 1fr; row-gap: 1.8mm; font-size: 3.3mm; margin-top: 3mm; }
+  .rows dt { color: var(--muted); } .rows dd { margin: 0; }
+  .who { left: 16mm; top: 540mm; width: 300mm; display: grid; grid-template-columns: repeat(3, 1fr); gap: 6mm; }
+  .who .spec { font-size: 3.2mm; color: var(--muted); display: block; }
+  .who p { font-size: 4.8mm; line-height: 1.25; margin-top: 1.4mm; letter-spacing: -0.01em; }
+  .qrs { right: 16mm; top: 538mm; display: flex; gap: 4mm; align-items: flex-end; }
+  .qrs .qr { font-size: 38mm; }
+  .qrs .t { text-align: right; } .qrs b { display: block; font-size: 7mm; font-weight: 600; letter-spacing: -0.03em; }
+  .qrs .spec { font-size: 3.1mm; color: var(--muted); }
 </style>
 </head>
 <body>
-<div class="poster">
-  <div class="topbar">
-    <div class="kicker label"><span data-lights="5"></span>Kenelle ja miksi</div>
-    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
-  </div>
+<div class="page">
+  <div class="falloff" style="left:30mm; top:150mm; width:360mm; height:180mm"></div>
+  <div class="grid" style="--cell:20mm; --gx:16mm; --gy:6mm; --gmask: 64% 30% at 50% 40%"></div>
 
-  <section class="hero">
-    <h1 class="display">Iso talo.<br>Kiireinen arki.<br>Yksi vilkaisu.</h1>
-    <div class="gridwrap"><div data-lights="6"></div><div class="gridcap"><span data-chip="on"></span>Liesi</div></div>
+  <header class="hdr">
+    <span><img class="logo-d" src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax"></span>
+    <span class="spec muted">02 / 03 · Tuote<br>HX-01 + HX-P</span>
+  </header>
+
+  <div class="plate hero"><img src="img/r/hx01-exploded.jpg" alt="HX-01-anturin räjäytyskuva"></div>
+  <h1 class="abs h claim">Kamera lukee<br>hanan.</h1>
+  <p class="abs spec sub">HX-01 · räjäytyskuva<br>Konseptimalli · perustuu<br>ESP32-CAM-moduuliin</p>
+
+  <div class="abs parts">
+    <div><span class="spec">01 · Etulasi</span><p>Huurrettu musta lasi. Merkkivalo Ø&nbsp;3&nbsp;mm.</p></div>
+    <div><span class="spec">02 · Kamera</span><p>Linssi Ø&nbsp;9&nbsp;mm. Näkee venttiilin <span style="white-space:nowrap">5–30 cm</span> päästä.</p></div>
+    <div><span class="spec">03 · ESP32-moduuli</span><p>Kamerallinen moduuli, <span style="white-space:nowrap">27 × 40,5 mm.</span></p></div>
+    <div><span class="spec">04 · Akku</span><p>Lataus USB-C:llä alareunasta.</p></div>
+    <div><span class="spec">05 · Magneetti</span><p>Ja 3M-tarra. Pidike putkeen tai hanaan.</p></div>
+  </div>
+  <div class="hair x" style="left:16mm; right:16mm; top:376mm"></div>
+
+  <!-- HX-01, drawn 1:1 -->
+  <section class="abs blk" style="left:16mm; width:180mm">
+    <h3 class="spec">HX-01 · Anturi <span class="muted">· mittakaava 1:1</span></h3>
+    <svg width="180mm" height="114mm" viewBox="0 0 180 114" fill="none" stroke="currentColor" stroke-width="0.3">
+      <rect x="14" y="20" width="48" height="48" rx="12"/>
+      <rect x="17.5" y="23.5" width="41" height="41" rx="9"/>
+      <circle cx="38" cy="46.5" r="4.5"/><circle cx="38" cy="46.5" r="2.6"/>
+      <circle cx="52" cy="30" r="1.5"/>
+      <rect x="150" y="20" width="17" height="48" rx="3"/>
+      <path d="M14 12v-3M62 12v-3M14 10.5h48M150 12v-3M167 12v-3M150 10.5h17M6 20h3M6 68h3M7.5 20v48"/>
+      <path d="M53.2 29.2L70 22H104M42.4 46.5H104"/>
+      <text x="38" y="8" text-anchor="middle" stroke="none">48 MM</text>
+      <text x="158.5" y="8" text-anchor="middle" stroke="none">17</text>
+      <text x="4.5" y="44" text-anchor="middle" stroke="none" transform="rotate(-90 4.5 44)">48 MM</text>
+      <text x="106" y="23" stroke="none">MERKKIVALO Ø 3</text>
+      <text x="106" y="47.5" stroke="none">KAMERA Ø 9</text>
+      <text x="158.5" y="75" text-anchor="middle" stroke="none">SIVU</text>
+      <text x="38" y="75" text-anchor="middle" stroke="none">EDESTÄ</text>
+    </svg>
+    <dl class="rows spec">
+      <dt>Mitat</dt><dd>48 × 48 × 17 mm</dd>
+      <dt>Runko</dt><dd>Anodisoitu alumiini, huurrettu lasi</dd>
+      <dt>Lukee</dt><dd>Venttiilin asennon kamerasta tai virran pistorasiasta</dd>
+      <dt>Kiinnitys</dt><dd>Magneetti, 3M-tarra, pidike</dd>
+    </dl>
   </section>
-  <p class="lede">Hana, liesi, uuni, kahvinkeitin, valot. Kun jokin jää päälle, Hanax näyttää sen ennen kuin lähdet.</p>
 
-  <div class="sec label"><span class="knob dark"></span>Kenelle<span class="rule thin"></span></div>
-  <div class="who">
-    <div class="card main">
-      <div class="tag label">Ensisijainen</div>
-      <h3>Omakotitalon kiireinen arki</h3>
-      <p>Keski-ikäiset, joilla on monta kerrosta, monta laitetta ja aina kiire ovesta ulos.</p>
-    </div>
-    <div class="card">
-      <div class="tag label">Myös</div>
-      <h3>Mökin omistaja</h3>
-      <p>Mökille ei palata heti. Lähtiessä on hyvä tietää, että kaikki on kiinni.</p>
-    </div>
-    <div class="card">
-      <div class="tag label">Myös</div>
-      <h3>Lyhyt&shy;vuokraaja</h3>
-      <p>Kohde on välillä pitkään tyhjillään. Tarkistat sen puhelimesta.</p>
-    </div>
-    <div class="card">
-      <div class="tag label">Ostajana</div>
-      <h3>Aikuinen lapsi</h3>
-      <p>Hankkii Hanaxin vanhemmilleen, jotta kummankin mieli lepää.</p>
-    </div>
+  <!-- HX-P, drawn 1:1 -->
+  <section class="abs blk" style="left:216mm; width:188mm">
+    <h3 class="spec">HX-P · Seinäpaneeli <span class="muted">· mittakaava 1:1</span></h3>
+    <svg width="188mm" height="114mm" viewBox="0 0 188 114" fill="none" stroke="currentColor" stroke-width="0.3">
+      <rect x="16" y="10" width="168" height="104" rx="16"/>
+      <rect x="24" y="20" width="112" height="84" rx="4"/>
+      <path d="M16 6.5v-3M184 6.5v-3M16 5h168M7.5 10h3M7.5 114h3M9 10v104"/>
+      <text x="100" y="3" text-anchor="middle" stroke="none">168 MM</text>
+      <text x="5.5" y="62" text-anchor="middle" stroke="none" transform="rotate(-90 5.5 62)">104 MM</text>
+      <path d="M30.5 31.2l2 2.1 3.8-4.6" style="stroke:var(--ink)" stroke-width="0.7"/>
+      <text x="39" y="33.6" stroke="none" style="fill:var(--ink); font-family:var(--sans); font-weight:600; font-size:5.4px; letter-spacing:0">KAIKKI KIINNI</text>
+      <text x="30.5" y="40" stroke="none">ETEINEN · KAIKKI LAITTEET</text>
+      <path d="M30 46h100M30 60h100M30 74h100M30 88h100" style="stroke:var(--rule)"/>
+      <g stroke="none" style="fill:var(--ink); font-family:var(--sans); font-size:3.6px; letter-spacing:0">
+        <text x="30.5" y="54">Keittiön hana</text><text x="30.5" y="68">Liesi</text><text x="30.5" y="82">Olohuoneen valot</text><text x="30.5" y="96">Kahvinkeitin</text>
+      </g>
+      <g stroke="none"><text x="130" y="54" text-anchor="end">POIS</text><text x="130" y="68" text-anchor="end">POIS</text><text x="130" y="82" text-anchor="end">POIS</text><text x="130" y="96" text-anchor="end">POIS</text></g>
+      <circle cx="160" cy="62" r="14"/><circle cx="160" cy="62" r="11.5"/>
+      <path d="M160 51.5v6" stroke-width="0.6"/>
+      <path d="M160 48V30"/>
+      <text x="147" y="27" stroke="none">NUPPI Ø 28</text>
+      <text x="146" y="86" stroke="none">PAINA:</text><text x="146" y="90" stroke="none">KAIKKI POIS</text>
+    </svg>
+    <dl class="rows spec">
+      <dt>Mitat</dt><dd>168 × 104 × 12 mm</dd>
+      <dt>Näyttö</dt><dd>6" matta, tummennettu lasi</dd>
+      <dt>Nuppi</dt><dd>Titaani Ø 28 mm. Käännä: selaa. Paina: kaikki pois</dd>
+      <dt>Paikka</dt><dd>Eteinen, silmien korkeudella</dd>
+    </dl>
+  </section>
+
+  <div class="hair x" style="left:16mm; right:16mm; top:532mm"></div>
+  <div class="abs who">
+    <div><span class="spec">Kenelle · 01</span><p>Omakotitalot: kiireinen arki, monta laitetta.</p></div>
+    <div><span class="spec">02</span><p>Mökit ja lyhytvuokraus: tila näkyy etänä.</p></div>
+    <div><span class="spec">03</span><p>Aikuinen lapsi hankkii sen usein vanhemmilleen.</p></div>
   </div>
-
-  <div class="sec label"><span class="knob dark"></span>Miksi Hanax<span class="rule thin"></span></div>
-  <ol class="why">
-    <li><span class="n">01</span><b>Näet kaiken yhdellä vilkaisulla.</b><span class="p">Testihenkilöt ymmärsivät paneelin heti ilman ohjeita. <span class="mono">RT7</span></span></li>
-    <li><span class="n">02</span><b>Toimii laitteiden kanssa, jotka sinulla jo on.</b><span class="p">Sensori tavalliseen hanaan, lieteen tai pistorasiaan. <span class="mono">RT8</span></span></li>
-    <li><span class="n">03</span><b>Asennat itse, ilman putkimiestä.</b><span class="p">Hankala asennus oli suurin käyttöönoton este. <span class="mono">RT8</span></span></li>
-    <li><span class="n">04</span><b>Kotisi tiedot pysyvät kotona.</b><span class="p">Toimii paikallisesti ilman pilveä. Tiedot säilytetään Suomessa. <span class="mono">RT8</span></span></li>
-    <li><span class="n">05</span><b>Yksi painike: kaikki pois.</b><span class="p">Testeissä toivottiin yhtä katkaisijaa kaikelle. <span class="mono">RT7</span></span></li>
-  </ol>
-
-  <div class="footer">
-    <div>
-      <div class="url">kayttis.kiirikki.fi</div>
-      <div class="credit">Hintatavoite 50–150 € sensoreineen · Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
-    </div>
-    <div class="qrbox">
-      <div class="qrtext"><b>Lue lisää</b>Skannaa puhelimella</div>
-      <div class="qr"><img src="img/qr-site.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
-    </div>
+  <div class="abs qrs">
+    <div class="t"><b>Katso livenä</b><span class="spec">kayttis.kiirikki.fi</span></div>
+    <div class="qr"><img src="img/qr-site-ink.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
   </div>
+  <div class="abs spec credit" style="left:16mm; top:576mm">Aalto-yliopisto · Käyttäjälähtöinen tuotekehitysprojekti 2026 · Ryhmä 1 · Renderöidyt laitteet ovat konseptimalleja</div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

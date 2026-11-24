@@ -1,48 +1,30 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
 <title>Hanax – LinkedIn</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
 <link rel="stylesheet" href="social.css">
 <style>
-  :root { --w: 1200px; --h: 627px; }
-  .canvas { padding: 60px 64px 52px; display: grid; grid-template-columns: 1fr 380px; gap: 56px; }
-  .left { display: flex; flex-direction: column; }
-  .lockup { width: 190px; }
-  .kicker { font-size: 18px; color: var(--vesi); margin-top: 48px; }
-  h1 { font-size: 64px; line-height: 1; margin-top: 16px; }
-  .p { font-size: 24px; line-height: 1.4; color: var(--muted); margin-top: 22px; }
-  .foot { margin-top: auto; display: flex; gap: 24px; font-size: 18px; white-space: nowrap; color: var(--muted); align-items: center; }
-  .foot .mono { color: var(--ink); font-size: 21px; }
-  .right { display: flex; flex-direction: column; justify-content: center; gap: 18px; }
-  .log { background: var(--surface); border-radius: 22px; padding: 22px 24px; }
-  .log .row { display: grid; grid-template-columns: 74px 1fr; gap: 10px; padding: 11px 0; border-top: 1px solid var(--line); font-size: 19px; line-height: 1.3; }
-  .log .row:first-child { border-top: 0; padding-top: 0; }
-  .log .row:last-child { padding-bottom: 0; }
-  .log .rt { font-family: var(--font-mono); font-weight: 500; color: var(--vesi); font-size: 17px; padding-top: 1px; }
-  .log b { font-weight: 600; }
-  .log .chip { font-size: 15px; vertical-align: 1px; }
+  html, body, .page { width: 1200px; height: 627px; }
+
+  .hero { left: 520px; top: 0; width: 680px; height: 627px; }
+  .hero > img { --iw: 980px; --ix: -200px; --iy: -60px; --m: 36% 40% at 55% 50%; }
+  .claim { position: absolute; left: 64px; top: 170px; font-size: 64px; }
+  .sub { position: absolute; left: 64px; top: 410px; font-size: 22px; color: var(--muted); width: 430px; line-height: 1.4; }
+
 </style>
 </head>
 <body>
-<div class="canvas">
-  <div class="left">
-    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
-    <div class="kicker label">Rakennettu käyttäjien kanssa</div>
-    <h1 class="display">Jäikö hana auki? Hanax näyttää sen yhdellä vilkaisulla.</h1>
-    <p class="p">Eteisen paneeli ja sovellus kertovat, jäikö hana, liesi tai valot päälle. Yksi painike sammuttaa kaiken.</p>
-    <div class="foot"><span class="mono">kayttis.kiirikki.fi</span><span>Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</span></div>
-  </div>
-  <div class="right">
-    <div class="log">
-      <div class="row"><span class="rt">Testi 1</span><span>Värit sekoittuivat. <b>Nyt tila on aina väri, teksti ja ikoni:</b> <span data-chip="on"></span></span></div>
-      <div class="row"><span class="rt">Testi 1</span><span>Kotoa ei voinut tarkistaa. <b>Nyt mukana on sovellus.</b></span></div>
-      <div class="row"><span class="rt">Testi 2</span><span>Asennus mietitytti. <b>Nyt asennat itse.</b></span></div>
-      <div class="row"><span class="rt">Testi 2</span><span>Yksityisyys huoletti. <b>Nyt tiedot pysyvät kotona, Suomessa.</b></span></div>
-    </div>
-  </div>
+<div class="page">
+  <div class="grid" style="--cell:48px; --gx:16px; --gy:16px; --gmask: 40% 50% at 72% 50%"></div>
+  <div class="plate hero"><img src="img/r/hxp-hero.jpg" alt="HX-P-seinäpaneeli"></div>
+  <div class="logo" style="left:64px; top:56px; height:38px"><img src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"></div>
+  <h1 class="h claim"><span class="a">Tavallinen hana.</span><br>Hanax tietää,<br>onko se auki.</h1>
+  <p class="sub">Lähde kotoa huoletta. Prototyyppi toimii livenä killan keittiössä.</p>
+  <div class="tl spec" style="left:64px; bottom:52px; font-size:13px">kayttis.kiirikki.fi · Aalto-yliopisto · Käyttäjälähtöinen tuotekehitysprojekti 2026 · Ryhmä 1</div>
+  <div class="tl spec" style="right:48px; bottom:52px; font-size:13px; text-align:right">HX-P · Seinäpaneeli<br>Konseptimalli</div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

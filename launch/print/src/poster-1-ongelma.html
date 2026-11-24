@@ -1,87 +1,83 @@
 <!doctype html>
-<html lang="fi" data-theme="light">
+<html lang="fi">
 <head>
 <meta charset="utf-8">
-<title>Hanax – Ongelma ja ratkaisu (A2)</title>
+<title>Hanax – juliste 1: väite</title>
+<script src="theme.js"></script>
 <link rel="stylesheet" href="hanax-print.css">
-<link rel="stylesheet" href="poster-base.css">
+<link rel="stylesheet" href="poster.css">
 <style>
-  h1 { font-size: 55mm; margin-top: 6mm; }
-  h1 .q { color: var(--merkkivalo-ink); }
-  .problem { display: grid; grid-template-columns: 1fr 132mm; gap: 14mm; margin-top: 9mm; }
-  .points li { display: grid; grid-template-columns: 22mm 1fr; gap: 4mm; padding: 5mm 0; border-top: 0.3mm solid var(--line-strong); }
-  .points li:first-child { border-top: 0; padding-top: 1mm; }
-  .points .n { font-family: var(--font-mono); font-weight: 500; font-size: 7mm; color: var(--muted); padding-top: 1.6mm; }
-  .points p { font-size: 9.6mm; line-height: 1.28; }
-  .points p b { font-family: var(--font-display); font-weight: 600; display: block; font-size: 11.5mm; letter-spacing: -0.01em; margin-bottom: 1.5mm; }
-  .photos { display: grid; gap: 5mm; }
-  .photos figure .photo { height: 57mm; }
-  .photos figcaption { display: flex; align-items: center; gap: 3mm; margin-top: 2.5mm; font-size: 5.6mm; }
-  .photos figcaption .chip { font-size: 4.8mm; }
-  .turn { display: flex; align-items: center; gap: 6mm; margin: 9mm 0 8mm; }
-  .turn .knob { font-size: 15mm; --turn: 90deg; }
-  .turn .label { font-size: 8mm; color: var(--vesi); }
-  .turn .rule { flex: 1; border-top-width: 0.6mm; border-color: var(--vesi); }
-  .solution { margin-bottom: 8mm; display: grid; grid-template-columns: 172mm 1fr; gap: 16mm; align-items: start; }
-  .solution [data-panel] { font-size: 8mm; }
-  .sol h2 { font-size: 21mm; line-height: 1; }
-  .sol ol { margin-top: 9mm; }
-  .sol li { display: grid; grid-template-columns: 13mm 1fr; gap: 3mm; font-size: 9.4mm; line-height: 1.28; margin-bottom: 6.5mm; }
-  .sol li .n { font-family: var(--font-mono); font-weight: 500; font-size: 7mm; color: var(--vesi); padding-top: 1.4mm; }
-  .sol li b { font-weight: 600; }
-  .tagline { font-size: 21mm; margin-top: 4mm; line-height: 1; color: var(--ink); }
-  .sol .tagwrap { margin-top: 2mm; padding-top: 7mm; border-top: 0.6mm solid var(--ink); }
+  .hero { left: 0; top: 34mm; width: 420mm; height: 204mm; }
+  .hero > img { --iw: 380mm; --ix: 74mm; --iy: -26mm; --m: 34% 40% at 51% 50%; }
+  :root[data-theme="light"] .hero { left: 16mm; width: 388mm; height: 192mm; }
+  :root[data-theme="light"] .hero > img { --ix: 58mm; }
+  .claim { left: 16mm; top: 236mm; font-size: 54mm; }
+  .claim .a { color: var(--muted); }
+  .tag { left: 16mm; top: 440mm; font-size: 15mm; }
+  .band-rule { left: 16mm; right: 16mm; top: 474mm; }
+  .probs { left: 16mm; top: 484mm; width: 184mm; display: grid; gap: 6mm; }
+  .probs .spec { font-size: 3.4mm; color: var(--muted); display: block; margin-bottom: 1.4mm; }
+  .probs p { font-size: 6.2mm; line-height: 1.22; letter-spacing: -0.015em; }
+  .knob { left: 214mm; top: 484mm; width: 108mm; height: 70mm; }
+  .knob > img { --iw: 172mm; --ix: -32mm; --iy: -21mm; --m: 40% 48% at 50% 50%; }
+  :root:not([data-theme="light"]) .knob { box-shadow: inset 0 0 0 1px var(--rule); }
+  .knobcap { left: 214mm; top: 557mm; width: 108mm; }
+  .knobcap .spec { font-size: 3.2mm; color: var(--muted); display: block; }
+  .knobcap b { font-weight: 600; font-size: 8.6mm; letter-spacing: -0.03em; display: block; margin-top: 1.2mm; }
+  .qrwrap { right: 16mm; top: 484mm; width: 70mm; text-align: left; }
+  .qrwrap .qr { font-size: 52mm; }
+  .qrwrap b { display: block; font-weight: 600; font-size: 8mm; letter-spacing: -0.03em; margin-top: 4mm; line-height: 1; }
+  .qrwrap .spec { font-size: 3.3mm; display: block; margin-top: 2mm; color: var(--muted); }
+  .lbl { font-size: 3.3mm; }
+  .credit { left: 16mm; top: 574mm; }
+  :root[data-theme="light"] .op { color: var(--plate-muted) !important; }
+  :root[data-theme="light"] .hair.op { background: var(--plate-line) !important; }
+  :root[data-theme="light"] .lbl.op[style*="left:16mm"] { left: 22mm !important; }
+  :root[data-theme="light"] .lbl.op[style*="top:212mm"] { top: 200mm !important; }
+  :root[data-theme="light"] .dim.op { height: 108mm !important; }
 </style>
 </head>
 <body>
-<div class="poster">
-  <div class="topbar">
-    <div class="kicker label"><span data-lights="5"></span>Ongelma → ratkaisu</div>
-    <img class="lockup" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax">
+<div class="page">
+  <div class="falloff" style="left:110mm; top:20mm; width:300mm; height:240mm"></div>
+  <div class="grid" style="--cell:20mm; --gx:16mm; --gy:6mm; --gmask: 60% 46% at 64% 22%"></div>
+
+  <div class="plate hero"><img src="img/r/hx01-hero.jpg" alt="HX-01-anturi, merkkivalo palaa">
   </div>
 
-  <h1 class="display">Jäikö hana<br>auki<span class="q">?</span></h1>
+  <!-- technical annotations over the hero (page coordinates) -->
+  <div class="dim vt spec lbl op" style="left:332mm; top:86mm; height:120mm"><span>48 MM</span></div>
+  <div class="hair y op" style="left:272mm; top:62mm; height:50mm; background:var(--line-strong)"></div>
+  <div class="abs spec lbl muted op" style="left:275mm; top:58mm">MERKKIVALO · Ø 3 MM</div>
+  <div class="hair x op" style="left:108mm; width:128mm; top:150mm; background:var(--line-strong)"></div>
+  <div class="abs spec lbl muted op" style="left:16mm; top:148mm">KAMERA · Ø 9 MM</div>
+  <div class="abs spec lbl muted op" style="left:16mm; top:212mm; line-height:1.6">HX-01 · ANTURI<br>48 × 48 × 17 MM<br>KONSEPTIMALLI</div>
 
-  <section class="problem">
-    <ol class="points">
-      <li><span class="n">01</span><p><b>Kiire bussiin.</b>Takki päälle, ovi kiinni. Ajatus jää eteiseen: sammutinko lieden?</p></li>
-      <li><span class="n">02</span><p><b>Vesivahinko on kallis.</b>Astianpesukoneen hana jää auki. Kotivakuutus ei aina korvaa vahinkoa.</p></li>
-      <li><span class="n">03</span><p><b>Muistettavaa on paljon.</b>Hana, liesi, uuni, kahvinkeitin, valot. Isossa talossa kierros vie aikaa.</p></li>
-    </ol>
-    <div class="photos">
-      <figure><div class="photo"><img src="img/hana.jpg" alt="Keittiön hana auki"></div>
-        <figcaption><span data-chip="on"></span>Keittiön hana</figcaption></figure>
-      <figure><div class="photo"><img src="img/merkkivalo.jpg" alt="Lieden merkkivalo palaa"></div>
-        <figcaption><span data-chip="on"></span>Liesi</figcaption></figure>
-    </div>
-  </section>
+  <header class="hdr">
+    <span><img class="logo-d" src="../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../brand/logo/hanax-lockup.svg" alt="Hanax"></span>
+    <span class="spec muted">01 / 03 · VÄITE<br>KAYTTIS.KIIRIKKI.FI</span>
+  </header>
 
-  <div class="turn"><span class="knob dark"></span><span class="label">Ratkaisu</span><span class="rule"></span></div>
+  <h1 class="abs h claim"><span class="a">Tavallinen<br>hana.</span><br>Hanax tietää,<br>onko se auki.</h1>
+  <p class="abs h2 tag">Lähde kotoa huoletta.</p>
 
-  <section class="solution">
-    <div data-panel="on" data-compact></div>
-    <div class="sol">
-      <h2 class="display">Näet kaiken yhdellä vilkaisulla.</h2>
-      <ol>
-        <li><span class="n">1</span><span><b>Paneeli eteisessä</b> näyttää, mikä jäi päälle.</span></li>
-        <li><span class="n">2</span><span><b>Sovellus puhelimessa</b>, kun olet jo matkalla.</span></li>
-        <li><span class="n">3</span><span><b>Yksi painike</b> sammuttaa kaiken.</span></li>
-      </ol>
-      <div class="tagwrap"><p class="display tagline">Lähde kotoa huoletta.</p></div>
-    </div>
-  </section>
-
-  <div class="footer">
-    <div>
-      <div class="url">kayttis.kiirikki.fi</div>
-      <div class="credit">Aalto-yliopisto · Käytettävyys 2026 · Ryhmä 1</div>
-    </div>
-    <div class="qrbox">
-      <div class="qrtext"><b>Katso, miten Hanax toimii</b>Skannaa puhelimella</div>
-      <div class="qr"><img src="img/qr-site.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
-    </div>
+  <div class="hair x band-rule"></div>
+  <div class="abs probs">
+    <div><span class="spec">01 · Vesi</span><p>Astianpesukoneen hana jäi auki. Vesivahinko on kallis.</p></div>
+    <div><span class="spec">02 · Liesi ja valot</span><p>Liesi, uuni, kahvinkeitin, valot: jäikö jokin päälle?</p></div>
+    <div><span class="spec">03 · Matkalla</span><p>Kun ovi on kiinni, tilaa ei voi enää tarkistaa.</p></div>
   </div>
+
+  <div class="plate knob"><img src="img/r/hxp-knob-macro.jpg" alt="HX-P-paneelin titaaninuppi ja merkkivalorengas"></div>
+  <div class="abs knobcap"><span class="spec">HX-P · Nuppi Ø 28 mm · konseptimalli</span><b>Paina: kaikki pois.</b></div>
+
+  <div class="abs qrwrap">
+    <div class="qr"><img src="img/qr-site-ink.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
+    <b>Katso livenä</b>
+    <span class="spec">kayttis.kiirikki.fi<br>Demo osastolla</span>
+  </div>
+
+  <div class="abs spec credit">Aalto-yliopisto · Käyttäjälähtöinen tuotekehitysprojekti 2026 · Ryhmä 1</div>
 </div>
-<script src="components.js"></script>
 </body>
 </html>

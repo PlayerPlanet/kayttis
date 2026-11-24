@@ -19,6 +19,9 @@ LOGO = BRAND / "logo"
 OUT = ROOT / "launch" / "video"
 WORK = OUT / "_work"
 WEB = ROOT / "frontend" / "public" / "media"
+RENDERS = BRAND / "renders"
+AI_DIR = ROOT / "launch" / "ai-studio"        # optional Google AI Studio clips
+IN_DIR = OUT / "in"                           # optional real footage (proof-kitchen.mp4)
 
 # Raw phone clips (read-only). Override with HANAX_CLIPS env var.
 CLIPS = Path(os.environ.get(
@@ -43,6 +46,37 @@ D_SURFACE2 = "#1d313c"
 D_MUTED = "#a3b2b8"
 D_KIINNI = "#4fc096"
 D_MERKKI_INK = "#ffb866"
+
+
+# v2 (dark-first, brand/tokens.css)
+BG = "#0a0c0e"
+SURFACE = "#111418"
+SURFACE2 = "#181c21"
+RAISED = "#20252b"
+V2_INK = "#e8ecef"
+V2_MUTED = "#8b959d"
+LINE = "#1f252b"
+LINE_STRONG = "#5a646d"
+TITAANI = "#c9ced3"
+AMBER = "#ff9a2e"
+AMBER_INK = "#ffb46a"
+
+# Letterbox for the 16:9 film: 2.39:1 picture inside 1920x1080 -> 138 px bars.
+LB_BAR = 138
+
+# v2 grade for the phone footage, toward the renders: cooler, much less colour,
+# deeper blacks, rolled-off highlights, lifted mid contrast, gentle vignette.
+GRADE_V2 = ("eq=contrast=1.10:brightness=-0.05:saturation=0.5:gamma=0.93,"
+            "curves=master='0/0 0.10/0.035 0.5/0.45 0.85/0.80 1/0.88',"
+            "colorbalance=rs=-0.045:gs=-0.01:bs=0.05:rm=-0.035:bm=0.03:rh=-0.02:bh=0.015,"
+            "vignette=angle=PI/4.2:mode=forward,"
+            "unsharp=5:5:0.4:5:5:0.0")
+
+
+def ai_clip(name: str) -> Path | None:
+    """Optional AI Studio clip, e.g. 'v1-panel-reveal' -> launch/ai-studio/v1-panel-reveal.mp4."""
+    p = AI_DIR / f"{name}.mp4"
+    return p if p.exists() else None
 
 
 def clip(name: str) -> Path:
@@ -75,12 +109,14 @@ def probe_duration(path: Path) -> float:
 
 
 def ensure_dirs():
-    for d in (OUT, WORK, WORK / "gfx", WORK / "shots", WORK / "shots9", WORK / "audio",
+    for d in (OUT, WORK, WORK / "gfx", WORK / "shots", WORK / "shots9", WORK / "audio", WORK / "kb",
               WORK / "fonts", WEB):
         d.mkdir(parents=True, exist_ok=True)
     # libass gets a local fonts dir (static TTFs only, so names resolve cleanly)
     for f in ("Figtree-SemiBold.ttf", "Figtree-Regular.ttf", "FamiljenGrotesk-Bold.ttf",
-              "FamiljenGrotesk-SemiBold.ttf", "JetBrainsMono-Medium.ttf"):
+              "FamiljenGrotesk-SemiBold.ttf", "JetBrainsMono-Medium.ttf",
+              "Geist-Regular.ttf", "Geist-Medium.ttf", "Geist-SemiBold.ttf",
+              "GeistMono-Regular.ttf", "GeistMono-Medium.ttf"):
         dst = WORK / "fonts" / f
         if not dst.exists():
             shutil.copy(FONTS / f, dst)

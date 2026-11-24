@@ -1,10 +1,8 @@
-/* Social images: pixel canvases set per file via --w / --h */
-html, body { width: var(--w); height: var(--h); overflow: hidden; }
-.canvas { position: relative; width: var(--w); height: var(--h); padding: 72px; display: flex; flex-direction: column; }
-.s-top { display: flex; justify-content: space-between; align-items: center; }
-.s-top .lockup { width: 200px; }
-.s-top .count { font-family: var(--font-mono); font-weight: 500; font-size: 26px; color: var(--muted); display: flex; align-items: center; gap: 16px; }
-.s-top .count .lights { font-size: 10px; gap: 6px; }
-.s-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; font-size: 24px; color: var(--muted); }
-.s-foot .mono { color: var(--ink); font-size: 26px; }
-.q { color: var(--merkkivalo-ink); }
+/* Social + OG images (v2, dark). Size set per file on .page. */
+html, body { overflow: hidden; }
+.page { position: relative; }
+.logo { position: absolute; }
+.logo img { height: 100%; width: auto; }
+.tl { position: absolute; font-size: 15px; color: var(--muted); }
+.claim .a { color: var(--muted); }
+.cta b { font-weight: 600; letter-spacing: -0.02em; }

@@ -1,8 +1,8 @@
 # Julkaisusähköposti testaajille ja ystäville
 
-**Aihe:** Kiitos avustasi: Hanax on valmis esiteltäväksi
+**Aihe:** Tavallinen hana. Hanax tietää, onko se auki.
 
-**Esikatseluteksti:** Testasit kanssamme kodin tilanäkymää. Tule katsomaan, mitä siitä tuli.
+**Esikatseluteksti:** Testasit kanssamme Hanaxia. Tule katsomaan livenä, mitä siitä tuli.
 
 ---
 
@@ -12,18 +12,18 @@ kiitos, että autoit meitä. Kun testasit Hanaxia, kysyit asioita, joita emme ol
 
 Muutama esimerkki siitä, mitä palautteestanne seurasi:
 
-- Kysyitte, kumpi väri tarkoittaa pois päältä. Nyt tila lukee aina myös sanana: PÄÄLLÄ, POIS tai KAIKKI KIINNI.
-- Halusitte sammuttaa laitteet, ette vain nähdä niitä. Siitä tuli yksi painike: kaikki pois.
-- Asennus ja pilvi mietityttivät. Siksi sensorit suunnitellaan itse asennettaviksi, ja Hanax toimii paikallisesti niin, että tiedot pysyvät Suomessa.
-- Osa piti pohjapiirroksesta, osa listasta. Pidimme molemmat.
+- Kysyitte, kumpi väri tarkoittaa pois päältä. Nyt tila lukee aina sanana: PÄÄLLÄ, POIS tai KAIKKI KIINNI. Oranssi on ainoa väri, ja kaikki kiinni näkyy valintamerkkinä.
+- Halusitte sammuttaa laitteet, ette vain nähdä niitä. Siitä tuli eteisen paneelin nuppi: paina, kaikki pois.
+- Kotia ei näe eteisestä, kun on jo bussissa. Siksi paneelin rinnalla on puhelinsovellus.
+- Asennus ja pilvi mietityttivät. Siksi anturi suunnitellaan itse kiinnitettäväksi, ja tavoitteena on, että Hanax toimii ilman pilveä.
 
-Nyt Hanax on toimiva prototyyppi. Killan keittiössä se lukee oikeita laitteita: kahvinkeittimiä, valoja ja astianpesukoneen hanaa.
+Nyt Hanaxilla on toimiva prototyyppi. Killan keittiössä se lukee oikeita laitteita: kahta kahvinkeitintä, valoja ja astianpesukoneen hanaa, jonka asennon kamera lukee kuvasta. Tuotteeksi olemme suunnitelleet kamera-anturin ja eteisen paneelin. Ne ovat vielä konseptimalleja, mutta anturin sisältä löytyvä ESP32-CAM-moduuli on mukana nähtävillä.
 
-**Tule katsomaan loppudemoon**
+**Katso livenä loppudemossa**
 [päivämäärä ja kellonaika]
 [paikka]
 
-Ständillä voit kokeilla sovellusta itse ja nähdä keittiön tilan livenä. Ota halutessasi joku mukaan.
+Ständillä näet keittiön tilan livenä, voit kokeilla sovellusta ja nähdä konseptimallit ja oikean raudan rinnakkain. Ota halutessasi joku mukaan.
 
 Jos et pääse paikalle, voit katsoa prototyyppiä osoitteessa kayttis.kiirikki.fi. Kirjautumistiedot saat vastaamalla tähän viestiin.
 
@@ -31,7 +31,7 @@ Kiitos vielä ajastasi.
 
 Ystävällisin terveisin
 Hanax-tiimi
-Aalto-yliopiston käytettävyyskurssi, ryhmä 1
+Aalto-yliopiston Käyttäjälähtöinen tuotekehitysprojekti -kurssi, ryhmä 1
 [yhteyshenkilö]
 
-*Hanax on kurssin tuotekonsepti, ei kaupallinen tuote. Emme käytä yhteystietojasi muuhun kuin tähän kutsuun.*
+*Hanax on kurssin tuotekonsepti, ei kaupallinen tuote. Laitekuvat ovat konseptimalleja. Emme käytä yhteystietojasi muuhun kuin tähän kutsuun.*

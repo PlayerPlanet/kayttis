@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 from assemble import assemble, mix_audio, timeline, total_len, write_ass, write_srt
 from audio import build_audio_assets
 from cards import build_cards
-from common import OUT, WEB, WORK, ensure_dirs, probe_duration, run
+from common import LB_BAR, OUT, WEB, WORK, ensure_dirs, probe_duration, run
 from shots import render_shot
 
 
@@ -34,7 +34,7 @@ def render_all(shots, outdir, size):
     return [r[0] for r in res], [r[1] for r in res]
 
 
-def build(edit, name, size, ass_kw, assets):
+def build(edit, name, size, ass_kw, assets, letterbox=0):
     shots = edit.SHOTS
     vids, wavs = render_all(shots, WORK / ("shots" if size[0] > size[1] else "shots9"), size)
     total = total_len(shots)
@@ -43,7 +43,7 @@ def build(edit, name, size, ass_kw, assets):
     ass = WORK / f"{name}.ass"
     write_ass(ass, caps, playres=size, **ass_kw)
     write_srt(OUT / f"{name}.fi.srt", caps + edit.card_texts())
-    out = assemble(shots, vids, mix, ass, OUT / f"{name}.mp4")
+    out = assemble(shots, vids, mix, ass, OUT / f"{name}.mp4", letterbox=letterbox, grain=5)
     print(f"{out.name}: {probe_duration(out):.2f} s, {out.stat().st_size/1e6:.1f} MB "
           f"(timeline {total:.2f} s)")
     return out
@@ -53,20 +53,21 @@ def web_copies():
     main = OUT / "hanax-launch-60s-16x9.mp4"
     teaser = OUT / "hanax-teaser-20s-9x16.mp4"
     run(["ffmpeg", "-i", main, "-vf", "scale=1280:720:flags=lanczos", "-c:v", "libx264",
-         "-preset", "slow", "-crf", "25", "-maxrate", "1500k", "-bufsize", "3000k",
-         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "112k", "-movflags", "+faststart",
+         "-preset", "slow", "-crf", "21", "-maxrate", "2800k", "-bufsize", "5600k",
+         "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart",
          WEB / "hanax-60s.mp4"])
     run(["ffmpeg", "-i", teaser, "-vf", "scale=720:1280:flags=lanczos", "-c:v", "libx264",
-         "-preset", "slow", "-crf", "25", "-maxrate", "2000k", "-bufsize", "4000k",
-         "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "112k", "-movflags", "+faststart",
+         "-preset", "slow", "-crf", "21", "-maxrate", "2600k", "-bufsize", "5200k",
+         "-pix_fmt", "yuv420p", "-c:a", "copy", "-movflags", "+faststart",
          WEB / "hanax-teaser.mp4"])
-    # thumbnail/poster: the Hanax panel moment
+    # thumbnail: the claim on black; web poster: the product reveal (no phone footage)
     import edit_main as em
-    t = timeline(em.SHOTS)[[s.id for s in em.SHOTS].index("M13")] + 1.6
-    run(["ffmpeg", "-ss", f"{t:.2f}", "-i", main, "-frames:v", "1", "-vf", "scale=1280:720:flags=lanczos",
-         "-q:v", "2", OUT / "hanax-thumbnail-1280x720.jpg"])
-    run(["ffmpeg", "-ss", f"{t:.2f}", "-i", main, "-frames:v", "1", "-vf", "scale=1280:720:flags=lanczos",
-         "-q:v", "3", WEB / "hanax-60s-poster.jpg"])
+    t_claim = em.at("CL", 3.6)   # before the dissolve into P1
+    t_reveal = em.at("P1", 3.9)   # amber ring lit
+    run(["ffmpeg", "-ss", f"{t_claim:.2f}", "-i", main, "-frames:v", "1",
+         "-vf", "scale=1280:720:flags=lanczos", "-q:v", "2", OUT / "hanax-thumbnail-1280x720.jpg"])
+    run(["ffmpeg", "-ss", f"{t_reveal:.2f}", "-i", main, "-frames:v", "1",
+         "-vf", "scale=1280:720:flags=lanczos", "-q:v", "3", WEB / "hanax-60s-poster.jpg"])
     for f in (WEB / "hanax-60s.mp4", WEB / "hanax-teaser.mp4", WEB / "hanax-60s-poster.jpg",
               OUT / "hanax-thumbnail-1280x720.jpg"):
         print(f"{f.name}: {f.stat().st_size/1e6:.2f} MB")
@@ -78,11 +79,13 @@ def main(what="all"):
     assets = build_audio_assets(70)
     if what in ("main", "all"):
         import edit_main
-        build(edit_main, "hanax-launch-60s-16x9", (1920, 1080), dict(size=52, marginv=100), assets)
+        # captions sit inside the 2.39:1 picture, just above the bottom bar
+        build(edit_main, "hanax-launch-60s-16x9", (1920, 1080),
+              dict(size=40, marginv=LB_BAR + 44, pad=13), assets, letterbox=LB_BAR)
     if what in ("teaser", "all"):
         import edit_teaser
         build(edit_teaser, "hanax-teaser-20s-9x16", (1080, 1920),
-              dict(size=58, marginv=430, marginh=90), assets)
+              dict(size=50, marginv=440, marginh=90, pad=15), assets)
     if what in ("web", "all"):
         web_copies()
     from notes import write_notes
