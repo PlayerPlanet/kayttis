@@ -1,4 +1,119 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>käyttis</title>
-<p>käyttis — UI coming soon.</p>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>käyttis home</title>
+  <link rel="icon" href="/app/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/app/app.css">
+  <script type="module" src="/app/app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#rooms">Skip to rooms</a>
+
+  <header class="top">
+    <div class="brand">
+      <svg class="brand-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.2 12 4l9 7.2V20a1 1 0 0 1-1 1h-5.5v-6h-5v6H4a1 1 0 0 1-1-1z" fill="currentColor"/></svg>
+      <div>
+        <h1>My home</h1>
+        <p class="summary" id="summary">&nbsp;</p>
+      </div>
+    </div>
+    <p class="live" id="live" data-state="connecting" title="Live data from the guild room sensors">
+      <span class="live-dot" aria-hidden="true"></span><span id="live-text">Connecting…</span>
+    </p>
+  </header>
+
+  <main id="rooms" class="rooms" aria-label="Rooms"></main>
+
+  <footer class="foot">
+    <p>Prototype: switching is simulated in your browser. Real devices are never switched.</p>
+    <button type="button" class="link" id="reset">Reset demo data</button>
+  </footer>
+
+  <!-- Floating actions -->
+  <button type="button" class="fab fab-away" id="away" aria-label="Away from home: turn all devices off" title="Away from home">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M14 8l4 4-4 4M18 12H9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="fab-label">Away</span>
+  </button>
+  <button type="button" class="fab fab-add" id="add" aria-label="Add device" title="Add device">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
+  </button>
+
+  <!-- Camera sheet -->
+  <dialog class="sheet" id="camera" aria-labelledby="cam-title">
+    <div class="sheet-head">
+      <div>
+        <h2 id="cam-title">Device</h2>
+        <p class="cam-meta" id="cam-meta"></p>
+      </div>
+      <button type="button" class="icon-btn" data-close aria-label="Close camera view">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <figure class="cam-frame">
+      <img id="cam-img" alt="" hidden>
+      <div class="cam-empty" id="cam-empty">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h3l2-2h6l2 2h3v12H4z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="13" r="3.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M3 3l18 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <p><strong>Camera unavailable</strong><br><span id="cam-empty-sub">Trying again every few seconds.</span></p>
+      </div>
+      <figcaption id="cam-caption"></figcaption>
+    </figure>
+    <div class="sheet-actions">
+      <button type="button" class="btn btn-primary" id="cam-toggle"></button>
+      <button type="button" class="btn btn-quiet" id="cam-remove">Remove device</button>
+    </div>
+  </dialog>
+
+  <!-- Add device form -->
+  <dialog class="sheet" id="adder" aria-labelledby="add-title">
+    <form id="add-form" novalidate>
+      <div class="sheet-head">
+        <h2 id="add-title">Add device</h2>
+        <button type="button" class="icon-btn" data-close aria-label="Close without adding">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+
+      <div class="field">
+        <label for="f-conn">Connect to</label>
+        <select id="f-conn" name="connection" aria-describedby="f-conn-hint"></select>
+        <p class="hint" id="f-conn-hint"></p>
+      </div>
+
+      <div class="field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="off" maxlength="40" aria-describedby="f-name-err" required>
+        <p class="error" id="f-name-err" hidden>Give the device a name.</p>
+      </div>
+
+      <div class="field">
+        <label for="f-room">Room</label>
+        <select id="f-room" name="room"></select>
+        <div class="new-room" id="new-room-wrap" hidden>
+          <label for="f-newroom">New room name</label>
+          <input id="f-newroom" name="newRoom" type="text" autocomplete="off" maxlength="30" aria-describedby="f-newroom-err">
+          <p class="error" id="f-newroom-err" hidden>Give the new room a name.</p>
+        </div>
+      </div>
+
+      <fieldset class="field types">
+        <legend>Type</legend>
+        <div class="type-options" id="f-types"></div>
+      </fieldset>
+
+      <div class="sheet-actions">
+        <button type="submit" class="btn btn-primary">Add device</button>
+        <button type="button" class="btn btn-quiet" data-close>Cancel</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden>
+    <span id="toast-text"></span>
+    <button type="button" class="link" id="toast-undo" hidden>Undo</button>
+  </div>
+  <p class="sr-only" id="announce" aria-live="polite"></p>
+</body>
+</html>
