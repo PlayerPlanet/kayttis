@@ -7,7 +7,9 @@ authors = [
     { name = "PlayerPlanet", email = "konsta.kiirikki@gmail.com" }
 ]
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "pydantic>=2.7",
+]
 
 [build-system]
 requires = ["uv_build>=0.10.9,<0.11.0"]

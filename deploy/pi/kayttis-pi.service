@@ -1,18 +1,31 @@
-# systemd unit for the Pi service.
-# Install: sudo cp deploy/pi/kayttis-pi.service /etc/systemd/system/ && sudo systemctl daemon-reload && sudo systemctl enable --now kayttis-pi
+# systemd unit for the kayttis Pi service.
+# Runs as the same user as kahvi-reader so it can use the reader's socket and the
+# MQTT password file. It only reads: no camera, no writes to kahvi.db, no MQTT publishes.
+#
+# Install: sudo cp deploy/pi/kayttis-pi.service /etc/systemd/system/
+#          sudo systemctl daemon-reload && sudo systemctl enable --now kayttis-pi
 [Unit]
 Description=kayttis smart-home Pi service
-After=network-online.target
+After=network-online.target mosquitto.service kahvi-reader.service
 Wants=network-online.target
 
 [Service]
 Type=simple
-User=pi
-WorkingDirectory=/home/pi/kayttis
-EnvironmentFile=-/home/pi/kayttis/.env
-ExecStart=/home/pi/.local/bin/uv run --frozen --no-dev --package kayttis-pi kayttis-pi
+User=konsta
+Group=konsta
+WorkingDirectory=/home/konsta/kayttis
+EnvironmentFile=-/home/konsta/kayttis/.env
+ExecStart=/home/konsta/.local/bin/uv run --frozen --no-dev --package kayttis-pi \
+    kayttis-pi --config services/pi/config.toml
 Restart=on-failure
-RestartSec=5
+RestartSec=10
+
+# Share the Pi with kahvi-reader (camera + model), kahvibot and zigbee2mqtt (909 MB RAM).
+Nice=10
+CPUQuota=25%
+MemoryHigh=128M
+MemoryMax=192M
+OOMScoreAdjust=600
 
 [Install]
 WantedBy=multi-user.target

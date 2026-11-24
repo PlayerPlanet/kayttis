@@ -1,3 +1,1 @@
-# kayttis-core
-
-Shared models (device state schema etc.) used by the Pi service and anything else in the workspace.
+Shared models (`DeviceState`, `Observation`) and the plugin registry (interpreters, classifiers) used by the Pi service and by any plugin package.

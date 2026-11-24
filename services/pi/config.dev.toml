@@ -1,0 +1,38 @@
+# Local development: no MQTT broker, the fake reader instead of kahvibot's.
+#   uv run kayttis-fake-reader <frames dir> --interval 3
+#   uv run kayttis-pi --config services/pi/config.dev.toml
+[server]
+host = "127.0.0.1"
+port = 8000
+log_level = "debug"
+
+[mqtt]
+enabled = false
+
+[reader]
+socket = "tcp:127.0.0.1:8765"
+poll_interval = 2
+
+[[devices]]
+id = "coffee_level_left"
+name = "Vasen pannu"
+kind = "coffee_pot"
+source = "reader"
+signal = "coffee_level"
+side = "left"
+
+[[devices]]
+id = "lights"
+name = "Valot"
+kind = "light"
+source = "reader"
+signal = "lights"
+
+[[devices]]
+id = "dishwasher_tap"
+name = "Astianpesukoneen hana"
+kind = "valve"
+source = "frame"
+classifier = "tap_knob"
+smooth_window = 3
+params = { min_confidence = 0.6 }

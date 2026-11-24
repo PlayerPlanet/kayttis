@@ -10,8 +10,8 @@ Current demo: https://k-yttis-demo-backend.vercel.app/
 
 ```
 pyproject.toml          uv workspace root (shared dev tooling: ruff, pytest)
-packages/core/          kayttis-core — shared models/helpers
-services/pi/            kayttis-pi   — service deployed to the Raspberry Pi
+packages/core/          kayttis-core — shared models + plugin registry
+services/pi/            kayttis-pi   — API service on the Pi (MQTT + reader sources, plugins)
 deploy/pi/              systemd units (service + Cloudflare tunnel) and deploy script for the Pi
 frontend/               Cloudflare Pages site: UI at /app, /api proxy to the Pi, demo login
 ```
@@ -22,7 +22,7 @@ Requires [uv](https://docs.astral.sh/uv/).
 
 ```sh
 uv sync --all-packages      # create .venv with every workspace member + dev tools
-uv run kayttis-pi           # run the Pi service locally
+uv run kayttis-pi --config services/pi/config.dev.toml   # see services/pi/README.md
 uv run ruff check . && uv run ruff format .
 uv run pytest
 ```
@@ -37,7 +37,7 @@ copy `.env.example` to `.env`, install `deploy/pi/kayttis-pi.service` into syste
 Then from your machine:
 
 ```sh
-PI_HOST=pi@kahvibot.local ./deploy/pi/deploy.sh
+PI_HOST=konsta@kahvibot.local ./deploy/pi/deploy.sh
 ```
 
 The Pi supports Python >= 3.11 (Raspberry Pi OS Bookworm default); uv will fetch

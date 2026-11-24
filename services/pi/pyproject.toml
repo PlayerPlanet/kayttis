@@ -7,10 +7,18 @@ authors = [
     { name = "PlayerPlanet", email = "konsta.kiirikki@gmail.com" }
 ]
 requires-python = ">=3.11"
-dependencies = ["kayttis-core"]
+dependencies = [
+    "fastapi>=0.165.0",
+    "kayttis-core",
+    "numpy>=2.4.6",
+    "paho-mqtt>=2.1",
+    "pillow>=13.0.0",
+    "uvicorn>=0.30",
+]
 
 [project.scripts]
 kayttis-pi = "kayttis_pi:main"
+kayttis-fake-reader = "kayttis_pi.fake_reader:main"
 
 [build-system]
 requires = ["uv_build>=0.10.9,<0.11.0"]

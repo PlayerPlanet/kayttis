@@ -1,0 +1,91 @@
+# kayttis-pi config as deployed on the kahvibot Pi.
+# Devices are fed by three sources:
+#   mqtt   - a zigbee2mqtt topic + an interpreter plugin       (read-only, never publishes)
+#   frame  - a classifier plugin run on the reader's frames    (never touches the camera)
+#   reader - signals the kahvi reader already computes (lights, coffee level)
+# Plugins are built-in names or "package.module:factory" import paths (see README).
+
+[server]
+host = "127.0.0.1"   # loopback only: the Cloudflare tunnel is the way in
+port = 8000
+log_level = "info"
+
+[mqtt]
+host = "127.0.0.1"
+port = 1883
+user = "zigbee2mqtt"
+password_file = "/home/konsta/mqtt.pw"   # same file kahvi-reader uses
+base_topic = "zigbee2mqtt"
+
+[reader]
+socket = "/run/kahvi-sampler/ipc.sock"
+poll_interval = 15
+dark_after = 90
+
+# --- coffee machines: smart plugs (names from kahvibot's power_devices) -----------------
+[[devices]]
+id = "coffee_machine_left"
+name = "Vasen kahvinkeitin"
+kind = "coffee_machine"
+source = "mqtt"
+topic = "vasen"
+interpreter = "power_levels"
+# kahvibot counts >= 300 W as brewing; the warming plate sits well below that.
+params = { levels = { off = 0, on = 10, brewing = 300 } }
+
+[[devices]]
+id = "coffee_machine_right"
+name = "Oikea kahvinkeitin"
+kind = "coffee_machine"
+source = "mqtt"
+topic = "oikea"
+interpreter = "power_levels"
+params = { levels = { off = 0, on = 10, brewing = 300 } }
+
+# --- coffee level: the reader's own reading per pot --------------------------------------
+[[devices]]
+id = "coffee_level_left"
+name = "Vasen pannu"
+kind = "coffee_pot"
+source = "reader"
+signal = "coffee_level"
+side = "left"
+
+[[devices]]
+id = "coffee_level_right"
+name = "Oikea pannu"
+kind = "coffee_pot"
+source = "reader"
+signal = "coffee_level"
+side = "right"
+
+# --- lights: the reader's lit/dark decision ---------------------------------------------
+[[devices]]
+id = "lights"
+name = "Valot"
+kind = "light"
+source = "reader"
+signal = "lights"
+stale_after = 300
+
+# --- dishwasher valve: classifier on the camera frame -----------------------------------
+# Trained on one open episode only (Sep 2026); see README before trusting it.
+[[devices]]
+id = "dishwasher_tap"
+name = "Astianpesukoneen hana"
+kind = "valve"
+source = "frame"
+classifier = "tap_knob"
+smooth_window = 5          # majority over the last 5 visible frames
+stale_after = 3600         # often hidden behind the pots; keep the last seen state for 1 h
+params = { min_confidence = 0.6 }
+
+# --- example: oven via a Zigbee temperature sensor (not installed yet) -------------------
+# [[devices]]
+# id = "oven"
+# name = "Uuni"
+# kind = "oven"
+# source = "mqtt"
+# topic = "uuni_lampo"
+# interpreter = "threshold"
+# params = { field = "temperature", threshold = 35, above = "on", below = "off", unit = "°C" }
