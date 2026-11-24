@@ -70,7 +70,7 @@ signal = "lights"
 stale_after = 300
 
 # --- dishwasher valve: classifier on the camera frame -----------------------------------
-# Trained on one open episode only (Sep 2026); see README before trusting it.
+# Trained on one closed episode only (Sep 2026); see README before trusting it.
 [[devices]]
 id = "dishwasher_tap"
 name = "Astianpesukoneen hana"

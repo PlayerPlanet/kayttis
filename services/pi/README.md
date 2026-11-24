@@ -74,8 +74,13 @@ plugins a short name instead.
 ## The tap-knob classifier
 
 Fixed crop (745, 225)–(835, 295) of the 1280×720 frame, HOG + colour thumbnail, logistic
-regression; ~3 ms per frame. 95% on held-out frames, **but every "open" example comes from
-one ~3 h episode on 2026-09-03**: treat it as a prototype until more open runs are labelled.
+regression; ~3 ms per frame. 95% on held-out frames, **but every "closed" example comes from
+one ~3 h episode on 2026-09-03**: treat it as a prototype until more runs are labelled.
+
+Labels: the valve is normally **open** with the lever lying along the faucet; **closed** is the
+lever sticking out diagonally to the upper left. (The first labelling had these swapped; fixed
+2026-11-24 after checking against the real valve.) Since 2026-11-24 ~16:10 the lever carries
+red tape, which changes its look; post-tape frames should be labelled and added.
 If the camera is re-aimed the crop must be moved (`params = { box = [...] }`) or retrained.
 
 Retrain (frames are not in the repo; labels are in `data/tap_knob/labels.csv`):
