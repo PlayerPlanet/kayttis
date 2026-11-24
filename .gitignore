@@ -29,3 +29,8 @@ Thumbs.db
 # Cloudflare / wrangler
 .dev.vars
 .wrangler/
+
+# Launch build outputs (large media; web copies live in frontend/public/media)
+launch/video/
+launch/print/*.pdf
+launch/**/_work/
