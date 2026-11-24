@@ -1,88 +1,110 @@
 # Hanax
 
-**Lähde kotoa huoletta.** Hanax näyttää yhdellä vilkaisulla, jäikö hana, liesi tai valot päälle: eteisen paneelista ja puhelimesta.
+**Tavallinen hana. Hanax tietää, onko se auki.**
+Lähde kotoa huoletta: Hanax näyttää eteisen paneelista ja puhelimesta, jäikö hana, liesi tai valot päälle.
 
-Hanax syntyi yhdestä arkisesta pelosta: astianpesukoneen hana jäi auki. Vesivahinko on kallis, eikä kotivakuutus aina korvaa sitä. Tutkiessamme ongelmaa huomasimme, että sama huoli koskee liettä, uunia, kahvinkeitintä ja valoja. Nimi tulee hanasta, josta kaikki alkoi.
+Hanax syntyi yhdestä arkisesta pelosta: astianpesukoneen hana jäi auki. Vesivahinko on kallis, eikä kotivakuutus aina korvaa sitä. Sama huoli koskee liettä, uunia, kahvinkeitintä ja valoja. Nimi tulee hanasta, josta kaikki alkoi.
 
-Hanax on Aalto-yliopiston käytettävyyskurssin ryhmän 1 tuotekonsepti (2026). Tämä brändikirja on kaikkien materiaalien lähde: video, laskeutumissivu, julisteet, sovellus ja some.
+Hanax on Aalto-yliopiston Käytettävyys-kurssin ryhmän 1 tuotekonsepti (2026). Brändikirja v2 (dark-first) on kaikkien materiaalien lähde.
+
+## Yksi väite, yksi todiste, yksi toiminto
+
+Jokainen materiaali rakentuu samasta kolmikosta:
+
+1. **Väite:** *Tavallinen hana. Hanax tietää, onko se auki.* Mekaaninen venttiili ilman elektroniikkaa, ja silti tila on tiedossa. Arkinen tehtävä, vaikea ongelma.
+2. **Todiste:** prototyyppi toimii oikeassa keittiössä. Raspberry Pi killan keittiössä lukee kahden kahvinkeittimen pistorasioita ja valoja, ja kameramalli lukee astianpesukoneen hanan venttiilin. Näytä se leikkaamattomana: aikaleimat, oikeat lukemat.
+3. **Toiminto:** *Katso livenä* (demo osastolla / kayttis.kiirikki.fi).
+
+Väitteet pitää aina pystyä jäljittämään demoon. Jos jokin on suunnitelma eikä toimi vielä, sano se: **konseptimalli**, **tavoite**, **suunniteltu**.
 
 ## Kenelle
 
-- **Ensisijainen:** omakotitalossa asuvat keski-ikäiset, joilla on kiireinen arki. Talossa on monta kerrosta ja monta laitetta, ja kotoa lähtiessä on muistettava paljon.
-- **Toissijainen:** mökkien omistajat ja lyhytvuokraajat (Airbnb), joilla kohde on pitkään tyhjillään.
-- **Ostajana usein lapsi**, joka hankkii Hanaxin vanhemmilleen.
+- **Ensisijainen:** omakotitalossa asuvat keski-ikäiset, joilla on kiireinen arki.
+- **Toissijainen:** mökkien omistajat ja lyhytvuokraajat.
+- **Ostajana usein aikuinen lapsi** vanhemmilleen.
 
 ## Mitä lupaamme
 
-| Ydinviesti | Perustelu käyttäjätesteistä |
+| Ydinviesti | Perustelu |
 | --- | --- |
 | Näet kaiken yhdellä vilkaisulla. | Testihenkilöt ymmärsivät paneelin heti ilman ohjeita (RT7). |
-| Toimii laitteiden kanssa, jotka sinulla jo on. | Sensorit kiinnittyvät tavalliseen hanaan, lieteen tai pistorasiaan; uusia älylaitteita ei tarvita (RT8). |
-| Asennat itse, ilman putkimiestä. | Hankala tai maksullinen asennus oli suurin käyttöönoton este (RT8). |
-| Kotisi tiedot pysyvät kotona. | Toimii paikallisesti ilman pilveä; tiedot säilytetään Suomessa (RT8). |
-| Yksi painike: kaikki pois. | Testeissä toivottiin yhtä katkaisijaa, josta kaiken saa pois (RT7). |
+| Toimii laitteiden kanssa, jotka sinulla jo on. | Anturi lukee tavallisen hanan, lieden tai pistorasian; prototyyppi lukee jo mekaanista venttiiliä kameralla (demo). |
+| Asennat itse, ilman putkimiestä. | Asennus oli suurin käyttöönoton este (RT8). *Suunniteltu.* |
+| Kotisi tiedot pysyvät kotona. | Paikallinen käsittely (prototyyppi: Raspberry Pi kotiverkossa). Pilvettömyys ja Suomi-säilytys ovat *tavoite*. |
+| Yksi nuppi: kaikki pois. | Testeissä toivottiin yhtä katkaisijaa (RT7). Paneelin fyysinen nuppi. |
 
-**Älä lupaa** vakuutusalennuksia, sertifikaatteja, valmista hintaa tai toimitusaikaa. Hintahaarukka, jota testihenkilöt pitivät sopivana: 50–150 € sensoreineen. Puhu siitä "tavoitteena", ei hintana.
+**Älä lupaa** vakuutusalennuksia, sertifikaatteja, valmista hintaa (tavoite 50–150 € sensoreineen) tai toimitusaikaa. Renderöidyt laitteet ovat **konseptimalleja**.
 
-## Ääni ja sävy
+## Ääni
 
-Hanax puhuu kuin rauhallinen naapuri, joka tietää talotekniikasta: konkreettisesti, lyhyesti, ilman pelottelua.
+Rauhallinen insinööri, ei mainosmies. Lyhyet lauseet, konkreettiset luvut, ei huutomerkkejä eikä emojeja. Puhuttele sinuksi. Nimeä asiat niin kuin ihminen ne nimeää ("keittiön hana"). Kerro aina tuoreus: "KIINNI · tarkistettu 12 s sitten".
 
-- **Rauhoita, älä pelottele.** Kerro mitä tapahtui ja mitä voit tehdä. ✅ "Liesi jäi päälle. Sammuta se täältä." ❌ "VAARA! Talosi voi palaa!"
-- **Puhuttele sinuksi.** "Näet", "lähdet", "sammutat".
-- **Nimeä asiat niin kuin ihminen ne nimeää.** "Keittiön hana", ei "sensori #3".
-- **Lyhyet lauseet.** Yksi asia lauseessa. Ei huutomerkkejä, ei emojeja.
-- **Kerro tuoreus.** Tila ilman aikaa on puolikas tieto: "Kiinni · tarkistettu 12 s sitten".
+## Art direction (v2)
+
+Mallina Figure (elokuvallinen teollinen minimalismi), Oura (materiaalit) ja Physical Intelligence (arkinen tehtävä todisteena).
+
+- **Pimeys on pinta.** Lähes musta grafiitti, valo tulee kohteesta. Syvyys syntyy kerroksista ja valon putoamisesta, ei liukuväreistä tai korttivarjoista.
+- **Lähes monokromi.** Grafiitti, titaani, huurrettu lasi. **Merkkivalon oranssi on ainoa väri**, ja sitä on yksi kohde kerrallaan.
+- **Laite sankarina.** Lähikuvat materiaaleista, reunoista ja merkkivalosta; vahva siluetti; räjäytyskuva sisällöstä.
+- **Tekninen tarkkuus koristeena.** Hiusviivaruudukot, mittaviivat, mono-versaali speksit (`HX-01 · ANTURI · 48 × 48 × 17 MM`), juoksevat aikaleimat.
+- **Liike on paljastus.** Hidas, kontrolloitu: valo pyyhkäisee pinnan, merkkivalo syttyy. Kunnioita `prefers-reduced-motion`-asetusta.
+- **Todiste rinnalla.** Kauniin kuvan vieressä aina oikea mittaus tai leikkaamaton klippi.
+- **Vältä:** neonvihreää, violetti-sininen-liukuvärejä, lasimorfismia ilman syytä, emojeja ja kuvapankkiperheitä.
 
 ## Värit
 
-Paletti tulee kodinkoneen paneelista: yönsininen kuori, vesi ja merkkivalo.
-
 | Token | Rooli |
 | --- | --- |
-| `--ink` / `--bg` | Yönsininen ja vihertävä valkoinen. Pohja kaikelle. |
-| `--vesi` | Brändiväri: linkit, ensisijaiset painikkeet. |
-| `--merkkivalo` | **Päällä / huomio.** Kuin lieden merkkivalo. Vain täyttönä, tekstinä `--merkkivalo-ink`. |
-| `--kiinni` | **Kaikki kiinni / turvassa.** |
-| `--vaara` | Vain hälytykset (vuoto, yhteys katki). |
+| `--bg` `--surface` `--surface-2` `--raised` | Grafiitin neljä kerrosta. |
+| `--ink` / `--muted` | Teksti ja toissijainen teksti. |
+| `--line` / `--line-strong` | Hiusviivat ja ruudukot / kontrollien reunat. |
+| `--titaani` | Metallin korostus: nuppi, kehyksen reuna. |
+| `--merkkivalo` | **Ainoa väri.** PÄÄLLÄ / huomio. Täyttö, hehku tai piste. |
+| `--vaara` | Vain todelliset hälytykset. |
 
-### Tilasääntö (tärkein sääntö)
+Vaalea teema (paperi) on painotuotteille ja sovelluksen vaalealle tilalle.
 
-Käyttäjätesteissä kysyttiin, kumpi väri tarkoittaa "pois päältä". Siksi tilaa ei koskaan kerrota pelkällä värillä:
+### Tilasääntö
 
-| Tila | Väri | Teksti | Ikoni |
-| --- | --- | --- | --- |
-| Päällä | `--merkkivalo` täyttö | PÄÄLLÄ | täytetty ikoni + merkkivalopallo |
-| Pois | `--surface-2`, `--muted` | POIS | ääriviivaikoni |
-| Kaikki kiinni | `--kiinni` | KAIKKI KIINNI | valintamerkki |
-| Ei tietoa | `--surface-2` katkoviivalla | EI TIETOA · 5 min | kysymysmerkki |
+Tilaa ei koskaan kerrota pelkällä värillä (RT7: "kumpi väri tarkoittaa pois?"):
 
-Päällä on oranssi, ei vihreä: vihreä tarkoittaa Hanaxissa aina "turvassa".
+| Tila | Ilme | Teksti |
+| --- | --- | --- |
+| Päällä | `--merkkivalo` täyttö + hehku, täytetty ikoni | PÄÄLLÄ |
+| Pois | `--surface-2`, ääriviivaikoni | POIS |
+| Kaikki kiinni | `--ink`-valintamerkki, ei väriä | KAIKKI KIINNI |
+| Ei tietoa | katkoviiva | EI TIETOA · 5 min |
 
 ## Typografia
 
-- **Familjen Grotesk** (näyttö, 600–700): otsikot ja iskulauseet. Tiivis, pohjoismainen groteski.
-- **Figtree** (leipä, 400–600): kaikki muu teksti.
-- **JetBrains Mono** (lukemat, 500): kellonajat, watit, aikaleimat. Tabulaariset numerot.
-
-Tyyliluokat: `.t-display-xl` 72/0.95, `.t-display-l` 48/1.0, `.t-heading` 28/1.15, `.t-lead` 20/1.5, `.t-body` 16/1.55, `.t-label` 13 versaali +0.06em, `.t-readout` 15 mono. Fontit ovat OFL-lisensoituja ja palvelimella itse (`brand/fonts/`), ei Google-pyyntöjä.
+**Geist** (otsikot 500–600, tiukka välistys −0.035…−0.045 em; leipä 400) ja **Geist Mono** (speksit versaalina +0.08 em, lukemat tabulaarisina). Molemmat OFL, palvelimella itse. Tyyliluokat: `.t-display-xl` 88/0.92, `.t-display-l` 56/0.98, `.t-heading` 28, `.t-lead` 20, `.t-body` 16, `.t-spec` 12 mono, `.t-readout` 15 mono.
 
 ## Logo
 
-- **Merkki:** pyöristetty neliö (laitepaneeli), nuppi osoittimella ja oranssi merkkivalo. Se kysyy saman kuin tuote: onko jokin päällä?
-- **Sanamerkki:** "hanax" gemenoin, Familjen Grotesk Bold, ääriviivoina.
-- Tiedostot: `logo/hanax-lockup.svg`, `hanax-lockup-on-dark.svg`, `hanax-mark.svg`, `hanax-mark-on-dark.svg`, `hanax-wordmark.svg`.
-- **Suoja-alue:** merkin kulmasäteen verran (¼ merkin korkeudesta) joka puolella.
-- **Pienin koko:** merkki 16 px, lockup 96 px leveä.
-- **Älä** venytä, kierrä, vaihda merkkivalon väriä tai sijoita kuvan päälle ilman tasaista pohjaa.
+Grafiittilaatta, titaaninen nuppi osoittimella ja oranssi merkkivalo; sanamerkki "hanax" Geist SemiBold, ääriviivoina. Tiedostot `logo/`: `hanax-lockup(-on-dark).svg`, `hanax-mark(-on-dark).svg`, `hanax-wordmark(-on-dark).svg`. Suoja-alue ¼ merkin korkeudesta. Pienin koko: merkki 16 px, lockup 96 px.
 
-## Muodot ja tila
+## Laitteisto (konseptimallit)
 
-Kulmat `--radius-l` (20 px) vastaa logon kulmaa. Pyöreät painikkeet ovat nuppeja (`--radius-pill`). Kortit erottuvat pinnan värillä, ei varjolla; `--shadow-panel` vain kelluville elementeille. Väli 8 px:n askelin (`--space-*`).
+Mitat ja materiaalit pohjautuvat oikeaan prototyyppiraudaan (ESP32-CAM), jotta konsepti on uskottava.
+
+### HX-01 Anturi
+- **Muoto:** pyöristetty neliö 48 × 48 × 17 mm, kulmasäde 12 mm (sama suhde kuin logossa), etupinta kevyesti kupera.
+- **Materiaalit:** anodisoitu grafiittialumiini, harjattu; etuna huurrettu musta lasi.
+- **Etupuoli:** 9 mm kameralinssi (musta lasi, ohut titaanirengas) hieman keskilinjan alapuolella; oikeassa yläkulmassa 3 mm merkkivalo (oranssi, valonjohde).
+- **Takana:** magneetti ja 3M-tarra; mukana joustava pidike putkeen tai hanan runkoon.
+- **Alareuna:** USB-C, pieni kaiverrus `HX-01`.
+- **Sisällä:** ESP32-luokan moduuli kameralla (27 × 40,5 mm), akku. Lukee mekaanisen venttiilin asennon kuvasta, tai virran pistorasiasta.
+- **Toimii kun:** venttiili näkyy kameralle 5–30 cm etäisyydeltä.
+
+### HX-P Paneeli
+- **Muoto:** ohut seinäpaneeli 168 × 104 × 12 mm, kulmasäde 16 mm, eteiseen silmien korkeudelle.
+- **Materiaalit:** grafiittialumiinikehys, etuna tummennettu lasi; näyttö 6" matta.
+- **Oikealla kyljellä:** 28 mm titaaninen **nuppi** (logon nuppi): käännä selataksesi, paina: *kaikki pois*. Nupin ympärillä ohut oranssi merkkivalorengas, joka palaa kun jokin on päällä.
+- **Näyttö:** huoneet ja laitteet tilasäännön mukaan, ylhäällä "2 PÄÄLLÄ" tai "KAIKKI KIINNI".
 
 ## Kuvat ja video
 
-Oikea koti ja oikea arki: eteinen, keittiön hana, lieden merkkivalo, kiire bussiin. Ei kuvapankkiperheitä. Lähikuvat laitteista, joissa merkkivalo näkyy. Värimäärittely viileä ja luonnollinen.
+Studio: musta tausta, yksi pehmeä yläsivuvalo ja kapea reunavalo; lähikuvat merkkivalosta ja nupista. Arki: oikea keittiö ja eteinen illan valossa; merkkivalo kuvan ainoa värillinen piste. Todiste: leikkaamaton ruutu- tai kamerakuva, jossa näkyy aikaleima.
 
 ## Tiedostot
 
