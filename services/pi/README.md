@@ -19,6 +19,7 @@ kahvi reader socket ─▶ ReaderSource ─classifier──┘     (smoothing, s
 | `GET /api/devices` | every device's current `DeviceState` |
 | `GET /api/devices/{id}` | one device |
 | `GET /api/stream` | server-sent events: each device once, then every change (`event: device`) |
+| `GET /api/camera/latest.jpg` | latest lit frame the poller already holds (headers `X-Captured-At`, `X-Frame-Age`); 503 before the first frame, 404 if `reader.serve_camera = false` |
 | `GET /api/docs` | OpenAPI UI |
 
 `DeviceState`: `id, name, kind, source, state, value, unit, confidence, attributes,
@@ -45,10 +46,12 @@ A config can also point at any import path, so new plugins need no change to the
 # e.g. packages/sensors/src/kayttis_sensors/oven.py (a new workspace package)
 from kayttis_core import Observation
 
+
 def oven_glow(box=(300, 300, 360, 340), threshold=180):
-    def classify(image):            # full RGB PIL frame
+    def classify(image):  # full RGB PIL frame
         r, g, b = image.crop(box).resize((1, 1)).getpixel((0, 0))
         return Observation(state="on" if r > threshold else "off", value=r)
+
     return classify
 ```
 

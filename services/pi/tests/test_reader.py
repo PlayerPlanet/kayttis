@@ -83,3 +83,19 @@ def test_unreachable_reader():
     src.poll_once()
     assert not src.reachable and src.last_error
     assert hub.get("lights").state == "unknown"
+
+
+def test_camera_frame_kept_only_when_lit(tmp_path):
+    srv, _hub, src = make(tmp_path)
+    try:
+        src.poll_once()
+        jpeg, captured_at, _seq = src.latest_frame
+        assert jpeg[:2] == b"\xff\xd8" and captured_at > 0
+    finally:
+        srv.close()
+    srv, _hub, src = make(tmp_path, lit=False)
+    try:
+        src.poll_once()
+        assert src.latest_frame is None
+    finally:
+        srv.close()

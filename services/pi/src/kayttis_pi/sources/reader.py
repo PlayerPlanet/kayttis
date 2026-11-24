@@ -44,11 +44,15 @@ class ReaderSource:
         self._seq_changed_at = time.monotonic()
         self._frame_seq: int | None = None
         self.frames_processed = 0
+        # Latest lit frame for /api/camera: (jpeg, captured_at epoch, reader seq).
+        self.latest_frame: tuple[bytes, float, int | None] | None = None
         self._task: asyncio.Task[None] | None = None
 
     @property
     def active(self) -> bool:
-        return self.cfg.enabled and bool(self.lights or self.levels or self.classifiers)
+        return self.cfg.enabled and bool(
+            self.lights or self.levels or self.classifiers or self.cfg.serve_camera
+        )
 
     # -- one poll -----------------------------------------------------------------------
     def poll_once(self) -> None:
@@ -78,7 +82,7 @@ class ReaderSource:
                 device_id,
                 Observation(state="on" if lit else "off", attributes={"last_lit_age": age}),
             )
-        if not lit or not (self.levels or self.classifiers):
+        if not lit or not (self.levels or self.classifiers or self.cfg.serve_camera):
             return
 
         try:
@@ -91,6 +95,9 @@ class ReaderSource:
         if header.get("seq") is not None and header.get("seq") == self._frame_seq:
             return  # same frame as last time
         self._frame_seq = header.get("seq")
+        captured = header.get("captured_at") or time.time() - float(header.get("age") or 0)
+        if self.cfg.serve_camera:
+            self.latest_frame = (jpeg, float(captured), header.get("seq"))
         self._apply_levels(header.get("pots") or [], header)
         self._apply_classifiers(jpeg, header)
         self.frames_processed += 1

@@ -49,6 +49,8 @@ class ReaderConfig:
     dark_after: float = 90.0
     # The reader's seq must advance within this window, otherwise it is considered stalled.
     stall_after: float = 300.0
+    # Serve the latest lit frame at /api/camera/latest.jpg (behind the demo login).
+    serve_camera: bool = True
 
 
 @dataclass

@@ -45,3 +45,17 @@ def test_deployed_configs_parse():
 def test_bad_config_rejected():
     with pytest.raises(ValueError):
         parse_config({"devices": [{"id": "x", "name": "x", "kind": "x", "source": "frame"}]})
+
+
+def test_camera_endpoint():
+    app = create_app(parse_config(CFG))
+    with TestClient(app) as c:
+        assert c.get("/api/camera/latest.jpg").status_code == 503
+        app.state.reader.latest_frame = (b"\xff\xd8jpeg", 1_700_000_000.0, 7)
+        r = c.get("/api/camera/latest.jpg")
+        assert r.status_code == 200 and r.headers["content-type"] == "image/jpeg"
+        assert r.content == b"\xff\xd8jpeg" and r.headers["x-frame-seq"] == "7"
+
+    off = parse_config({**CFG, "reader": {"enabled": False, "serve_camera": False}})
+    with TestClient(create_app(off)) as c:
+        assert c.get("/api/camera/latest.jpg").status_code == 404
