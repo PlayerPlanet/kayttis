@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Hanax renders</title>
+<style>
+  @font-face { font-family: "Geist"; src: url("../fonts/Geist[wght].ttf") format("truetype"); font-weight: 100 900; }
+  @font-face { font-family: "Geist Mono"; src: url("../fonts/GeistMono[wght].ttf") format("truetype"); font-weight: 100 900; }
+  html, body { margin: 0; background: #0a0c0e; }
+  canvas { display: block; }
+</style>
+<script type="importmap">
+{ "imports": {
+  "three": "../renders-src/node_modules/three/build/three.module.js",
+  "three/addons/": "../renders-src/node_modules/three/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<script type="module" src="./js/main.js"></script>
+</body>
+</html>

@@ -34,3 +34,7 @@ Thumbs.db
 launch/video/
 launch/print/*.pdf
 launch/**/_work/
+
+# Render masters (re-render from brand/renders-src); web copies in brand/renders/web are committed
+brand/renders/*.png
+brand/renders/*.mp4

@@ -1,0 +1,8 @@
+{
+  "name": "hanax-renders",
+  "private": true,
+  "type": "module",
+  "description": "Procedural three.js product renders of Hanax concept hardware (HX-01, HX-P)",
+  "scripts": { "render": "node render.mjs" },
+  "dependencies": { "puppeteer-core": "23.11.1", "three": "0.160.0" }
+}
