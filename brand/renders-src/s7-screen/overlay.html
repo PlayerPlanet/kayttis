@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  @font-face { font-family: Geist; src: url(../../fonts/Geist-VF.woff2); }
+  @font-face { font-family: GeistMono; src: url(../../fonts/GeistMono-VF.woff2); }
+  html, body { margin: 0; background: transparent; }
+  #c { position: relative; width: 625px; height: 430px; font-family: Geist; }
+  #c > * { position: absolute; transform: translateY(-50%); line-height: 1; white-space: nowrap; }
+  .t { left: 52px; font-size: 20px; color: #e6e4e0; letter-spacing: -0.01em; }
+  .s { left: 54px; font: 11px GeistMono; color: #86837e; letter-spacing: 0.02em; }
+  .chip { left: 530px; width: 84px; height: 26px; box-sizing: border-box; border-radius: 13px;
+          display: flex; align-items: center; justify-content: center; gap: 6px;
+          font: 500 11px GeistMono; letter-spacing: 0.08em; color: #8f8c86; border: 1px solid #3a3936; }
+  .chip.on { color: #ffb25a; border-color: #ff9a2e; background: rgba(255,154,46,0.12);
+             box-shadow: 0 0 10px rgba(255,154,46,0.35); }
+  .chip.on::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #ff9a2e; }
+</style>
+<div id="c">
+  <div style="left:51px;top:67px;width:12px;height:12px;border-radius:50%;background:#ff9a2e;box-shadow:0 0 10px #ff9a2e"></div>
+  <div style="left:76px;top:67px;font-size:32px;font-weight:500;color:#f2f0ec;letter-spacing:-0.01em">2 PÄÄLLÄ</div>
+  <div style="right:10px;top:61px;font:15px GeistMono;color:#8d8a85">13:55</div>
+  <div class="s" style="left:52px;top:103px;letter-spacing:0.12em">ETEINEN · 4 LAITETTA</div>
+  <div class="t" style="top:145px">Keittiön hana</div>
+  <div class="s" style="top:172px">auki · 12 min</div>
+  <div class="chip on" style="top:147px">AUKI</div>
+  <div class="t" style="top:216px">Liesi</div>
+  <div class="s" style="top:243px">levy 2 · 12 min</div>
+  <div class="chip on" style="top:216px">PÄÄLLÄ</div>
+  <div class="t" style="top:286px">Olohuoneen valot</div>
+  <div class="s" style="top:313px">pois · 2 h</div>
+  <div class="chip" style="top:284px">POIS</div>
+  <div class="t" style="top:357px">Kahvinkeitin</div>
+  <div class="s" style="top:383px">pois · 40 min</div>
+  <div class="chip" style="top:352px">POIS</div>
+</div>
