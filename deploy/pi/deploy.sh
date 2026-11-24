@@ -21,5 +21,6 @@ git archive --format=tar HEAD -- services packages deploy pyproject.toml uv.lock
 
 ssh "$PI_HOST" "cd '$PI_DIR' && ([ -f .env ] || cp .env.example .env) \
   && ~/.local/bin/uv sync --frozen --no-dev --package kayttis-pi \
-  && sudo systemctl restart kayttis-pi && sleep 15 && systemctl is-active kayttis-pi \
-  && curl -fsS localhost:8000/api/health && echo"
+  && sudo systemctl restart kayttis-pi \
+  && for i in \$(seq 1 60); do curl -fsS -o /dev/null localhost:8000/api/health && break; sleep 1; done; \
+  systemctl is-active kayttis-pi && curl -fsS localhost:8000/api/health && echo"
