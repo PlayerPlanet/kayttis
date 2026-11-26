@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Hanax – juliste 1: ongelma</title>
+<script src="../../src/theme.js"></script>
+<link rel="stylesheet" href="../../src/hanax-print.css">
+<link rel="stylesheet" href="../../src/poster.css">
+<link rel="stylesheet" href="final.css">
+<style>
+  .hero { left: 0; top: 30mm; width: 420mm; height: 204mm; }
+  .hero > img { --iw: 380mm; --ix: 74mm; --iy: -26mm; --m: 34% 40% at 51% 50%; }
+  :root[data-theme="light"] .hero { left: 16mm; width: 388mm; height: 176mm; }
+  :root[data-theme="light"] .hero > img { --ix: 58mm; }
+  .claim { top: 214mm; }
+  .tag { left: 16mm; top: 432mm; font-size: 15mm; }
+  .band-rule { left: 16mm; right: 16mm; top: 466mm; }
+  .stat { left: 16mm; top: 482mm; width: 160mm; }
+  .stat b { display: block; font-weight: 600; font-size: 32mm; letter-spacing: -0.045em; line-height: 0.95; }
+  .stat p { font-size: 7.6mm; line-height: 1.25; letter-spacing: -0.015em; margin-top: 3mm; }
+  .probs { left: 196mm; right: 16mm; top: 484mm; display: grid; gap: 7mm; }
+  .probs .k { margin-bottom: 2mm; font-size: 3.8mm; }
+  .probs b { font-weight: 600; }
+  .probs p { font-size: 7.2mm; line-height: 1.22; letter-spacing: -0.015em; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="falloff" style="left:110mm; top:16mm; width:300mm; height:240mm"></div>
+  <div class="grid" style="--cell:20mm; --gx:16mm; --gy:6mm; --gmask: 60% 46% at 64% 22%"></div>
+  <div class="plate hero"><img src="../../src/img/r/hx01-hero.jpg" alt="Hanax-sensori, merkkivalo palaa"></div>
+
+  <header class="hdr">
+    <span><img class="logo-d" src="../../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../../brand/logo/hanax-lockup.svg" alt="Hanax"></span>
+  </header>
+
+  <h1 class="abs h claim"><span class="a">Unohtuiko<br>kodinkone<br>päälle?</span><br>Hanax tietää.</h1>
+  <p class="abs h2 tag">Huoleton koti.</p>
+
+  <div class="hair x band-rule"></div>
+  <div class="abs stat">
+    <b>Yli puolet</b>
+    <p>haastatelluista unohtaa kodinkoneen tai tiskikoneen hanan päälle kotoa lähtiessään.</p>
+  </div>
+  <div class="abs probs">
+    <p><b>Matkalla töihin.</b> Jäikö kahvinkeitin päälle? Ainoa tapa tarkistaa on kääntyä takaisin.</p>
+    <p><b>Lähtö mökiltä.</b> Talo jää tyhjäksi viikoiksi. Päälle jäänyt liesi tai auki jäänyt tiskikoneen hana huomataan vasta seuraavalla kerralla.</p>
+    <p><b>Iso talo, monta laitetta.</b> Tarkistuskierros keittiöstä kodinhoitohuoneeseen vie aikaa joka aamu.</p>
+  </div>
+</div>
+</body>
+</html>

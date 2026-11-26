@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Hanax – juliste 2: ratkaisu</title>
+<script src="../../src/theme.js"></script>
+<link rel="stylesheet" href="../../src/hanax-print.css">
+<link rel="stylesheet" href="../../src/poster.css">
+<link rel="stylesheet" href="final.css">
+<style>
+  .hero { left: 0; top: 96mm; width: 420mm; height: 236mm; }
+  .hero > img { --iw: 420mm; --ix: 10mm; --iy: 6mm; --m: 46% 44% at 44% 46%; }
+  :root[data-theme="light"] .hero { left: 16mm; width: 388mm; top: 146mm; height: 140mm; }
+  :root[data-theme="light"] .hero > img { --ix: -6mm; --iy: -32mm; }
+  .cap1 { left: 16mm; top: 290mm; width: 300mm; }
+  .cap1 b, .cap2 b { display: block; font-weight: 600; font-size: 12mm; letter-spacing: -0.03em; line-height: 1.05; margin-top: 0; }
+  .cap1 p, .cap2 p { font-size: 7.4mm; line-height: 1.25; letter-spacing: -0.015em; color: var(--muted); margin-top: 2.5mm; }
+  .phone { left: 16mm; top: 346mm; width: 120mm; height: 230mm; }
+  .phone h4 { font-size: 12mm; } .phone .sum { font-size: 5.2mm; margin-top: 3.5mm; }
+  .phone li { font-size: 6.4mm; padding: 6.8mm 0; } .phone li .st { font-size: 4.6mm; }
+  .cap2 { left: 160mm; top: 362mm; width: 218mm; }
+  .qrs { left: 160mm; bottom: 18mm; }
+  .qrs .qr { font-size: 52mm; }
+  .qrs b { display: block; font-weight: 600; font-size: 9mm; letter-spacing: -0.03em; line-height: 1; }
+  .qrs .spec { font-size: 3.6mm; color: var(--muted); display: block; margin-top: 2.5mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="falloff" style="left:30mm; top:140mm; width:360mm; height:180mm"></div>
+  <div class="grid" style="--cell:20mm; --gx:16mm; --gy:6mm; --gmask: 64% 30% at 50% 36%"></div>
+
+  <header class="hdr">
+    <span><img class="logo-d" src="../../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../../brand/logo/hanax-lockup.svg" alt="Hanax"></span>
+  </header>
+
+  <div class="plate hero"><img src="img/hx01-exploded-sensori.jpg" alt="Hanax-sensorin räjäytyskuva"></div>
+  <h1 class="abs h claim">Sensori katsoo.<br><span class="a">Puhelin kertoo.</span></h1>
+
+  <div class="abs cap1">
+    <b>Pieni sensori seinällä.</b>
+    <p>Katsoo kodinkonetta ja tunnistaa, onko se päällä. Sopii mihin tahansa laitteeseen, joten vanhaa liettä tai tiskikoneen hanaa ei tarvitse vaihtaa.</p>
+  </div>
+
+  <div class="phone">
+    <div class="scr">
+      <span class="notch"></span>
+      <h4>Koti</h4>
+      <div class="sum"><span class="st on"><i></i>1 päällä</span></div>
+      <ul>
+        <li>Tiskikoneen hana<span class="st off"><i></i>Pois</span></li>
+        <li>Liesi<span class="st on"><i></i>Päällä</span></li>
+        <li>Kahvinkeitin<span class="st off"><i></i>Pois</span></li>
+        <li>Vedenkeitin<span class="st off"><i></i>Pois</span></li>
+        <li>Pesukoneen hana<span class="st off"><i></i>Pois</span></li>
+        <li>Olohuoneen valot<span class="st off"><i></i>Pois</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="abs cap2">
+    <b>Kaikki laitteet yhdessä listassa.</b>
+    <p>Päällä vai pois, missä ikinä oletkin. Myös silloin, kun olet jo lähtenyt kotoa.</p>
+  </div>
+
+  <div class="abs qrs qrblock">
+    <div class="qr"><img src="../../src/img/qr-app-ink.svg" alt="QR-koodi: kayttis.kiirikki.fi/app"></div>
+    <div><b>Kokeile sovellusta</b><span class="spec">kayttis.kiirikki.fi/app</span></div>
+  </div>
+</div>
+</body>
+</html>
