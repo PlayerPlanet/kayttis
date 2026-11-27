@@ -1,0 +1,26 @@
+/* Final poster set 01-05: shared pieces on top of ../../src/hanax-print.css + poster.css */
+.claim { left: 16mm; top: 40mm; font-size: 54mm; }
+.claim .a { color: var(--muted); }
+.hdr .spec { font-size: 3.6mm; }
+.k { font-size: 3.4mm; color: var(--muted); display: block; }
+
+/* real photo plate: no mask, hairline frame */
+.photo { position: absolute; overflow: hidden; background: var(--plate); border-radius: var(--plate-r); }
+.photo > img { width: 100%; height: 100%; object-fit: cover; }
+.photo .tag { position: absolute; left: 6mm; bottom: 6mm; color: #fff; font-family: var(--mono); font-weight: 500;
+  text-transform: uppercase; letter-spacing: 0.08em; font-size: 4.2mm; background: rgba(5,6,7,0.72); padding: 2.2mm 3.4mm; }
+/* sensor zoom: circle lens + ring on the sensor + leader */
+.lens { position: absolute; border-radius: 50%; overflow: hidden; box-shadow: 0 0 0 0.5mm #e8ecef, 0 2mm 8mm rgba(0,0,0,0.5); }
+.lens img { width: 100%; height: 100%; }
+.ring { position: absolute; border-radius: 50%; border: 0.5mm solid #e8ecef; transform: translate(-50%, -50%); }
+.leader { position: absolute; height: 0.4mm; background: #e8ecef; transform-origin: 0 50%; }
+
+/* phone mock: plain list of appliances and their state */
+.phone { position: absolute; border: 1px solid var(--line-strong); border-radius: 13mm; background: var(--surface); padding: 7mm; }
+.phone .scr { border-radius: 7mm; background: var(--bg); height: 100%; padding: 11mm 7mm 7mm; position: relative; }
+.phone .notch { position: absolute; left: 50%; top: 3.5mm; width: 22mm; height: 4mm; border-radius: 2mm; background: var(--surface-2); transform: translateX(-50%); }
+.phone h4 { font-weight: 600; font-size: 9mm; letter-spacing: -0.03em; margin: 0; }
+.phone .sum { margin-top: 3mm; font-size: 4.2mm; }
+.phone ul { margin-top: 8mm; border-top: 1px solid var(--rule); }
+.phone li { display: flex; justify-content: space-between; align-items: center; padding: 5.2mm 0; border-bottom: 1px solid var(--rule); font-size: 5.4mm; letter-spacing: -0.01em; }
+.phone li .st { font-size: 3.8mm; }

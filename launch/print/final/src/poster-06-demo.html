@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Hanax – juliste 6: demo</title>
+<script src="../../src/theme.js"></script>
+<link rel="stylesheet" href="../../src/hanax-print.css">
+<link rel="stylesheet" href="../../src/poster.css">
+<link rel="stylesheet" href="final.css">
+<style>
+  .lede { left: 16mm; top: 150mm; width: 388mm; font-size: 9.4mm; line-height: 1.25; letter-spacing: -0.02em; color: var(--muted); }
+  /* flow: sensors -> Pi -> phone */
+  .flow { position: absolute; left: 0; top: 0; width: 420mm; height: 594mm; overflow: visible; }
+  .flow .ln { stroke: var(--ink); stroke-width: 0.6; fill: none; }
+  .flow .dot { fill: var(--ink); }
+  .fn { position: absolute; top: 204mm; width: 120mm; }
+  .fn b { display: block; font-weight: 600; font-size: 9mm; letter-spacing: -0.03em; line-height: 1.05; }
+  .fn p { font-size: 6.4mm; color: var(--muted); margin-top: 1.6mm; letter-spacing: -0.01em; line-height: 1.25; }
+  .rows { left: 16mm; width: 236mm; top: 262mm; border-top: 1px solid var(--line-strong); }
+  .rows li { padding: 9mm 0; border-bottom: 1px solid var(--rule); }
+  .rows b { display: block; font-weight: 600; font-size: 11.4mm; letter-spacing: -0.03em; line-height: 1.05; }
+  .rows p { font-size: 7.6mm; color: var(--muted); margin-top: 1.8mm; letter-spacing: -0.01em; line-height: 1.25; }
+  .phone { left: 272mm; top: 262mm; width: 132mm; height: 258mm; }
+  .sensor { left: 16mm; top: 394mm; width: 236mm; height: 130mm; }
+  .sensor > img { --iw: 210mm; --ix: 13mm; --iy: -6mm; --m: 40% 46% at 50% 50%; }
+  .phone h4 { font-size: 11mm; } .phone .sum { font-size: 5mm; }
+  .phone li { font-size: 6.8mm; padding: 14mm 0; } .phone li .st { font-size: 4.6mm; }
+  .phone li .v { font-family: var(--mono); font-size: 4.6mm; letter-spacing: 0.08em; color: var(--muted); }
+  .qrs { left: 16mm; bottom: 20mm; }
+  .qrs .qr { font-size: 46mm; }
+  .qrs b { display: block; font-weight: 600; font-size: 9mm; letter-spacing: -0.03em; line-height: 1; }
+  .qrs .spec { font-size: 3.6mm; color: var(--muted); display: block; margin-top: 2.5mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="grid" style="--cell:20mm; --gx:16mm; --gy:6mm; --gmask: 60% 20% at 50% 10%"></div>
+  <header class="hdr">
+    <span><img class="logo-d" src="../../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../../brand/logo/hanax-lockup.svg" alt="Hanax"></span>
+  </header>
+
+  <h1 class="abs h claim">Toimii nyt.<br><span class="a">Kiltahuoneella.</span></h1>
+  <p class="abs lede">Tekniikka on valmis ja toimii oikeasti. Demo pyörii killan keittiössä, ja näet samat lukemat puhelimestasi juuri nyt.</p>
+
+  <svg class="flow" viewBox="0 0 420 594" aria-hidden="true">
+    <path d="M18 196H404" class="ln"/>
+    <circle cx="18" cy="196" r="3" class="dot"/><circle cx="153" cy="196" r="3" class="dot"/><circle cx="288" cy="196" r="3" class="dot"/>
+    <path d="M398 192l6 4-6 4" class="ln"/>
+  </svg>
+  <div class="fn" style="left:16mm"><b>Sensorit keittiössä</b><p>Tiskikoneen hana, kahvinkeittimet ja valot.</p></div>
+  <div class="fn" style="left:151mm"><b>Raspberry Pi</b><p>Lukee kaiken paikallisesti kiltahuoneella.</p></div>
+  <div class="fn" style="left:286mm"><b>Sovellus puhelimessa</b><p>Tila päivittyy livenä.</p></div>
+
+  <ol class="abs rows">
+    <li><b>Tiskikoneen hana</b><p>Sensori lukee venttiilin asennon: auki vai kiinni.</p></li>
+    <li><b>Kaksi kahvinkeitintä</b><p>Pois, päällä vai keittää.</p></li>
+    <li><b>Valot</b><p>Päällä vai pois.</p></li>
+  </ol>
+
+  <div class="plate sensor"><img src="../../src/img/r/hx01-hero.jpg" alt="Hanax-sensori"></div>
+
+  <div class="phone">
+    <div class="scr">
+      <span class="notch"></span>
+      <h4>Kiltahuone</h4>
+      <div class="sum"><span class="st on"><i></i>2 päällä</span></div>
+      <ul>
+        <li>Tiskikoneen hana<span class="st off"><i></i>Kiinni</span></li>
+        <li>Vasen kahvinkeitin<span class="st on"><i></i>Keittää</span></li>
+        <li>Oikea kahvinkeitin<span class="st off"><i></i>Pois</span></li>
+        <li>Valot<span class="st on"><i></i>Päällä</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="abs qrs qrblock">
+    <div class="qr"><img src="../../src/img/qr-site-ink.svg" alt="QR-koodi: kayttis.kiirikki.fi"></div>
+    <div><b>Katso livenä</b><span class="spec">kayttis.kiirikki.fi</span></div>
+  </div>
+</div>
+</body>
+</html>

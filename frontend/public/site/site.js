@@ -1,4 +1,4 @@
-// Hanax landing page v2: hero reveal video, scroll reveals, film dialog, proof-video slot,
+// Hanax landing page v2: hero reveal video (if present), scroll reveals, film dialog, proof-video slot,
 // theme toggle, and the "Sammuta kaikki" panel demo. No dependencies; no requests
 // beyond this site's own static files (never /api: it needs the demo login).
 (function () {
@@ -147,6 +147,7 @@
   if (!panel) return;
   ticker(panel);
   var knob = $("#all-off");
+  if (!knob) return; // phone view: monitoring only, no knob
   var resetBtn = $("#reset");
   var hint = $("#knob-hint");
   var n = $(".sum-n", panel);

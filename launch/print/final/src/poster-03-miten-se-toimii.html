@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<title>Hanax – juliste 3: miten se toimii</title>
+<script src="../../src/theme.js"></script>
+<link rel="stylesheet" href="../../src/hanax-print.css">
+<link rel="stylesheet" href="../../src/poster.css">
+<link rel="stylesheet" href="final.css">
+<style>
+  .steps { left: 236mm; right: 16mm; top: 46mm; display: grid; gap: 8mm; }
+  .steps b { display: block; font-weight: 600; font-size: 12mm; letter-spacing: -0.03em; line-height: 1.05; margin-top: 1.2mm; }
+  .steps .k { font-size: 3.8mm; }
+  .steps p { font-size: 6.4mm; color: var(--muted); margin-top: 1.4mm; letter-spacing: -0.01em; }
+  .why { left: 16mm; right: 16mm; top: 562mm; font-size: 6.4mm; color: var(--muted); }
+  .why b { color: var(--ink); font-weight: 600; }
+  .p-sink   { left: 16mm;  top: 156mm; width: 388mm; height: 200mm; }
+  .p-stove  { left: 16mm;  top: 364mm; width: 190mm; height: 190mm; }
+  .p-coffee { left: 214mm; top: 364mm; width: 190mm; height: 190mm; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="grid" style="--cell:20mm; --gx:16mm; --gy:6mm; --gmask: 60% 20% at 50% 10%"></div>
+
+  <header class="hdr">
+    <span><img class="logo-d" src="../../../../brand/logo/hanax-lockup-on-dark.svg" alt="Hanax"><img class="logo-l" src="../../../../brand/logo/hanax-lockup.svg" alt="Hanax"></span>
+  </header>
+
+  <h1 class="abs h claim">Miten se<br>toimii.</h1>
+  <ol class="abs steps">
+    <li><b>1. Kiinnitä.</b><p>Tarra, magneetti tai pidike. Ei putkimiestä.</p></li>
+    <li><b>2. Kalibroi kerran.</b><p>Sen jälkeen sensori hoitaa loput.</p></li>
+    <li><b>3. Seuraa puhelimesta.</b><p>Missä ikinä oletkin.</p></li>
+  </ol>
+
+  <!-- real installs; lens = sensor close-up from the same photo -->
+  <figure class="photo p-sink"><img src="img/sink-wide.jpg" alt="Hanax-sensori keittiön seinällä tiskikoneen hanan vieressä"><span class="tag">Tiskikoneen hana</span></figure>
+  <figure class="photo p-stove"><img src="img/stove.jpg" alt="Hanax-sensori liesituulettimen alla"><span class="tag">Liesi</span></figure>
+  <figure class="photo p-coffee"><img src="img/coffee.jpg" alt="Hanax-sensori yläkaapin alla kahvinkeittimen yllä"><span class="tag">Kahvinkeitin</span></figure>
+
+  <span class="ring" style="left:306.2mm; top:289.8mm; width:12mm; height:12mm"></span>
+  <span class="leader" style="left:300.7mm; top:287.4mm; width:132.3mm; transform:rotate(203.46deg)"></span>
+  <div class="lens" style="left:118mm; top:190mm; width:64mm; height:64mm"><img src="img/zoom-sink.jpg" alt=""></div>
+
+  <span class="ring" style="left:50.4mm; top:397.3mm; width:10mm; height:10mm"></span>
+  <span class="leader" style="left:54.8mm; top:399.7mm; width:60.3mm; transform:rotate(28.2deg)"></span>
+  <div class="lens" style="left:105mm; top:415mm; width:50mm; height:50mm"><img src="img/zoom-stove.jpg" alt=""></div>
+
+  <span class="ring" style="left:291mm; top:390.6mm; width:10mm; height:10mm"></span>
+  <span class="leader" style="left:295.3mm; top:393.1mm; width:49.5mm; transform:rotate(29.7deg)"></span>
+  <div class="lens" style="left:335mm; top:405mm; width:50mm; height:50mm"><img src="img/zoom-coffee.jpg" alt=""></div>
+</div>
+</body>
+</html>

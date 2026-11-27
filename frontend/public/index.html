@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hanax – Tavallinen hana. Hanax tietää, onko se auki.</title>
-  <meta name="description" content="Tavallinen hana. Hanax tietää, onko se auki. Eteisen paneeli ja puhelin näyttävät, jäikö hana, liesi tai valot päälle. Prototyyppi lukee jo oikeita laitteita killan keittiössä. Aalto-yliopiston Käyttäjälähtöinen tuotekehitysprojekti -kurssin ryhmän 1 tuotekonsepti.">
+  <title>Hanax – Unohtuiko kodinkone päälle? Hanax tietää.</title>
+  <meta name="description" content="Unohtuiko kodinkone päälle? Hanax tietää. Pieni sensori seuraa kodinkoneitasi, ja puhelin näyttää, jäikö liesi, kahvinkeitin tai tiskikoneen hana päälle. Prototyyppi lukee jo oikeita laitteita killan keittiössä. Aalto-yliopiston Käyttäjälähtöinen tuotekehitysprojekti -kurssin ryhmän 1 tuotekonsepti.">
   <meta name="theme-color" content="#0a0c0e">
   <meta name="color-scheme" content="dark light">
   <link rel="canonical" href="https://kayttis.kiirikki.fi/">
@@ -15,14 +15,14 @@
   <meta property="og:site_name" content="Hanax">
   <meta property="og:url" content="https://kayttis.kiirikki.fi/">
   <meta property="og:title" content="Tavallinen hana. Hanax tietää, onko se auki.">
-  <meta property="og:description" content="Eteisen paneeli ja puhelin näyttävät, jäikö hana, liesi tai valot päälle. Prototyyppi lukee jo oikeita laitteita killan keittiössä. Katso livenä.">
+  <meta property="og:description" content="Pieni sensori seuraa kodinkoneitasi, ja puhelin näyttää, jäikö liesi, kahvinkeitin tai tiskikoneen hana päälle. Prototyyppi lukee jo oikeita laitteita killan keittiössä. Katso livenä.">
   <meta property="og:image" content="https://kayttis.kiirikki.fi/media/og-1200x630.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Hanax-paneelin ja -anturin konseptimallit tummaa taustaa vasten, nupin ympärillä palaa oranssi valorengas.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tavallinen hana. Hanax tietää, onko se auki.">
-  <meta name="twitter:description" content="Eteisen paneeli ja puhelin näyttävät, jäikö hana, liesi tai valot päälle. Prototyyppi lukee jo oikeita laitteita killan keittiössä.">
+  <meta name="twitter:description" content="Pieni sensori seuraa kodinkoneitasi, ja puhelin näyttää, jäikö liesi, kahvinkeitin tai tiskikoneen hana päälle. Prototyyppi lukee jo oikeita laitteita killan keittiössä.">
   <meta name="twitter:image" content="https://kayttis.kiirikki.fi/media/og-1200x630.png">
 
   <link rel="preload" href="/brand/fonts/Geist-VF.woff2" as="font" type="font/woff2" crossorigin>
@@ -64,23 +64,21 @@
     <section class="hero stage" id="top" aria-labelledby="hero-title">
       <div class="hero-media" id="hero-media">
         <picture class="hero-still">
-          <source media="(max-width: 759px)" srcset="/media/renders/hxp-reveal-end-800.webp" type="image/webp">
-          <source srcset="/media/renders/hxp-reveal-end.webp" type="image/webp">
-          <img src="/media/renders/hxp-reveal-end.jpg" width="1600" height="900" fetchpriority="high" decoding="async"
-               alt="HX-P-seinäpaneelin konseptimalli tummaa seinää vasten. Näytöllä lukee 2 PÄÄLLÄ: keittiön hana ja liesi. Titaanisen nupin ympärillä palaa oranssi valorengas.">
+          <source media="(max-width: 759px)" srcset="/media/renders/hx01-hero-800.webp" type="image/webp">
+          <source srcset="/media/renders/hx01-hero.webp" type="image/webp">
+          <img src="/media/renders/hx01-hero.jpg" width="1600" height="1067" fetchpriority="high" decoding="async"
+               alt="HX-01-sensorin konseptimalli tummaa taustaa vasten: pieni neliönmuotoinen sensori, jonka kulmassa palaa oranssi merkkivalo.">
         </picture>
-        <video class="hero-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"
-               poster="/media/renders/hxp-reveal-start.webp" data-src="/media/hxp-reveal.mp4" width="1920" height="1080"></video>
         <span class="hero-sweep" aria-hidden="true"></span>
       </div>
 
       <div class="wrap hero-in">
         <p class="spec hero-kicker"><span>Aalto-yliopisto</span><span class="sep" aria-hidden="true"></span><span>Käyttäjälähtöinen tuotekehitysprojekti 2026 · Ryhmä 1</span></p>
         <h1 class="hero-title" id="hero-title">
-          <span class="ht-1">Tavallinen hana.</span>
-          <span class="ht-2">Hanax tietää, onko se auki.</span>
+          <span class="ht-1">Unohtuiko kodinkone päälle?</span>
+          <span class="ht-2">Hanax tietää.</span>
         </h1>
-        <p class="lead hero-lead">Eteisen paneeli ja puhelin näyttävät, jäikö hana, liesi tai valot päälle. Yksi nuppi: kaikki pois. Lähde kotoa huoletta.</p>
+        <p class="lead hero-lead">Pieni sensori seuraa kodinkoneitasi, ja puhelin kertoo, jäikö liesi, kahvinkeitin tai tiskikoneen hana päälle. Missä ikinä oletkin.</p>
         <div class="actions hero-actions">
           <a class="btn btn-primary" href="#livena">Katso livenä
             <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5v14m0 0l-5.5-5.5M12 19l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -93,7 +91,7 @@
       </div>
 
       <div class="wrap hero-meta">
-        <span class="spec">Konseptimalli · HX-P Paneeli · 168 × 104 × 12 mm</span>
+        <span class="spec">Konseptimalli · HX-01 Sensori · 48 × 48 × 17 mm</span>
         <span class="spec hide-s">Prototyyppi · killan keittiö</span>
         <span class="spec scroll-cue" aria-hidden="true">Vieritä</span>
       </div>
@@ -103,12 +101,12 @@
       <div class="wrap">
         <div class="sec-head rv"><p class="spec"><span class="idx">01</span>Ongelma</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">Miksi Hanax</p></div>
         <div class="split">
-          <h2 class="display-l rv" id="ongelma-title">Kaikki alkoi hanasta, joka jäi auki.</h2>
+          <h2 class="display-l rv" id="ongelma-title">Huoli herää vasta, kun olet jo lähtenyt.</h2>
           <ol class="ledger rv">
-            <li class="is-lit"><span class="spec ledger-k"><span class="idx-dot" aria-hidden="true"></span>01 · Vesi</span><p>Astianpesukoneen hana jää auki. Kun letku pettää, vettä tulee niin kauan kuin kukaan ei ole kotona.</p></li>
-            <li><span class="spec ledger-k">02 · Vakuutus</span><p>Vesivahinko on kallis, eikä kotivakuutus aina korvaa sitä, jos syy on unohdus.</p></li>
-            <li><span class="spec ledger-k">03 · Lämpö</span><p>Liesi, uuni ja kahvinkeitin jäävät harvoin päälle. Mutta kun jäävät, ne ovat kodin kriittisimmät laitteet.</p></li>
-            <li><span class="spec ledger-k">04 · Kiire</span><p>Bussi lähtee neljän minuutin päästä. Koko taloa ei ehdi kiertää tarkistamassa.</p></li>
+            <li class="is-lit"><span class="spec ledger-k"><span class="idx-dot" aria-hidden="true"></span>01 · Yli puolet</span><p>Yli puolet haastatelluista unohtaa kodinkoneen tai tiskikoneen hanan päälle kotoa lähtiessään.</p></li>
+            <li><span class="spec ledger-k">02 · Matkalla töihin</span><p>Jäikö kahvinkeitin päälle? Ainoa tapa tarkistaa on kääntyä takaisin.</p></li>
+            <li><span class="spec ledger-k">03 · Lähtö mökiltä</span><p>Talo jää tyhjäksi viikoiksi. Päälle jäänyt liesi tai auki jäänyt tiskikoneen hana huomataan vasta seuraavalla kerralla.</p></li>
+            <li><span class="spec ledger-k">04 · Iso talo</span><p>Monta laitetta, monta huonetta. Tarkistuskierros keittiöstä kodinhoitohuoneeseen vie aikaa joka aamu.</p></li>
           </ol>
         </div>
       </div>
@@ -116,15 +114,15 @@
 
     <section class="sec stage tech" id="tuote" aria-labelledby="tuote-title">
       <div class="wrap">
-        <div class="sec-head rv"><p class="spec"><span class="idx">02</span>Tuote</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">Kaksi laitetta · yksi kysymys</p></div>
-        <h2 class="display-l center rv" id="tuote-title">Anturi lukee. Paneeli kertoo.</h2>
+        <div class="sec-head rv"><p class="spec"><span class="idx">02</span>Tuote</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">Sensori · puhelin</p></div>
+        <h2 class="display-l center rv" id="tuote-title">Sensori katsoo. Puhelin kertoo.</h2>
         <figure class="plate plate-wide rv">
-          <div class="plate-tags" aria-hidden="true"><span class="tag">Konseptimalli</span><span class="spec muted">HX-P + HX-01 · mittasuhteet oikein</span></div>
+          <div class="plate-tags" aria-hidden="true"><span class="tag">Oikea keittiö</span><span class="spec muted">HX-01 · tiskikoneen hanan vieressä</span></div>
           <picture>
-            <source media="(max-width: 759px)" srcset="/media/renders/family-800.webp" type="image/webp">
-            <source srcset="/media/renders/family.webp" type="image/webp">
-            <img src="/media/renders/family.jpg" width="1600" height="1067" loading="lazy" decoding="async"
-                 alt="Konseptimallit rinnakkain: HX-P-paneeli, jonka näytöllä lukee 2 PÄÄLLÄ ja nupin ympärillä palaa oranssi rengas, sekä pieni neliönmuotoinen HX-01-anturi, jonka kulmassa palaa merkkivalo.">
+            <source media="(max-width: 759px)" srcset="/media/photos/sink-800.webp" type="image/webp">
+            <source srcset="/media/photos/sink.webp" type="image/webp">
+            <img src="/media/photos/sink.jpg" width="1600" height="1067" loading="lazy" decoding="async"
+                 alt="Valokuva keittiöstä: pieni musta Hanax-sensori on kiinnitetty laattaseinään tiskikoneen hanan viereen, kulmassa palaa oranssi merkkivalo.">
           </picture>
         </figure>
 
@@ -135,19 +133,19 @@
               <source media="(max-width: 759px)" srcset="/media/renders/hx01-front-callouts-800.webp" type="image/webp">
               <source srcset="/media/renders/hx01-front-callouts.webp" type="image/webp">
               <img src="/media/renders/hx01-front-callouts.jpg" width="1600" height="1067" loading="lazy" decoding="async"
-                   alt="HX-01-anturin konseptimalli suoraan edestä mittaviivoin: leveys 48 mm, kameralinssi Ø 9 mm keskellä, oranssi merkkivalo Ø 3 mm oikeassa yläkulmassa.">
+                   alt="HX-01-sensorin konseptimalli suoraan edestä mittaviivoin: leveys 48 mm, linssi Ø 9 mm keskellä, oranssi merkkivalo Ø 3 mm oikeassa yläkulmassa.">
             </picture>
           </figure>
           <div class="object-copy">
-            <p class="spec muted">HX-01 · Anturi</p>
-            <h3 class="heading" id="hx01-title">Kiinnittyy hanaan, jonka sinulla jo on.</h3>
-            <p>Pieni kamera katsoo mekaanisen venttiilin asentoa ja kertoo, onko hana auki. Sama anturi voi lukea lieden tai pistorasian. Ei putkitöitä, ei uutta hanaa.</p>
+            <p class="spec muted">HX-01 · Sensori</p>
+            <h3 class="heading" id="hx01-title">Kiinnittyy laitteisiin, jotka sinulla jo on.</h3>
+            <p>Pieni sensori katsoo kodinkonetta ja tunnistaa, onko se päällä. Sama sensori lukee lieden, kahvinkeittimen, valot tai tiskikoneen hanan. Vanhaa laitetta ei tarvitse vaihtaa, eikä putki- tai sähkömiestä tarvita.</p>
             <dl class="specs">
               <div><dt>Mitat</dt><dd>48 × 48 × 17 mm</dd></div>
-              <div><dt>Kamera</dt><dd>Ø 9 mm</dd></div>
+              <div><dt>Sensori</dt><dd>Ø 9 mm</dd></div>
               <div><dt>Moduuli</dt><dd>ESP32-luokka</dd></div>
-              <div><dt>Kiinnitys</dt><dd>magneetti + pidike</dd></div>
-              <div><dt>Etäisyys</dt><dd>5–30 cm venttiiliin</dd></div>
+              <div><dt>Kiinnitys</dt><dd>tarra, magneetti tai pidike</dd></div>
+              <div><dt>Etäisyys</dt><dd>5–30 cm laitteeseen</dd></div>
             </dl>
             <figure class="loop">
               <video class="loop-video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1"
@@ -157,26 +155,33 @@
           </div>
         </article>
 
-        <article class="object object-flip rv" aria-labelledby="hxp-title">
-          <figure class="plate">
-            <div class="plate-tags" aria-hidden="true"><span class="tag">Konseptimalli</span><span class="spec muted">HX-P · nuppi Ø 28 mm</span></div>
-            <picture>
-              <source media="(max-width: 759px)" srcset="/media/renders/hxp-knob-macro-800.webp" type="image/webp">
-              <source srcset="/media/renders/hxp-knob-macro.webp" type="image/webp">
-              <img src="/media/renders/hxp-knob-macro.jpg" width="1600" height="1067" loading="lazy" decoding="async"
-                   alt="Lähikuva HX-P-paneelin konseptimallista: harjattu titaaninupi, jonka ympärillä palaa ohut oranssi valorengas. Vieressä näytön tilamerkinnät PÄÄLLÄ, PÄÄLLÄ, POIS ja POIS.">
-            </picture>
-          </figure>
+        <article class="object object-flip rv" aria-labelledby="app-title">
+          <div class="mock">
+            <div class="device phone" role="img" aria-label="Esimerkki Hanax-sovelluksesta puhelimessa: Koti, 1 päällä. Liesi päällä; tiskikoneen hana, kahvinkeitin ja olohuoneen valot pois.">
+              <div class="screen">
+                <div class="screen-head">
+                  <p class="sum-on"><span class="sum-dot" aria-hidden="true"></span><span class="sum-big">1 PÄÄLLÄ</span></p>
+                  <p class="spec muted screen-clock" aria-hidden="true">8.12</p>
+                </div>
+                <p class="spec muted screen-sub">Koti · kaikki laitteet</p>
+                <ul class="devs">
+                  <li class="dev" data-on="true"><span class="dev-name">Liesi<span class="fresh mono">tarkistettu 4 s sitten</span></span><span class="dev-state"><span class="chip chip-on"><span class="dot" aria-hidden="true"></span>PÄÄLLÄ</span></span></li>
+                  <li class="dev" data-on="false"><span class="dev-name">Tiskikoneen hana<span class="fresh mono">tarkistettu 12 s sitten</span></span><span class="dev-state"><span class="chip chip-off">POIS</span></span></li>
+                  <li class="dev" data-on="false"><span class="dev-name">Kahvinkeitin<span class="fresh mono">tarkistettu 7 s sitten</span></span><span class="dev-state"><span class="chip chip-off">POIS</span></span></li>
+                  <li class="dev" data-on="false"><span class="dev-name">Olohuoneen valot<span class="fresh mono">tarkistettu 9 s sitten</span></span><span class="dev-state"><span class="chip chip-off">POIS</span></span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
           <div class="object-copy">
-            <p class="spec muted">HX-P · Paneeli</p>
-            <h3 class="heading" id="hxp-title">Paina nuppia: kaikki pois.</h3>
-            <p>Eteisen seinällä, silmien korkeudella. Näet ovella yhdellä vilkaisulla, mikä on päällä. Valorengas palaa, kun jokin on päällä. Nuppi vain sammuttaa, se ei koskaan kytke mitään päälle.</p>
+            <p class="spec muted">Sovellus · puhelin</p>
+            <h3 class="heading" id="app-title">Kaikki laitteet yhdessä listassa.</h3>
+            <p>Päällä vai pois, missä ikinä oletkin. Myös silloin, kun olet jo lähtenyt kotoa. Ei pohjapiirrosta piirrettäväksi, ei ohjeita: yksi lista, jonka luet yhdellä vilkaisulla.</p>
             <dl class="specs">
-              <div><dt>Mitat</dt><dd>168 × 104 × 12 mm</dd></div>
-              <div><dt>Näyttö</dt><dd>6" matta</dd></div>
-              <div><dt>Nuppi</dt><dd>titaani · Ø 28 mm</dd></div>
-              <div><dt>Käännä</dt><dd>selaa laitteita</dd></div>
-              <div><dt>Paina</dt><dd>kaikki pois</dd></div>
+              <div><dt>Näkymä</dt><dd>yksi lista</dd></div>
+              <div><dt>Tila</dt><dd>päällä / pois / ei tietoa</dd></div>
+              <div><dt>Tuoreus</dt><dd>tarkistettu 12 s sitten</dd></div>
+              <div><dt>Ohjaus</dt><dd>vain seuranta</dd></div>
             </dl>
           </div>
         </article>
@@ -192,17 +197,17 @@
             <source media="(max-width: 759px)" srcset="/media/renders/hx01-exploded-800.webp" type="image/webp">
             <source srcset="/media/renders/hx01-exploded.webp" type="image/webp">
             <img src="/media/renders/hx01-exploded.jpg" width="1600" height="1067" loading="lazy" decoding="async"
-                 alt="HX-01-anturin konseptimalli räjäytyskuvana: etulasi merkkivaloineen, kameran linssirengas, ESP32-moduulin piirilevy, litteä akku ja alumiinikehys, jonka takana on magneetti.">
+                 alt="HX-01-sensorin konseptimalli räjäytyskuvana: etulasi merkkivaloineen, sensorin linssirengas, ESP32-moduulin piirilevy, litteä akku ja alumiinikehys, jonka takana on magneetti.">
           </picture>
         </figure>
         <div class="split split-tight">
           <h2 class="display-l rv" id="sisalla-title">Mitoitettu oikean moduulin ympärille.</h2>
           <div class="rv">
-            <p class="lead">Konsepti on mitoitettu oikean ESP32-CAM-moduulin ympärille, ja prototyypit on rakennettu oikeilla komponenteilla. Kotelo, lasi ja pidike ovat vielä konseptia.</p>
+            <p class="lead">Konsepti on mitoitettu oikean ESP32-moduulin ympärille, ja prototyypit on rakennettu oikeilla komponenteilla. Kotelo, lasi ja pidike ovat vielä konseptia.</p>
             <ol class="parts">
               <li><span class="spec">01</span><span>Etulasi</span><span class="muted">huurrettu musta lasi, merkkivalo Ø 3 mm</span></li>
-              <li><span class="spec">02</span><span>Kamera</span><span class="muted">linssi Ø 9 mm, titaanirengas</span></li>
-              <li><span class="spec">03</span><span>ESP32-moduuli</span><span class="muted">27 × 40,5 mm, kamera ja WLAN</span></li>
+              <li><span class="spec">02</span><span>Sensori</span><span class="muted">linssi Ø 9 mm, titaanirengas</span></li>
+              <li><span class="spec">03</span><span>ESP32-moduuli</span><span class="muted">27 × 40,5 mm, sensori ja WLAN</span></li>
               <li><span class="spec">04</span><span>Akku</span><span class="muted">USB-C-lataus alareunasta</span></li>
               <li><span class="spec">05</span><span>Magneetti</span><span class="muted">ja 3M-tarra, mukana pidike putkeen</span></li>
             </ol>
@@ -216,7 +221,7 @@
         <div class="sec-head rv"><p class="spec"><span class="idx">04</span>Todiste</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">Prototyyppi · ei renderöinti</p></div>
         <div class="split">
           <h2 class="display-l rv" id="livena-title">Livenä killan keittiöstä.</h2>
-          <p class="lead rv">Prototyyppi ei ole pelkkä kuva. Killan keittiössä Raspberry Pi lukee oikeita laitteita: kahden kahvinkeittimen pistorasiat, valot ja astianpesukoneen hanan.</p>
+          <p class="lead rv">Prototyyppi ei ole pelkkä kuva. Tekniikka on valmis ja toimii oikeasti. Killan keittiössä Raspberry Pi lukee oikeita laitteita: tiskikoneen hanan, kaksi kahvinkeitintä ja valot.</p>
         </div>
 
         <div class="instrument rv" role="group" aria-labelledby="inst-title">
@@ -229,10 +234,10 @@
             <div class="flow-col">
               <p class="spec muted flow-h">Lähteet</p>
               <ul class="nodes">
-                <li class="node"><span class="spec">SP-1</span><span>Kahvinkeitin 1</span><span class="muted">älypistorasia · teho</span></li>
-                <li class="node"><span class="spec">SP-2</span><span>Kahvinkeitin 2</span><span class="muted">älypistorasia · teho</span></li>
+                <li class="node"><span class="spec">KK-1</span><span>Kahvinkeitin 1</span><span class="muted">pois / päällä / keittää</span></li>
+                <li class="node"><span class="spec">KK-2</span><span>Kahvinkeitin 2</span><span class="muted">pois / päällä / keittää</span></li>
                 <li class="node"><span class="spec">VALO</span><span>Keittiön valot</span><span class="muted">päällä / pois</span></li>
-                <li class="node node-cam"><span class="spec">CAM</span><span>Astianpesukoneen hana</span><span class="muted">kamera + luokittelija · venttiilin asento</span></li>
+                <li class="node node-cam"><span class="spec">SENS</span><span>Tiskikoneen hana</span><span class="muted">sensori + luokittelija · venttiilin asento</span></li>
               </ul>
             </div>
             <div class="flow-link" aria-hidden="true"><span class="pulse"></span></div>
@@ -249,21 +254,21 @@
                   <li><span>Kahvinkeitin 1</span><span class="chip chip-off">POIS</span><span class="fresh mono"><span data-age="6">6</span> s sitten</span></li>
                   <li><span>Kahvinkeitin 2</span><span class="chip chip-on"><span class="dot" aria-hidden="true"></span>PÄÄLLÄ</span><span class="fresh mono"><span data-age="3">3</span> s sitten</span></li>
                   <li><span>Keittiön valot</span><span class="chip chip-off">POIS</span><span class="fresh mono"><span data-age="9">9</span> s sitten</span></li>
-                  <li><span>Astianpesukoneen hana</span><span class="chip chip-off">KIINNI</span><span class="fresh mono"><span data-age="12">12</span> s sitten</span></li>
+                  <li><span>Tiskikoneen hana</span><span class="chip chip-off">KIINNI</span><span class="fresh mono"><span data-age="12">12</span> s sitten</span></li>
                 </ul>
               </div>
             </div>
           </div>
 
           <ol class="timeline">
-            <li><span class="spec">01 · Lue</span><p>Pi kysyy pistorasioilta tehon ja valoilta tilan.</p></li>
-            <li><span class="spec">02 · Tunnista</span><p>Kamera kuvaa venttiilin. Malli päättelee: auki vai kiinni.</p></li>
+            <li><span class="spec">01 · Lue</span><p>Pi lukee kahvinkeittimien ja valojen tilan.</p></li>
+            <li><span class="spec">02 · Tunnista</span><p>Sensori katsoo venttiiliä. Malli päättelee: auki vai kiinni.</p></li>
             <li><span class="spec">03 · Aikaleimaa</span><p>Jokainen tila tallentuu aikaleiman kanssa paikallisesti.</p></li>
-            <li><span class="spec">04 · Näytä</span><p>Sovellus näyttää tilan ja tuoreuden: <span class="mono nowrap">KIINNI · 12 s sitten</span>.</p></li>
+            <li><span class="spec">04 · Näytä</span><p>Puhelin näyttää tilan ja tuoreuden: <span class="mono nowrap">KIINNI · 12 s sitten</span>.</p></li>
           </ol>
 
           <div class="inst-foot">
-            <p class="honest"><span class="spec">Rehellisesti</span> Lukemat ovat oikeita. Sammuttaminen sovelluksesta on prototyypissä simuloitu: emme halunneet katkaista killan kahvinkeittimiä kesken keiton.</p>
+            <p class="honest"><span class="spec">Rehellisesti</span> Lukemat ovat oikeita. Hanax vain seuraa: se ei kytke eikä sammuta killan laitteita.</p>
             <div class="actions">
               <a class="btn btn-ghost" href="/app/">Kokeile demoa <span class="mono">/app/</span></a>
               <p class="spec muted">Osastolla · vaatii demotunnukset</p>
@@ -284,16 +289,16 @@
     <section class="sec" id="miten" aria-labelledby="miten-title">
       <div class="wrap">
         <div class="sec-head rv"><p class="spec"><span class="idx">05</span>Miten toimii</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">Kolme vaihetta</p></div>
-        <h2 class="display-l rv" id="miten-title">Yksi vilkaisu ovella. Yksi nuppi.</h2>
+        <h2 class="display-l rv" id="miten-title">Kiinnitä, kalibroi, seuraa.</h2>
         <div class="how">
           <ol class="steps rv">
-            <li><span class="spec step-n">01</span><div><h3>Anturit laitteisiin, jotka sinulla jo on</h3><p>HX-01 kiinnittyy tavalliseen hanaan, lieteen tai pistorasiaan. Asennat itse, ilman putkimiestä. <span class="muted">(Suunniteltu.)</span></p></div></li>
-            <li><span class="spec step-n">02</span><div><h3>Paneeli ja puhelin kertovat tilan ja tuoreuden</h3><p>Eteisen paneeli ja sovellus näyttävät saman: mikä on päällä ja milloin se viimeksi tarkistettiin.</p></div></li>
-            <li><span class="spec step-n">03</span><div><h3>Paina nuppia: kaikki pois</h3><p>Lähtiessä painat nuppia. Se vain sammuttaa, se ei koskaan kytke mitään päälle.</p></div></li>
+            <li><span class="spec step-n">01</span><div><h3>Kiinnitä</h3><p>Tarra, magneetti tai pidike laitteen viereen: liesi, kahvinkeitin, valot tai tiskikoneen hana. Asennat itse, ilman putkimiestä.</p></div></li>
+            <li><span class="spec step-n">02</span><div><h3>Kalibroi kerran</h3><p>Näytä sensorille kerran, miltä päällä ja pois näyttävät. Sen jälkeen sensori hoitaa loput.</p></div></li>
+            <li><span class="spec step-n">03</span><div><h3>Seuraa puhelimesta</h3><p>Sovellus näyttää kaikki laitteet yhdessä listassa: mikä on päällä ja milloin se viimeksi tarkistettiin. Missä ikinä oletkin.</p></div></li>
           </ol>
 
           <div class="mock rv">
-            <div class="device stage" id="panel" data-state="on">
+            <div class="device phone stage" id="panel" data-state="on">
               <div class="screen">
                 <div class="screen-head">
                   <div class="summary" aria-live="polite">
@@ -302,25 +307,16 @@
                   </div>
                   <p class="spec muted screen-clock" aria-hidden="true">13.56</p>
                 </div>
-                <p class="spec muted screen-sub">Eteinen · kaikki laitteet · esimerkki</p>
+                <p class="spec muted screen-sub">Koti · kaikki laitteet · esimerkki</p>
                 <ul class="devs">
-                  <li class="dev" data-on="true"><span class="dev-name">Keittiön hana<span class="fresh mono">tarkistettu <span data-age="12">12</span> s sitten</span></span><span class="dev-state"><span class="chip chip-on"><span class="dot" aria-hidden="true"></span>PÄÄLLÄ</span><span class="chip chip-off">POIS</span></span></li>
+                  <li class="dev" data-on="true"><span class="dev-name">Tiskikoneen hana<span class="fresh mono">tarkistettu <span data-age="12">12</span> s sitten</span></span><span class="dev-state"><span class="chip chip-on"><span class="dot" aria-hidden="true"></span>AUKI</span><span class="chip chip-off">KIINNI</span></span></li>
                   <li class="dev" data-on="true"><span class="dev-name">Liesi<span class="fresh mono">tarkistettu <span data-age="4">4</span> s sitten</span></span><span class="dev-state"><span class="chip chip-on"><span class="dot" aria-hidden="true"></span>PÄÄLLÄ</span><span class="chip chip-off">POIS</span></span></li>
                   <li class="dev" data-on="false"><span class="dev-name">Olohuoneen valot<span class="fresh mono">tarkistettu <span data-age="8">8</span> s sitten</span></span><span class="dev-state"><span class="chip chip-off">POIS</span></span></li>
                   <li class="dev" data-on="false"><span class="dev-name">Kahvinkeitin<span class="fresh mono">tarkistettu <span data-age="31">31</span> s sitten</span></span><span class="dev-state"><span class="chip chip-off">POIS</span></span></li>
                 </ul>
               </div>
-              <div class="knob-col">
-                <button type="button" class="knob" id="all-off" aria-describedby="knob-hint" disabled>
-                  <span class="knob-ring" aria-hidden="true"></span>
-                  <span class="knob-cap" aria-hidden="true"></span>
-                  <span class="sr">Sammuta kaikki</span>
-                </button>
-                <p class="spec muted knob-hint" id="knob-hint">Paina: kaikki pois</p>
-                <button type="button" class="link-btn spec" id="reset" hidden>Palauta</button>
-              </div>
             </div>
-            <p class="mock-note muted">Kokeile: paina nuppia. Näkymä on esimerkki, se ei ohjaa oikeita laitteita.</p>
+            <p class="mock-note muted">Näkymä on esimerkki. Oikeat lukemat näet demossa.</p>
           </div>
         </div>
 
@@ -330,7 +326,7 @@
             <li><span class="chip chip-on chip-static"><span class="dot" aria-hidden="true"></span>PÄÄLLÄ</span><span>Oranssi kuin lieden merkkivalo, ja sana.</span></li>
             <li><span class="chip chip-off">POIS</span><span>Neutraali, ääriviiva.</span></li>
             <li><span class="chip chip-ok"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>KAIKKI KIINNI</span><span>Valintamerkki ja teksti. Ei väriä.</span></li>
-            <li><span class="chip chip-unknown">EI TIETOA · <span class="mono">5 min</span></span><span>Anturi ei vastaa. Hanax ei arvaa.</span></li>
+            <li><span class="chip chip-unknown">EI TIETOA · <span class="mono">5 min</span></span><span>Sensori ei vastaa. Hanax ei arvaa.</span></li>
           </ul>
         </div>
       </div>
@@ -338,13 +334,13 @@
 
     <section class="sec sec-alt" id="kayttajat" aria-labelledby="kayttajat-title">
       <div class="wrap">
-        <div class="sec-head rv"><p class="spec"><span class="idx">06</span>Käyttäjätestit</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">RT7 · RT8</p></div>
+        <div class="sec-head rv"><p class="spec"><span class="idx">06</span>Käyttäjätestit</p><span class="rule" aria-hidden="true"></span><p class="spec muted hide-s">Pilottitesti · käyttäjätesti</p></div>
         <div class="split">
           <h2 class="display-l rv" id="kayttajat-title">Tehty käyttäjien kanssa.</h2>
           <div class="rv">
-            <p><strong>RT7, pilottitesti.</strong> Rakensimme lasihuoneeseen ”omakotitalon”. Testaajat etsivät ja sammuttivat päälle jääneitä laitteita kiireessä, ja vasta sitten näkivät pahvisen ohjauspaneelin. Kukaan ei tarvinnut ohjeita.</p>
-            <p><strong>RT8, käyttäjätesti.</strong> Kahdeksan omassa kodissaan asuvaa aikuista kokeili puhelimella toimivaa prototyyppiä kasvokkain. Tilanteina esimerkiksi ”aamukiire” ja ”mökiltä lähtö”.</p>
-            <ul class="people" aria-label="RT8:n testihenkilöt">
+            <p><strong>Pilottitesti.</strong> Rakensimme lasihuoneeseen ”omakotitalon”. Testaajat etsivät ja sammuttivat päälle jääneitä laitteita kiireessä. Mukana oli pahvinen ohjauspaneeli eteisessä, mutta testaajat halusivat nähdä kodin tilan myös kotoa lähdettyään. Siksi Hanax on puhelimessa.</p>
+            <p><strong>Käyttäjätesti.</strong> Kahdeksan omassa kodissaan asuvaa 30–80-vuotiasta aikuista Helsingissä ja Oulussa kokeili puhelimella toimivaa prototyyppiä kasvokkain. Tilanteina esimerkiksi ”aamukiire” ja ”mökiltä lähtö”.</p>
+            <ul class="people" aria-label="Käyttäjätestin testihenkilöt">
               <li><span class="mono">48 v</span> IT-ala, omistusasunto</li>
               <li><span class="mono">76 v</span> eläkeläinen, lomakiinteistö</li>
               <li><span class="mono">n. 30 v</span> juuri ostettu omakotitalo</li>
@@ -359,12 +355,14 @@
 
         <div class="changes-head rv"><p class="spec muted">Mitä kuulimme</p><p class="spec muted hide-s">Mitä muutimme</p></div>
         <ol class="changes">
-          <li class="rv"><div><blockquote><p>Kumpi napin väreistä, vihreä vai punainen, tarkoittaa että laite on pois päältä?</p></blockquote><p class="spec muted">Testihenkilön kysymys · RT7</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Tilasääntö.</strong> Tilaa ei kerrota koskaan pelkällä värillä. PÄÄLLÄ on oranssi ja sana. KAIKKI KIINNI on valintamerkki ja teksti.</span></p></li>
-          <li class="rv"><div><blockquote><p>Kun on lähtenyt kotoa, ei voi enää tarkistaa, onko kaikki pois päältä.</p></blockquote><p class="spec muted">Kehityskohde · RT7</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Sovellus puhelimeen.</strong> Sama näkymä kuin eteisessä, myös bussista.</span></p></li>
-          <li class="rv"><div><blockquote><p>Onko anturien asennus työläs? Tarvitaanko putkimies?</p></blockquote><p class="spec muted">Yleisin huoli · RT8</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Itse asennettava anturi.</strong> Magneetti ja pidike olemassa oleviin laitteisiin, ilman sähkö- tai putkitöitä. Suunniteltu.</span></p></li>
-          <li class="rv"><div><blockquote><p>Onko laite yhteydessä pilveen? Miten se vaikuttaa yksityisyyteen?</p></blockquote><p class="spec muted">Testihenkilön kysymys · RT8</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Paikallinen käsittely.</strong> Prototyypissä Raspberry Pi käsittelee tilan kotiverkossa. Pilvettömyys ja Suomi-säilytys ovat tavoite.</span></p></li>
-          <li class="rv"><div><blockquote><p>Miten varmistetaan, ettei rikkinäinen anturi väitä laitetta pois päältä?</p></blockquote><p class="spec muted">Testihenkilön kysymys · RT7</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Tuoreus jokaisessa tilassa.</strong> ”Tarkistettu 12 s sitten”, ja jos anturi vaikenee: EI TIETOA.</span></p></li>
-          <li class="rv"><div><blockquote><p>Paneeliin yksi katkaisija, josta saa kaiken pois. Mutta päälle kytkeminen tuntui oudolta.</p></blockquote><p class="spec muted">Testihenkilöiden idea · RT7</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Nuppi, joka vain sammuttaa.</strong> Paina: kaikki pois.</span></p></li>
+          <li class="rv"><div><blockquote><p>Kumpi napin väreistä, vihreä vai punainen, tarkoittaa että laite on pois päältä?</p></blockquote><p class="spec muted">Testihenkilön kysymys · pilottitesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Tilasääntö.</strong> Tilaa ei kerrota koskaan pelkällä värillä. PÄÄLLÄ on oranssi ja sana. KAIKKI KIINNI on valintamerkki ja teksti.</span></p></li>
+          <li class="rv"><div><blockquote><p>Kun on lähtenyt kotoa, ei voi enää tarkistaa, onko kaikki pois päältä.</p></blockquote><p class="spec muted">Kehityskohde · pilottitesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Sovellus puhelimeen eteisen paneelin sijaan.</strong> Kodin tila näkyy missä ikinä oletkin, myös bussista.</span></p></li>
+          <li class="rv"><div><blockquote><p>Onko sensorien asennus työläs? Tarvitaanko putkimies?</p></blockquote><p class="spec muted">Yleisin huoli · käyttäjätesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Itse asennettava sensori.</strong> Tarra, magneetti tai pidike olemassa oleviin laitteisiin, ilman sähkö- tai putkitöitä.</span></p></li>
+          <li class="rv"><div><blockquote><p>Onko laite yhteydessä pilveen? Miten se vaikuttaa yksityisyyteen?</p></blockquote><p class="spec muted">Testihenkilön kysymys · käyttäjätesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Paikallinen käsittely.</strong> Prototyypissä Raspberry Pi käsittelee tilan kotiverkossa. Pilvettömyys ja Suomi-säilytys ovat tavoite.</span></p></li>
+          <li class="rv"><div><blockquote><p>Miten varmistetaan, ettei rikkinäinen sensori väitä laitetta pois päältä?</p></blockquote><p class="spec muted">Testihenkilön kysymys · pilottitesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Tuoreus jokaisessa tilassa.</strong> ”Tarkistettu 12 s sitten”, ja jos sensori vaikenee: EI TIETOA.</span></p></li>
+          <li class="rv"><div><blockquote><p>Entä liesi, valot ja kahvinkeitin? Ei pelkkä hana.</p></blockquote><p class="spec muted">Toistuva toive · pilottitesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Kaikki kodinkoneet.</strong> Hanax lähti tiskikoneen hanasta, mutta yksi sensori sopii mihin tahansa laitteeseen.</span></p></li>
+          <li class="rv"><div><blockquote><p>Pohjapiirros pitäisi ensin piirtää. Lista on helpompi.</p></blockquote><p class="spec muted">Testihenkilön palaute · käyttäjätesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Yksi lista.</strong> Kaikki laitteet allekkain, ei karttaa eikä asetuksia ennen käyttöä.</span></p></li>
+          <li class="rv"><div><blockquote><p>Sammuttaminen etänä kävisi, mutta päälle kytkeminen tuntui oudolta.</p></blockquote><p class="spec muted">Testihenkilöiden palaute · pilottitesti</p></div><p class="did"><span class="arrow" aria-hidden="true">→</span><span><strong>Vain seuranta.</strong> Hanax kertoo tilan, se ei kytke laitteita. Seuranta pysyy yksinkertaisena.</span></p></li>
         </ol>
         <p class="fineprint">Lainaukset ovat tiivistelmiä testiraporteista, eivät suoria sitaatteja. Testihenkilöt eivät täysin edustaneet kohderyhmää: mukana oli myös kerrostalo- ja rivitaloasujia.</p>
       </div>
@@ -375,9 +373,9 @@
         <div class="sec-head rv"><p class="spec"><span class="idx">07</span>Kenelle</p><span class="rule" aria-hidden="true"></span></div>
         <h2 class="display-l rv" id="kenelle-title">Kenelle Hanax on.</h2>
         <ul class="who rv">
-          <li><span class="spec muted">Ensisijainen</span><h3>Omakotitalo ja kiireinen arki</h3><p>Monta kerrosta, monta laitetta, ja lähtiessä on muistettava paljon.</p></li>
+          <li><span class="spec muted">Ensisijainen</span><h3>Omakotitalojen asunnonomistajat</h3><p>Isossa talossa on monta laitetta, ja tarkistuskierros vie aikaa joka aamu.</p></li>
           <li><span class="spec muted">Mökki</span><h3>Mökin omistajat</h3><p>Mökille ei palata heti. Päälle unohtunut laite ehtii tehdä siellä enemmän vahinkoa.</p></li>
-          <li><span class="spec muted">Vuokraus</span><h3>Lyhytvuokraajat</h3><p>Kohde on välillä pitkään tyhjillään ja vieraat vaihtuvat. Paneeli palvelee vierasta, sovellus isäntää.</p></li>
+          <li><span class="spec muted">Vuokraus</span><h3>Lyhytvuokraajat</h3><p>Kohde on välillä pitkään tyhjillään ja vieraat vaihtuvat. Omistaja näkee tilan puhelimesta käymättä paikalla.</p></li>
           <li><span class="spec muted">Ostaja</span><h3>Aikuiset lapset</h3><p>Useampi testaaja kertoi, että voisi hankkia Hanaxin vanhemmilleen.</p></li>
         </ul>
       </div>
@@ -391,12 +389,13 @@
           <div class="faq rv">
             <details><summary>Voinko ostaa Hanaxin?</summary><p>Et vielä. Hanax on Aalto-yliopiston Käyttäjälähtöinen tuotekehitysprojekti -kurssin ryhmän 1 tuotekonsepti (2026). Kuvien laitteet ovat konseptimalleja. Prototyyppiä voi kokeilla loppudemossa.</p></details>
             <details><summary>Paljonko Hanax maksaisi?</summary><p>Hintaa ei ole. Tavoite on <span class="mono">50–150 €</span> antureineen: tätä haarukkaa testihenkilöt pitivät sopivana. Muutaman kympin hinta olisi heidän mukaansa herättänyt epäilyksiä laadusta.</p></details>
-            <details><summary>Miten asennus toimisi?</summary><p>Tavoite on, että asennat anturit itse. Ne kiinnittyvät magneetilla, tarralla tai pidikkeellä olemassa olevaan hanaan, lieteen tai pistorasiaan ilman putki- tai sähkötöitä. Asentajan tilaaminen oli testeissä suurin syy jättää tuote ottamatta käyttöön.</p></details>
+            <details><summary>Miten asennus toimisi?</summary><p>Tavoite on, että asennat sensorit itse. Ne kiinnittyvät tarralla, magneetilla tai pidikkeellä olemassa olevan lieden, kahvinkeittimen tai tiskikoneen hanan viereen ilman putki- tai sähkötöitä. Asentajan tilaaminen oli testeissä suurin syy jättää tuote ottamatta käyttöön.</p></details>
             <details><summary>Lähtevätkö kotini tiedot pilveen?</summary><p>Hanax on suunniteltu käsittelemään tilan paikallisesti. Prototyypissä se tapahtuu Raspberry Pi:llä kotiverkossa. Pilvettömyys ja etäkäytön tietojen säilytys Suomessa ovat tavoite, eivät vielä lupaus.</p></details>
             <details><summary>Onko kuukausimaksua?</summary><p>Sitä ei ole päätetty. Lähtökohta on, että perusasia toimii ilman tilausta.</p></details>
-            <details><summary>Tarvitsenko uudet älylaitteet?</summary><p>Et. Anturi lukee tavallisia laitteita: prototyyppi lukee jo mekaanista venttiiliä kameralla. Liittymistä yleisiin älykotijärjestelmiin selvitetään, mutta sitä ei luvata.</p></details>
-            <details><summary>Entä jos anturi näyttää väärin?</summary><p>Jokaisen tilan vieressä lukee, milloin se viimeksi tarkistettiin. Jos anturi ei vastaa, Hanax ei arvaa: tila on <span class="chip chip-unknown chip-inline">EI TIETOA</span> ja näet, kuinka kauan yhteys on ollut poikki.</p></details>
-            <details><summary>Mitä prototyyppi tekee nyt?</summary><p>Killan keittiössä Raspberry Pi lukee kahvinkeittimien älypistorasioita ja valoja, ja kamera tunnistaa, onko astianpesukoneen hanan venttiili auki vai kiinni. Tila näkyy livenä web-sovelluksessa. Sammuttaminen sovelluksesta on simuloitu.</p></details>
+            <details><summary>Tarvitsenko uudet älylaitteet?</summary><p>Et. Sensori lukee tavallisia laitteita: prototyyppi lukee jo tiskikoneen hanan mekaanista venttiiliä. Liittymistä yleisiin älykotijärjestelmiin selvitetään, mutta sitä ei luvata.</p></details>
+            <details><summary>Entä jos sensori näyttää väärin?</summary><p>Jokaisen tilan vieressä lukee, milloin se viimeksi tarkistettiin. Jos sensori ei vastaa, Hanax ei arvaa: tila on <span class="chip chip-unknown chip-inline">EI TIETOA</span> ja näet, kuinka kauan yhteys on ollut poikki.</p></details>
+            <details><summary>Voiko Hanaxilla sammuttaa laitteita?</summary><p>Ei. Testeissä etäkytkemistä vastustettiin, ja omat sulkimet jokaiseen laitteeseen tekisivät asennuksesta raskaan. Hanax vain seuraa ja kertoo, mikä on päällä.</p></details>
+            <details><summary>Mitä prototyyppi tekee nyt?</summary><p>Killan keittiössä Raspberry Pi lukee kahden kahvinkeittimen ja valojen tilan, ja sensori tunnistaa, onko tiskikoneen hanan venttiili auki vai kiinni. Tila näkyy livenä puhelimen sovelluksessa.</p></details>
             <details><summary>Voinko kokeilla?</summary><p>Demosovellus on osoitteessa <a href="/app/">/app/</a>. Se vaatii demotunnukset, joita saa osastolta.</p></details>
           </div>
         </div>
@@ -408,11 +407,11 @@
         <source media="(max-width: 759px)" srcset="/media/renders/hx01-macro-led-800.webp" type="image/webp">
         <source srcset="/media/renders/hx01-macro-led.webp" type="image/webp">
         <img src="/media/renders/hx01-macro-led.jpg" width="1600" height="1067" loading="lazy" decoding="async"
-             alt="Lähikuva HX-01-anturin konseptimallin kulmasta: harjattu grafiittialumiini ja palava oranssi merkkivalo.">
+             alt="Lähikuva HX-01-sensorin konseptimallin kulmasta: harjattu grafiittialumiini ja palava oranssi merkkivalo.">
       </picture>
       <div class="wrap closing-in">
-        <p class="spec muted">Hanax · HX-01 · HX-P</p>
-        <h2 class="display-xl" id="closing-title">Lähde kotoa huoletta.</h2>
+        <p class="spec muted">Hanax · HX-01</p>
+        <h2 class="display-xl" id="closing-title">Pidä kotisi hallinnassa, missä ikinä oletkin.</h2>
         <div class="actions">
           <a class="btn btn-primary" href="#livena">Katso livenä</a>
           <a class="btn btn-ghost" href="/app/">Kokeile demoa<span class="sr"> (vaatii demotunnukset)</span></a>
